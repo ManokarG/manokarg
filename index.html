@@ -1,164 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manokar G - Full Stack Developer</title>
+    <title>Manokar G | Advanced Portfolio</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-        .nav-link {
-            transition: color 0.3s ease;
-        }
-        .nav-link:hover {
-            color: #3b82f6;
-        }
-        .project-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="antialiased">
+
+    <!-- 3D Background Canvas -->
+    <div id="canvas-container"></div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
+    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0">
-                    <a href="#" class="text-xl font-bold text-slate-900">Manokar G</a>
+                    <a href="#" class="text-2xl font-black tracking-tighter text-white">M<span class="text-blue-500">.</span>G</a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#about" class="nav-link font-medium">About</a>
-                        <a href="#resume" class="nav-link font-medium">Resume</a>
-                        <a href="#portfolio" class="nav-link font-medium">Portfolio</a>
-                        <a href="#contact" class="nav-link font-medium">Contact</a>
+                        <a href="#home" class="nav-link font-medium text-sm uppercase tracking-wider">Home</a>
+                        <a href="#experience" class="nav-link font-medium text-sm uppercase tracking-wider">Experience</a>
+                        <a href="#projects" class="nav-link font-medium text-sm uppercase tracking-wider">Lab & Projects</a>
+                        <a href="#interests" class="nav-link font-medium text-sm uppercase tracking-wider">Interests</a>
                     </div>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-slate-500 hover:text-slate-900 focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
+                <div>
+                    <a href="https://github.com/ManokarG" target="_blank" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
                 </div>
             </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
-            <a href="#about" class="block px-4 py-3 nav-link font-medium border-b">About</a>
-            <a href="#resume" class="block px-4 py-3 nav-link font-medium border-b">Resume</a>
-            <a href="#portfolio" class="block px-4 py-3 nav-link font-medium border-b">Portfolio</a>
-            <a href="#contact" class="block px-4 py-3 nav-link font-medium">Contact</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="about" class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center md:text-left md:flex md:items-center md:justify-between">
-            <div class="md:w-3/5">
-                <h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-2">Hello, I'm</h2>
-                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-4">Manokar G</h1>
-                <h3 class="text-2xl md:text-3xl text-slate-600 mb-6">Full Stack Developer</h3>
-                <p class="text-lg text-slate-500 mb-8 max-w-2xl">
-                    I build exceptional and accessible digital experiences. Passionate about learning new technologies, building robust systems, and experimenting with my homelab.
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="md:w-2/3">
+                <div class="flex gap-3 mb-6 hero-badge flex-wrap">
+                    <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 backdrop-blur-md">Full Stack Developer</span>
+                    <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20 backdrop-blur-md">AI Enthusiast</span>
+                    <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 backdrop-blur-md">Maker & Tinkerer</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight hero-title">
+                    Hi, I'm <br/><span class="text-gradient">Manokar G.</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-gray-400 font-light mb-8 hero-subtitle max-w-2xl">
+                    Bridging the gap between software and hardware through code, electronics, and craftsmanship.
+                </h2>
+                <p class="text-lg text-gray-500 mb-10 max-w-xl hero-description">
+                    I build scalable web applications, automate my home with custom electronics, explore artificial intelligence, and craft things with wood. Welcome to my digital sandbox.
                 </p>
-                <div class="flex justify-center md:justify-start space-x-4">
-                    <a href="#portfolio" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors">
-                        View Projects
+                <div class="flex gap-4 hero-buttons">
+                    <a href="#projects" class="px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                        Explore My Lab
                     </a>
-                    <a href="#contact" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium py-3 px-6 rounded-lg transition-colors">
-                        Contact Me
+                    <a href="#experience" class="px-8 py-4 glass-panel text-white font-bold rounded-lg hover:bg-white/10 transition-colors">
+                        View Resume
                     </a>
                 </div>
-                <div class="mt-8 flex justify-center md:justify-start space-x-6 text-2xl text-slate-400">
-                    <a href="https://github.com/ManokarG" target="_blank" class="hover:text-slate-900 transition-colors"><i class="fab fa-github"></i></a>
-                    <a href="#" target="_blank" class="hover:text-blue-600 transition-colors"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" target="_blank" class="hover:text-blue-400 transition-colors"><i class="fab fa-twitter"></i></a>
-                </div>
             </div>
-            <div class="hidden md:block md:w-2/5 flex justify-end">
-                <!-- Placeholder for profile image -->
-                <div class="w-64 h-64 bg-slate-200 rounded-full flex items-center justify-center border-4 border-white shadow-xl mx-auto">
-                    <i class="fas fa-user text-6xl text-slate-400"></i>
-                </div>
-            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-gray-500 text-xl"></i>
         </div>
     </section>
 
-    <!-- Resume Section -->
-    <section id="resume" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">Resume & Skills</h2>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Experience -->
-                <div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center">
-                        <i class="fas fa-briefcase mr-3 text-blue-600"></i> Experience
-                    </h3>
-                    
-                    <div class="border-l-2 border-slate-200 pl-6 space-y-8">
-                        <div class="relative">
-                            <div class="absolute w-4 h-4 bg-blue-600 rounded-full -left-[1.65rem] top-1 border-4 border-white"></div>
-                            <h4 class="font-bold text-lg text-slate-900">Full Stack Developer</h4>
-                            <p class="text-blue-600 font-medium text-sm mb-2">Company Name | 2022 - Present</p>
-                            <p class="text-slate-600">Developed and maintained web applications using React, Node.js, and MongoDB. Improved application performance and collaborated with cross-functional teams.</p>
+    <!-- Experience Section -->
+    <section id="experience" class="py-32 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Professional <span class="text-blue-400">Experience</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded"></div>
+            </div>
+
+            <div class="relative border-l border-gray-800 ml-4 md:ml-0">
+                <!-- Timeline Item 1 -->
+                <div class="mb-12 ml-8 md:ml-12 animate-on-scroll relative">
+                    <div class="absolute -left-10 md:-left-14 top-1 w-4 h-4 rounded-full bg-blue-500 shadow-[0_0_10px_#3b82f6]"></div>
+                    <div class="glass-panel p-8 rounded-2xl glow-box">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Full Stack Developer</h3>
+                                <p class="text-blue-400 font-medium">Tech Solutions Inc.</p>
+                            </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-white/5 rounded-full text-sm text-gray-400 border border-white/10">2022 - Present</span>
                         </div>
-                        <div class="relative">
-                            <div class="absolute w-4 h-4 bg-slate-300 rounded-full -left-[1.65rem] top-1 border-4 border-white"></div>
-                            <h4 class="font-bold text-lg text-slate-900">Frontend Developer</h4>
-                            <p class="text-blue-600 font-medium text-sm mb-2">Previous Company | 2020 - 2022</p>
-                            <p class="text-slate-600">Built responsive user interfaces and implemented complex UI features. Ensured cross-browser compatibility and mobile responsiveness.</p>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Architected and developed scalable enterprise web applications. Integrated AI APIs for automated data processing, and built robust CI/CD pipelines. Managed microservices using Docker and Kubernetes.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">React & Next.js</span>
+                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">Node.js</span>
+                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">PostgreSQL</span>
+                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">Docker</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Skills -->
-                <div>
-                    <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center">
-                        <i class="fas fa-code mr-3 text-blue-600"></i> Skills
-                    </h3>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <h4 class="font-medium text-slate-700 mb-3">Frontend</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">HTML5</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">CSS3</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">JavaScript</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">React</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Tailwind CSS</span>
+                <!-- Timeline Item 2 -->
+                <div class="ml-8 md:ml-12 animate-on-scroll relative">
+                    <div class="absolute -left-10 md:-left-14 top-1 w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_10px_#9333ea]"></div>
+                    <div class="glass-panel p-8 rounded-2xl glow-box">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Frontend Developer</h3>
+                                <p class="text-purple-400 font-medium">Creative Agency</p>
                             </div>
+                            <span class="mt-2 md:mt-0 px-3 py-1 bg-white/5 rounded-full text-sm text-gray-400 border border-white/10">2020 - 2022</span>
                         </div>
-                        <div>
-                            <h4 class="font-medium text-slate-700 mb-3">Backend</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Node.js</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Express</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Python</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">PostgreSQL</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">MongoDB</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="font-medium text-slate-700 mb-3">DevOps & Tools</h4>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Git</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Docker</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Linux</span>
-                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">CI/CD</span>
-                            </div>
+                        <p class="text-gray-400 mb-6 leading-relaxed">
+                            Created highly interactive and animated user interfaces for high-profile clients. Focused on web performance, accessibility, and pixel-perfect design implementation using modern CSS frameworks and WebGL.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">Vue.js</span>
+                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">Three.js</span>
+                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">Tailwind CSS</span>
                         </div>
                     </div>
                 </div>
@@ -166,81 +134,73 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-slate-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Featured Projects</h2>
-                <p class="text-slate-600 max-w-2xl mx-auto">Here are some of my recent projects. I'm always building something new and exploring different technologies.</p>
+    <!-- Lab & Projects Section -->
+    <section id="projects" class="py-32 relative z-10 bg-black/40 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 animate-on-scroll text-center">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Personal <span class="text-purple-400">Lab & Projects</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Where software meets hardware. My personal infrastructure and automation ecosystem.</p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1: Homelab -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
-                    <div class="h-48 bg-slate-800 flex items-center justify-center">
-                        <i class="fas fa-server text-5xl text-blue-400"></i>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold text-slate-900">Homelab Server Setup</h3>
-                            <div class="flex space-x-2">
-                                <a href="#" class="text-slate-400 hover:text-blue-600"><i class="fab fa-github"></i></a>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Homelab Project -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden animate-on-scroll group border border-white/10 hover:border-blue-500/50 transition-colors">
+                    <div class="h-64 relative overflow-hidden bg-gray-900">
+                        <!-- Abstract Server Rack Representation -->
+                        <div class="absolute inset-0 opacity-20 flex flex-col justify-around p-4">
+                            <div class="h-8 bg-blue-500/20 border border-blue-500/30 rounded flex items-center px-4"><div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div></div>
+                            <div class="h-8 bg-blue-500/20 border border-blue-500/30 rounded flex items-center px-4"><div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-75"></div></div>
+                            <div class="h-8 bg-blue-500/20 border border-blue-500/30 rounded flex items-center px-4"><div class="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-150"></div></div>
+                            <div class="h-8 bg-blue-500/20 border border-blue-500/30 rounded flex items-center px-4"><div class="w-2 h-2 bg-red-400 rounded-full"></div></div>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-server text-blue-400 text-2xl"></i>
+                                <h3 class="text-2xl font-bold text-white">Advanced Homelab</h3>
                             </div>
                         </div>
-                        <p class="text-slate-600 text-sm mb-4">
-                            A comprehensive home server setup for self-hosting services, media management, and development environments. (Details to be updated with more information).
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            A robust bare-metal server cluster running Proxmox VE. Hosts over 40+ Docker containers including Plex media server, Nextcloud for private storage, Pi-hole for network-wide ad blocking, and local LLMs (Ollama) for private AI inferencing. Managed via Infrastructure as Code (Ansible).
                         </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Docker</span>
-                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Linux</span>
-                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Networking</span>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Proxmox</span>
+                            <span class="text-xs font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Docker</span>
+                            <span class="text-xs font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Self-Hosted AI</span>
+                            <span class="text-xs font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Ansible</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
-                    <div class="h-48 bg-slate-100 flex items-center justify-center border-b border-slate-100">
-                        <i class="fas fa-laptop-code text-5xl text-slate-400"></i>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold text-slate-900">E-Commerce Platform</h3>
-                            <div class="flex space-x-2">
-                                <a href="#" class="text-slate-400 hover:text-blue-600"><i class="fab fa-github"></i></a>
-                                <a href="#" class="text-slate-400 hover:text-blue-600"><i class="fas fa-external-link-alt"></i></a>
+                <!-- Home Automation Project -->
+                <div class="project-card glass-panel rounded-2xl overflow-hidden animate-on-scroll group border border-white/10 hover:border-emerald-500/50 transition-colors">
+                    <div class="h-64 relative overflow-hidden bg-gray-900">
+                        <!-- Abstract Smart Home Representation -->
+                        <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMSIgZmlsbD0iIzRmZmZhYyIvPjwvc3ZnPg==')]"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                             <div class="w-32 h-32 rounded-full border border-emerald-500/30 flex items-center justify-center animate-[spin_10s_linear_infinite]">
+                                <div class="w-24 h-24 rounded-full border-t-2 border-emerald-400 animate-[spin_3s_linear_infinite_reverse]"></div>
+                             </div>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fas fa-microchip text-emerald-400 text-2xl"></i>
+                                <h3 class="text-2xl font-bold text-white">Smart Home IoT</h3>
                             </div>
                         </div>
-                        <p class="text-slate-600 text-sm mb-4">
-                            A full-stack e-commerce solution with user authentication, product management, shopping cart, and payment gateway integration.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">React</span>
-                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Node.js</span>
-                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
-                    <div class="h-48 bg-slate-100 flex items-center justify-center border-b border-slate-100">
-                        <i class="fas fa-chart-line text-5xl text-slate-400"></i>
                     </div>
                     <div class="p-6">
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-xl font-bold text-slate-900">Task Management App</h3>
-                            <div class="flex space-x-2">
-                                <a href="#" class="text-slate-400 hover:text-blue-600"><i class="fab fa-github"></i></a>
-                            </div>
-                        </div>
-                        <p class="text-slate-600 text-sm mb-4">
-                            A productivity application allowing users to track tasks, organize projects into boards, and monitor progress with analytics.
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                            A centralized Home Assistant instance orchestrating custom-built ESP32 sensors and commercial IoT devices. Features localized voice control (Rhasspy), automated climate management based on room occupancy, and custom dashboard interfaces built with React. No cloud dependency.
                         </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Vue.js</span>
-                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Firebase</span>
-                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Tailwind</span>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded">Home Assistant</span>
+                            <span class="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded">ESP32 / C++</span>
+                            <span class="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded">Zigbee</span>
+                            <span class="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded">MQTT</span>
                         </div>
                     </div>
                 </div>
@@ -248,49 +208,70 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-bold text-slate-900 mb-6">Get In Touch</h2>
-            <p class="text-lg text-slate-600 mb-10">
-                I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
-            </p>
-            <a href="mailto:hello@example.com" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg transition-colors shadow-md">
-                Say Hello
-            </a>
+    <!-- Interests Section -->
+    <section id="interests" class="py-32 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 animate-on-scroll">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Beyond the <span class="text-emerald-400">Screen</span></h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- AI -->
+                <div class="interest-card glass-panel p-8 rounded-2xl border border-white/5 animate-on-scroll">
+                    <i class="fas fa-brain text-5xl text-purple-500 mb-6 interest-icon"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Artificial Intelligence</h3>
+                    <p class="text-gray-400 text-sm">
+                        Fascinated by neural networks, LLMs, and computer vision. I experiment with fine-tuning models locally in my homelab and integrating AI agents into web applications to solve real-world problems autonomously.
+                    </p>
+                </div>
+
+                <!-- Electronics -->
+                <div class="interest-card glass-panel p-8 rounded-2xl border border-white/5 animate-on-scroll" style="transition-delay: 100ms;">
+                    <i class="fas fa-robot text-5xl text-blue-500 mb-6 interest-icon"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Electronics & PCBs</h3>
+                    <p class="text-gray-400 text-sm">
+                        I enjoy designing custom PCBs and programming microcontrollers (ESP32, Arduino). Building physical interfaces, custom sensors for home automation, and understanding the hardware that powers software.
+                    </p>
+                </div>
+
+                <!-- Carpentry -->
+                <div class="interest-card glass-panel p-8 rounded-2xl border border-white/5 animate-on-scroll" style="transition-delay: 200ms;">
+                    <i class="fas fa-hammer text-5xl text-amber-600 mb-6 interest-icon"></i>
+                    <h3 class="text-xl font-bold text-white mb-3">Carpentry</h3>
+                    <p class="text-gray-400 text-sm">
+                        Stepping away from screens to work with my hands. I design and build custom furniture, server racks, and workbench setups. Carpentry teaches me patience, precision, and architectural planning in the physical world.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-center space-x-6 mb-4 text-xl">
-                <a href="https://github.com/ManokarG" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-github"></i></a>
-                <a href="#" target="_blank" class="hover:text-blue-400 transition-colors"><i class="fab fa-linkedin"></i></a>
-                <a href="#" target="_blank" class="hover:text-blue-400 transition-colors"><i class="fab fa-twitter"></i></a>
+    <footer class="border-t border-white/10 glass-panel py-10 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-xl font-black text-white">M<span class="text-blue-500">.</span>G</span>
+                <p class="text-gray-500 text-sm mt-1">Full Stack • Hardware • AI</p>
             </div>
-            <p class="text-sm">
-                Designed & Built by Manokar G
-            </p>
+            <div class="flex space-x-6">
+                <a href="mailto:hello@example.com" class="text-gray-400 hover:text-white transition-colors text-xl">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://github.com/ManokarG" target="_blank" class="text-gray-400 hover:text-white transition-colors text-xl">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors text-xl">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
         </div>
     </footer>
 
-    <!-- Script for Mobile Menu -->
-    <script>
-        const btn = document.getElementById('mobile-menu-button');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu when a link is clicked
-        const mobileLinks = menu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

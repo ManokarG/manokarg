@@ -1,0 +1,110 @@
+/* Base styles and Glassmorphism */
+:root {
+    --bg-color: #0a0a0a;
+    --primary-glow: rgba(59, 130, 246, 0.5);
+    --secondary-glow: rgba(147, 51, 234, 0.5);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: #e5e5e5;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.glass-panel {
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #60a5fa, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.glow-box {
+    position: relative;
+}
+
+.glow-box::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 1rem;
+    background: linear-gradient(45deg, #3b82f6, #9333ea, #3b82f6);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    filter: blur(8px);
+}
+
+.glow-box:hover::before {
+    opacity: 1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.nav-link {
+    position: relative;
+    color: #a3a3a3;
+    transition: color 0.3s;
+}
+.nav-link:hover {
+    color: #fff;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #60a5fa;
+    transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Interest icons hover */
+.interest-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.interest-card:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+.interest-icon {
+    transition: all 0.4s ease;
+}
+.interest-card:hover .interest-icon {
+    color: #fff;
+    filter: drop-shadow(0 0 10px currentColor);
+}
