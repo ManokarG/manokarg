@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manokar G - Full Stack Developer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-xl font-bold text-slate-900">Manokar G</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#about" class="nav-link font-medium">About</a>
+                        <a href="#resume" class="nav-link font-medium">Resume</a>
+                        <a href="#portfolio" class="nav-link font-medium">Portfolio</a>
+                        <a href="#contact" class="nav-link font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-slate-500 hover:text-slate-900 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <a href="#about" class="block px-4 py-3 nav-link font-medium border-b">About</a>
+            <a href="#resume" class="block px-4 py-3 nav-link font-medium border-b">Resume</a>
+            <a href="#portfolio" class="block px-4 py-3 nav-link font-medium border-b">Portfolio</a>
+            <a href="#contact" class="block px-4 py-3 nav-link font-medium">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center md:text-left md:flex md:items-center md:justify-between">
+            <div class="md:w-3/5">
+                <h2 class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-2">Hello, I'm</h2>
+                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-4">Manokar G</h1>
+                <h3 class="text-2xl md:text-3xl text-slate-600 mb-6">Full Stack Developer</h3>
+                <p class="text-lg text-slate-500 mb-8 max-w-2xl">
+                    I build exceptional and accessible digital experiences. Passionate about learning new technologies, building robust systems, and experimenting with my homelab.
+                </p>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="#portfolio" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+                        View Projects
+                    </a>
+                    <a href="#contact" class="bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium py-3 px-6 rounded-lg transition-colors">
+                        Contact Me
+                    </a>
+                </div>
+                <div class="mt-8 flex justify-center md:justify-start space-x-6 text-2xl text-slate-400">
+                    <a href="https://github.com/ManokarG" target="_blank" class="hover:text-slate-900 transition-colors"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" class="hover:text-blue-600 transition-colors"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" target="_blank" class="hover:text-blue-400 transition-colors"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="hidden md:block md:w-2/5 flex justify-end">
+                <!-- Placeholder for profile image -->
+                <div class="w-64 h-64 bg-slate-200 rounded-full flex items-center justify-center border-4 border-white shadow-xl mx-auto">
+                    <i class="fas fa-user text-6xl text-slate-400"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">Resume & Skills</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Experience -->
+                <div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center">
+                        <i class="fas fa-briefcase mr-3 text-blue-600"></i> Experience
+                    </h3>
+                    
+                    <div class="border-l-2 border-slate-200 pl-6 space-y-8">
+                        <div class="relative">
+                            <div class="absolute w-4 h-4 bg-blue-600 rounded-full -left-[1.65rem] top-1 border-4 border-white"></div>
+                            <h4 class="font-bold text-lg text-slate-900">Full Stack Developer</h4>
+                            <p class="text-blue-600 font-medium text-sm mb-2">Company Name | 2022 - Present</p>
+                            <p class="text-slate-600">Developed and maintained web applications using React, Node.js, and MongoDB. Improved application performance and collaborated with cross-functional teams.</p>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute w-4 h-4 bg-slate-300 rounded-full -left-[1.65rem] top-1 border-4 border-white"></div>
+                            <h4 class="font-bold text-lg text-slate-900">Frontend Developer</h4>
+                            <p class="text-blue-600 font-medium text-sm mb-2">Previous Company | 2020 - 2022</p>
+                            <p class="text-slate-600">Built responsive user interfaces and implemented complex UI features. Ensured cross-browser compatibility and mobile responsiveness.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div>
+                    <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center">
+                        <i class="fas fa-code mr-3 text-blue-600"></i> Skills
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-medium text-slate-700 mb-3">Frontend</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">HTML5</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">CSS3</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">JavaScript</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">React</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Tailwind CSS</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-slate-700 mb-3">Backend</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Node.js</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Express</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Python</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">PostgreSQL</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">MongoDB</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-slate-700 mb-3">DevOps & Tools</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Git</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Docker</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">Linux</span>
+                                <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm font-medium">CI/CD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Featured Projects</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Here are some of my recent projects. I'm always building something new and exploring different technologies.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Homelab -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center">
+                        <i class="fas fa-server text-5xl text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-slate-900">Homelab Server Setup</h3>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-slate-400 hover:text-blue-600"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4">
+                            A comprehensive home server setup for self-hosting services, media management, and development environments. (Details to be updated with more information).
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Docker</span>
+                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Linux</span>
+                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Networking</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center border-b border-slate-100">
+                        <i class="fas fa-laptop-code text-5xl text-slate-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-slate-900">E-Commerce Platform</h3>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-slate-400 hover:text-blue-600"><i class="fab fa-github"></i></a>
+                                <a href="#" class="text-slate-400 hover:text-blue-600"><i class="fas fa-external-link-alt"></i></a>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4">
+                            A full-stack e-commerce solution with user authentication, product management, shopping cart, and payment gateway integration.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">React</span>
+                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Node.js</span>
+                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
+                    <div class="h-48 bg-slate-100 flex items-center justify-center border-b border-slate-100">
+                        <i class="fas fa-chart-line text-5xl text-slate-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-slate-900">Task Management App</h3>
+                            <div class="flex space-x-2">
+                                <a href="#" class="text-slate-400 hover:text-blue-600"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4">
+                            A productivity application allowing users to track tasks, organize projects into boards, and monitor progress with analytics.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Vue.js</span>
+                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Firebase</span>
+                            <span class="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded">Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-slate-900 mb-6">Get In Touch</h2>
+            <p class="text-lg text-slate-600 mb-10">
+                I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+            <a href="mailto:hello@example.com" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg transition-colors shadow-md">
+                Say Hello
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center space-x-6 mb-4 text-xl">
+                <a href="https://github.com/ManokarG" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" class="hover:text-blue-400 transition-colors"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank" class="hover:text-blue-400 transition-colors"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="text-sm">
+                Designed & Built by Manokar G
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script for Mobile Menu -->
+    <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
