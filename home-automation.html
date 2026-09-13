@@ -209,16 +209,16 @@
                     <path class="mqtt-line" d="M 800 350 L 500 250" fill="none" stroke="rgba(59, 130, 246, 0.4)" stroke-width="2"/>
                 </svg>
 
-                <div class="flex flex-col md:flex-row justify-between items-center relative z-10 gap-8 min-h-[400px]">
+                <div class="flex flex-col md:flex-row justify-center items-center relative z-10 gap-16 md:gap-24 min-h-[400px] max-w-5xl mx-auto">
                     <!-- Edge Devices Left (Sensors) -->
-                    <div class="flex flex-col gap-12 w-full md:w-1/4 z-10">
-                        <div class="bg-gray-900 border border-emerald-500/30 p-4 rounded-xl text-center relative">
+                    <div class="flex flex-col gap-12 w-full md:w-56 z-10">
+                        <div class="bg-gray-900 border border-emerald-500/30 p-4 rounded-xl text-center relative z-10">
                             <div class="absolute inset-0 border-2 border-emerald-500/50 rounded-xl signal-wave"></div>
                             <i class="fas fa-running text-emerald-400 text-2xl mb-2"></i>
                             <h4 class="font-bold text-white text-sm">mmWave Sensor</h4>
                             <p class="text-xs text-emerald-500 mt-1">ESP32 (WiFi)</p>
                         </div>
-                        <div class="bg-gray-900 border border-yellow-500/30 p-4 rounded-xl text-center">
+                        <div class="bg-gray-900 border border-yellow-500/30 p-4 rounded-xl text-center z-10">
                             <i class="fas fa-lightbulb text-yellow-400 text-2xl mb-2"></i>
                             <h4 class="font-bold text-white text-sm">Smart Relays</h4>
                             <p class="text-xs text-yellow-500 mt-1">Zigbee Mesh</p>
@@ -226,8 +226,8 @@
                     </div>
 
                     <!-- Core Broker -->
-                    <div class="w-full md:w-1/2 z-10 flex justify-center">
-                        <div class="bg-black border border-emerald-500/50 p-8 rounded-2xl text-center shadow-[0_0_40px_rgba(16,185,129,0.2)] glow-box relative">
+                    <div class="w-full md:w-80 z-10 flex justify-center">
+                        <div class="bg-black border border-emerald-500/50 p-8 rounded-2xl text-center shadow-[0_0_40px_rgba(16,185,129,0.2)] glow-box relative w-full">
                             <!-- MQTT Broker -->
                             <div class="absolute -top-4 -right-4 bg-gray-900 border border-white/10 p-2 rounded-lg shadow-lg flex items-center gap-2">
                                 <i class="fas fa-exchange-alt text-gray-400"></i>
@@ -243,13 +243,13 @@
                     </div>
 
                     <!-- Edge Devices Right (Interfaces) -->
-                    <div class="flex flex-col gap-12 w-full md:w-1/4 z-10">
-                        <div class="bg-gray-900 border border-purple-500/30 p-4 rounded-xl text-center">
+                    <div class="flex flex-col gap-12 w-full md:w-56 z-10">
+                        <div class="bg-gray-900 border border-purple-500/30 p-4 rounded-xl text-center z-10">
                             <i class="fas fa-microphone text-purple-400 text-2xl mb-2"></i>
                             <h4 class="font-bold text-white text-sm">Voice Satellites</h4>
                             <p class="text-xs text-purple-500 mt-1">Rhasspy (UDP)</p>
                         </div>
-                        <div class="bg-gray-900 border border-blue-500/30 p-4 rounded-xl text-center">
+                        <div class="bg-gray-900 border border-blue-500/30 p-4 rounded-xl text-center z-10">
                             <i class="fab fa-react text-blue-400 text-2xl mb-2 animate-[spin_4s_linear_infinite]"></i>
                             <h4 class="font-bold text-white text-sm">Wall Dashboards</h4>
                             <p class="text-xs text-blue-500 mt-1">React / WebSockets</p>

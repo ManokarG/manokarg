@@ -83,14 +83,75 @@ window.addEventListener('resize', () => {
 // --- GSAP Animations ---
 gsap.registerPlugin(ScrollTrigger);
 
-// Hero Section
-if (document.querySelector(".hero-title")) {
-    const tl = gsap.timeline();
-    tl.from(".hero-title", { y: 50, opacity: 0, duration: 1, ease: "power4.out", delay: 0.2 })
-      .from(".hero-subtitle", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
-      .from(".hero-description", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
-      .from(".hero-buttons", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
-      .from(".hero-badge", { scale: 0, opacity: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" }, "-=0.4");
+// Splash Screen Zoom Out
+if (document.querySelector("#splash-screen")) {
+    const splashTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#splash-screen",
+            start: "top top",
+            end: "+=800",
+            scrub: 1,
+            pin: true
+        }
+    });
+
+    // Zoom the text OUT (scale down) and fade the background
+    splashTl.to("#splash-text", {
+        scale: 0.1,
+        opacity: 0,
+        ease: "power2.inOut"
+    }, 0)
+    .to("#splash-screen", {
+        opacity: 0,
+        pointerEvents: "none"
+    }, 0.5);
+
+    // After the splash fades, bring in the Hero section
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#home",
+            start: "top top",
+            end: "+=100",
+            scrub: false,
+            // Only play after we scroll past the splash area
+        }
+    });
+    
+    // We'll animate Hero elements based on a slight delay so they appear after splash is mostly gone
+    gsap.from(".hero-title", {
+        scrollTrigger: {
+            trigger: "body",
+            start: "top -400px", 
+            toggleActions: "play none none reverse"
+        },
+        y: 50, opacity: 0, duration: 1, ease: "power4.out" 
+    });
+    gsap.from(".hero-subtitle, .hero-description, .hero-buttons", {
+        scrollTrigger: {
+            trigger: "body",
+            start: "top -400px",
+            toggleActions: "play none none reverse"
+        },
+        y: 20, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"
+    });
+    gsap.from(".hero-badge", {
+        scrollTrigger: {
+            trigger: "body",
+            start: "top -400px",
+            toggleActions: "play none none reverse"
+        },
+        scale: 0, opacity: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" 
+    });
+} else {
+    // Fallback if no splash screen
+    if (document.querySelector(".hero-title")) {
+        const tl = gsap.timeline();
+        tl.from(".hero-title", { y: 50, opacity: 0, duration: 1, ease: "power4.out", delay: 0.2 })
+          .from(".hero-subtitle", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+          .from(".hero-description", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+          .from(".hero-buttons", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+          .from(".hero-badge", { scale: 0, opacity: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" }, "-=0.4");
+    }
 }
 
 // Generic Animate on Scroll (Zoom In effect)

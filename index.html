@@ -13,8 +13,15 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
-<body class="antialiased">
+<body class="antialiased overflow-x-hidden">
 
+    <!-- Splash Screen Intro -->
+    <div id="splash-screen" class="fixed inset-0 z-[100] flex items-center justify-center bg-[#050505]">
+        <h1 id="splash-text" class="text-6xl md:text-9xl font-black text-white tracking-tighter">Manokar G<span class="text-blue-500">.</span></h1>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-500 text-sm tracking-widest uppercase">
+            Scroll Down
+        </div>
+    </div>
     <!-- 3D Background Canvas -->
     <div id="canvas-container"></div>
 
