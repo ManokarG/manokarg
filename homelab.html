@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous AI & GitOps Homelab | Manokar G</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="antialiased">
+    <div id="canvas-container"></div>
+
+    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-white hover:text-blue-400 transition-colors flex items-center gap-2">
+                        <i class="fas fa-arrow-left"></i> Back to Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 relative z-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 animate-on-scroll">
+                <h1 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight hero-title">
+                    <span class="text-gradient">Autonomous AI</span> <br/>& GitOps Homelab
+                </h1>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    An enterprise-grade, highly available local cloud for self-hosting, AI experimentation, and autonomous agents.
+                </p>
+            </div>
+
+            <div class="glass-panel p-8 md:p-12 rounded-2xl border border-white/10 mb-12 animate-on-scroll">
+                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">Architecture Overview</h2>
+                <div class="prose prose-invert prose-blue max-w-none text-gray-300">
+                    <p class="mb-4">
+                        The entire infrastructure spans multiple bare-metal Proxmox hypervisors and a cluster of ARM-based edge nodes (Raspberry Pis). It is designed with zero single points of failure in mind, utilizing distributed databases (PostgreSQL/Redis) and Tailscale for secure, encrypted mesh networking.
+                    </p>
+                    <p class="mb-6">
+                        I treat this homelab exactly like a production environment. 100% of the state is stored in Git, deployed via Ansible, and monitored via Prometheus and Grafana.
+                    </p>
+                    
+                    <h3 class="text-xl font-bold text-white mb-4 mt-8">Core Pillars</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-black/40 p-6 rounded-xl border border-white/5">
+                            <i class="fas fa-robot text-emerald-400 text-3xl mb-4"></i>
+                            <h4 class="font-bold text-lg text-white mb-2">n8n Automation Engine</h4>
+                            <p class="text-sm">Asynchronous task execution and CI/CD pipelines managed by decentralized n8n workers.</p>
+                        </div>
+                        <div class="bg-black/40 p-6 rounded-xl border border-white/5">
+                            <i class="fas fa-brain text-purple-400 text-3xl mb-4"></i>
+                            <h4 class="font-bold text-lg text-white mb-2">Local LLMs</h4>
+                            <p class="text-sm">Running DeepSeek and Llama models via Ollama for entirely private, offline AI inference and RAG.</p>
+                        </div>
+                        <div class="bg-black/40 p-6 rounded-xl border border-white/5">
+                            <i class="fas fa-shield-alt text-blue-400 text-3xl mb-4"></i>
+                            <h4 class="font-bold text-lg text-white mb-2">Zero-Trust Security</h4>
+                            <p class="text-sm">Traefik reverse proxy coupled with Authelia for strict OIDC/SSO authentication before granting service access.</p>
+                        </div>
+                        <div class="bg-black/40 p-6 rounded-xl border border-white/5">
+                            <i class="fas fa-stethoscope text-orange-400 text-3xl mb-4"></i>
+                            <h4 class="font-bold text-lg text-white mb-2">Self-Healing</h4>
+                            <p class="text-sm">Custom Python scripts intercept Prometheus alerts to auto-restart frozen containers before notifying via Gotify.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center animate-on-scroll">
+                <a href="https://github.com/ManokarG" target="_blank" class="inline-block px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    View Configs on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

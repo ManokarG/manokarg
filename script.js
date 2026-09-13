@@ -84,91 +84,99 @@ window.addEventListener('resize', () => {
 gsap.registerPlugin(ScrollTrigger);
 
 // Hero Section
-const tl = gsap.timeline();
-
-tl.from(".hero-title", { y: 50, opacity: 0, duration: 1, ease: "power4.out", delay: 0.2 })
-  .from(".hero-subtitle", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
-  .from(".hero-description", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
-  .from(".hero-buttons", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
-  .from(".hero-badge", { scale: 0, opacity: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" }, "-=0.4");
+if (document.querySelector(".hero-title")) {
+    const tl = gsap.timeline();
+    tl.from(".hero-title", { y: 50, opacity: 0, duration: 1, ease: "power4.out", delay: 0.2 })
+      .from(".hero-subtitle", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+      .from(".hero-description", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+      .from(".hero-buttons", { y: 20, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.6")
+      .from(".hero-badge", { scale: 0, opacity: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" }, "-=0.4");
+}
 
 // Generic Animate on Scroll
-const sections = gsap.utils.toArray('section:not(#home)');
+const sections = gsap.utils.toArray('section');
 sections.forEach(section => {
-    gsap.from(section.querySelectorAll('.animate-on-scroll'), {
-        scrollTrigger: {
-            trigger: section,
-            start: "top 75%",
-            toggleActions: "play none none reverse"
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out"
-    });
-});
-
-// Timeline Progress Bar Animation
-gsap.to(".timeline-progress", {
-    scrollTrigger: {
-        trigger: ".timeline-container",
-        start: "top center",
-        end: "bottom center",
-        scrub: 1
-    },
-    height: "100%",
-    ease: "none"
-});
-
-// Timeline Nodes pop-in
-gsap.utils.toArray('.timeline-node').forEach(node => {
-    gsap.from(node, {
-        scrollTrigger: {
-            trigger: node,
-            start: "top center+=100",
-            toggleActions: "play none none reverse"
-        },
-        scale: 0,
-        boxShadow: "0 0 0px rgba(0,0,0,0)",
-        duration: 0.5,
-        ease: "back.out(2)"
-    });
-});
-
-// Homelab Architecture Animation
-const homelabTl = gsap.timeline({
-    scrollTrigger: {
-        trigger: "#homelab-graphic",
-        start: "top 75%",
-        toggleActions: "play none none reverse"
+    const animatedElements = section.querySelectorAll('.animate-on-scroll');
+    if (animatedElements.length > 0) {
+        gsap.from(animatedElements, {
+            scrollTrigger: {
+                trigger: section,
+                start: "top 75%",
+                toggleActions: "play none none reverse"
+            },
+            y: 40,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power3.out"
+        });
     }
 });
 
-homelabTl.from(".hl-node", {
-    y: 30,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.1,
-    ease: "back.out(1.5)"
-})
-.from(".hl-icon", {
-    scale: 0,
-    rotation: -180,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.1,
-    ease: "back.out(2)"
-}, "-=0.4")
-.from(".hl-connection", {
-    strokeDashoffset: 100,
-    opacity: 0,
-    duration: 0.8,
-    ease: "power2.inOut"
-}, "-=0.2")
-.from(".hl-text", {
-    opacity: 0,
-    x: -10,
-    duration: 0.4,
-    stagger: 0.1
-}, "-=0.4");
+// Timeline Progress Bar Animation
+if (document.querySelector(".timeline-container")) {
+    gsap.to(".timeline-progress", {
+        scrollTrigger: {
+            trigger: ".timeline-container",
+            start: "top center",
+            end: "bottom center",
+            scrub: 1
+        },
+        height: "100%",
+        ease: "none"
+    });
+
+    // Timeline Nodes pop-in
+    gsap.utils.toArray('.timeline-node').forEach(node => {
+        gsap.from(node, {
+            scrollTrigger: {
+                trigger: node,
+                start: "top center+=100",
+                toggleActions: "play none none reverse"
+            },
+            scale: 0,
+            boxShadow: "0 0 0px rgba(0,0,0,0)",
+            duration: 0.5,
+            ease: "back.out(2)"
+        });
+    });
+}
+
+// Homelab Architecture Animation
+if (document.querySelector("#homelab-graphic")) {
+    const homelabTl = gsap.timeline({
+        scrollTrigger: {
+            trigger: "#homelab-graphic",
+            start: "top 75%",
+            toggleActions: "play none none reverse"
+        }
+    });
+
+    homelabTl.from(".hl-node", {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "back.out(1.5)"
+    })
+    .from(".hl-icon", {
+        scale: 0,
+        rotation: -180,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "back.out(2)"
+    }, "-=0.4")
+    .from(".hl-connection", {
+        strokeDashoffset: 100,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.inOut"
+    }, "-=0.2")
+    .from(".hl-text", {
+        opacity: 0,
+        x: -10,
+        duration: 0.4,
+        stagger: 0.1
+    }, "-=0.4");
+}
