@@ -8,6 +8,43 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .app-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .app-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
+            z-index: 10;
+        }
+        .app-icon-wrapper {
+            transition: transform 0.5s ease;
+        }
+        .app-card:hover .app-icon-wrapper {
+            transform: rotateY(180deg);
+        }
+        .app-icon {
+            transition: transform 0.5s ease;
+        }
+        .app-card:hover .app-icon {
+            transform: rotateY(-180deg);
+        }
+        
+        .stat-glow {
+            text-shadow: 0 0 20px rgba(147, 51, 234, 0.8);
+        }
+        
+        /* Architecture Flow Lines */
+        .flow-line {
+            stroke-dasharray: 10;
+            animation: flowDash 3s linear infinite;
+        }
+        @keyframes flowDash {
+            to { stroke-dashoffset: -100; }
+        }
+    </style>
 </head>
 <body class="antialiased">
     <div id="canvas-container"></div>
@@ -16,66 +53,229 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0">
-                    <a href="index.html" class="text-white hover:text-blue-400 transition-colors flex items-center gap-2">
+                    <a href="index.html" class="text-white hover:text-blue-400 transition-colors flex items-center gap-2 font-bold uppercase tracking-wider text-sm">
                         <i class="fas fa-arrow-left"></i> Back to Portfolio
                     </a>
+                </div>
+                <div class="hidden md:block text-gray-400 text-sm font-semibold tracking-widest">
+                    SYSTEMS ARCHITECTURE & DEVOPS
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-20 relative z-10">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="pt-32 pb-10 relative z-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Hero Section -->
             <div class="text-center mb-16 animate-on-scroll">
-                <h1 class="text-5xl md:text-6xl font-black text-white mb-6 tracking-tight hero-title">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+                    Live Production Environment
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight hero-title leading-tight">
                     <span class="text-gradient">Autonomous AI</span> <br/>& GitOps Homelab
                 </h1>
-                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
-                    An enterprise-grade, highly available local cloud for self-hosting, AI experimentation, and autonomous agents.
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed">
+                    An enterprise-grade, highly available local cloud bridging bare-metal hypervisors and edge compute. Designed with zero single points of failure, full GitOps lifecycle management, and autonomous AI agents.
                 </p>
             </div>
 
-            <div class="glass-panel p-8 md:p-12 rounded-2xl border border-white/10 mb-12 animate-on-scroll">
-                <h2 class="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">Architecture Overview</h2>
-                <div class="prose prose-invert prose-blue max-w-none text-gray-300">
-                    <p class="mb-4">
-                        The entire infrastructure spans multiple bare-metal Proxmox hypervisors and a cluster of ARM-based edge nodes (Raspberry Pis). It is designed with zero single points of failure in mind, utilizing distributed databases (PostgreSQL/Redis) and Tailscale for secure, encrypted mesh networking.
+            <!-- Animated Stats Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-100 glow-box">
+                    <i class="fas fa-server text-blue-500 text-2xl mb-2"></i>
+                    <h3 class="text-3xl font-black text-white stat-glow">3+</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Physical Nodes</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-200 glow-box">
+                    <i class="fab fa-docker text-blue-400 text-2xl mb-2"></i>
+                    <h3 class="text-3xl font-black text-white stat-glow counter" data-target="45">0</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Active Containers</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-300 glow-box">
+                    <i class="fas fa-brain text-purple-500 text-2xl mb-2"></i>
+                    <h3 class="text-3xl font-black text-white stat-glow counter" data-target="100">0</h3><span class="text-3xl font-black text-white stat-glow">%</span>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Local AI Processing</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-400 glow-box">
+                    <i class="fas fa-cloud-slash text-emerald-500 text-2xl mb-2"></i>
+                    <h3 class="text-3xl font-black text-white stat-glow">0</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Cloud Dependencies</p>
+                </div>
+            </div>
+
+            <div class="mb-16 text-center animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Core Infrastructure <span class="text-blue-400">Stack</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded"></div>
+            </div>
+
+            <!-- Detailed App Grid -->
+            <div class="grid md:grid-cols-2 gap-8 mb-20">
+                
+                <!-- Proxmox -->
+                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    <div class="flex items-start gap-4 mb-4 relative z-10">
+                        <div class="w-14 h-14 rounded-xl bg-orange-500/10 flex items-center justify-center border border-orange-500/30 app-icon-wrapper flex-shrink-0">
+                            <i class="fab fa-linux text-orange-400 text-2xl app-icon"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">Proxmox VE Cluster</h3>
+                            <span class="text-xs font-bold text-orange-400 uppercase tracking-wider">Hypervisor & Compute</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
+                        The foundation of the environment. Multiple bare-metal nodes form a highly available cluster. Utilizing ZFS for resilient storage and automatic snapshots. Virtual Machines (VMs) run heavy Docker hosts, while lightweight services are deployed directly as unprivileged LXC containers to minimize overhead.
                     </p>
-                    <p class="mb-6">
-                        I treat this homelab exactly like a production environment. 100% of the state is stored in Git, deployed via Ansible, and monitored via Prometheus and Grafana.
+                </div>
+
+                <!-- Ansible & GitOps -->
+                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll delay-100">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    <div class="flex items-start gap-4 mb-4 relative z-10">
+                        <div class="w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center border border-red-500/30 app-icon-wrapper flex-shrink-0">
+                            <i class="fas fa-cogs text-red-400 text-2xl app-icon"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">Ansible & GitOps</h3>
+                            <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Infrastructure as Code</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
+                        Infrastructure drift is eliminated. 100% of the homelab's state—from OS updates and Docker Compose deployments to network configurations—is defined in YAML. Pushing a commit to the local Git server automatically triggers an Ansible playbook. Secrets are aggressively protected using Ansible Vault.
                     </p>
-                    
-                    <h3 class="text-xl font-bold text-white mb-4 mt-8">Core Pillars</h3>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="bg-black/40 p-6 rounded-xl border border-white/5">
-                            <i class="fas fa-robot text-emerald-400 text-3xl mb-4"></i>
-                            <h4 class="font-bold text-lg text-white mb-2">n8n Automation Engine</h4>
-                            <p class="text-sm">Asynchronous task execution and CI/CD pipelines managed by decentralized n8n workers.</p>
+                </div>
+
+                <!-- Traefik & Authelia -->
+                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    <div class="flex items-start gap-4 mb-4 relative z-10">
+                        <div class="w-14 h-14 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/30 app-icon-wrapper flex-shrink-0">
+                            <i class="fas fa-shield-alt text-blue-400 text-2xl app-icon"></i>
                         </div>
-                        <div class="bg-black/40 p-6 rounded-xl border border-white/5">
-                            <i class="fas fa-brain text-purple-400 text-3xl mb-4"></i>
-                            <h4 class="font-bold text-lg text-white mb-2">Local LLMs</h4>
-                            <p class="text-sm">Running DeepSeek and Llama models via Ollama for entirely private, offline AI inference and RAG.</p>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">Traefik & Authelia</h3>
+                            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Zero-Trust Security</span>
                         </div>
-                        <div class="bg-black/40 p-6 rounded-xl border border-white/5">
-                            <i class="fas fa-shield-alt text-blue-400 text-3xl mb-4"></i>
-                            <h4 class="font-bold text-lg text-white mb-2">Zero-Trust Security</h4>
-                            <p class="text-sm">Traefik reverse proxy coupled with Authelia for strict OIDC/SSO authentication before granting service access.</p>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
+                        All incoming traffic hits the Traefik reverse proxy, which dynamically discovers Docker services and provisions wildcard Let's Encrypt SSL certificates via DNS challenge. Access to sensitive dashboards is blocked at the edge by Authelia, enforcing strict OIDC Single Sign-On (SSO) and Multi-Factor Authentication (MFA).
+                    </p>
+                </div>
+
+                <!-- Local AI & Ollama -->
+                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll delay-100">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    <div class="flex items-start gap-4 mb-4 relative z-10">
+                        <div class="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/30 app-icon-wrapper flex-shrink-0">
+                            <i class="fas fa-brain text-purple-400 text-2xl app-icon"></i>
                         </div>
-                        <div class="bg-black/40 p-6 rounded-xl border border-white/5">
-                            <i class="fas fa-stethoscope text-orange-400 text-3xl mb-4"></i>
-                            <h4 class="font-bold text-lg text-white mb-2">Self-Healing</h4>
-                            <p class="text-sm">Custom Python scripts intercept Prometheus alerts to auto-restart frozen containers before notifying via Gotify.</p>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">Ollama & DeepSeek</h3>
+                            <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Autonomous AI Agents</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
+                        A dedicated GPU-passthrough VM runs Ollama, exposing a local OpenAI-compatible API. This powers open-source models (like Llama 3 and DeepSeek) for complete offline privacy. Integrated with LangGraph and AnythingLLM, these models process local documents via RAG and act as autonomous agents for coding tasks.
+                    </p>
+                </div>
+
+                <!-- n8n Automation -->
+                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    <div class="flex items-start gap-4 mb-4 relative z-10">
+                        <div class="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/30 app-icon-wrapper flex-shrink-0">
+                            <i class="fas fa-network-wired text-emerald-400 text-2xl app-icon"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">n8n Workflow Engine</h3>
+                            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Asynchronous Automation</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
+                        Moving beyond simple cron jobs, a highly available n8n cluster handles complex automation logic. It manages backup verifications, AI agent pipelines, and webhook parsing. It runs in a distributed master/worker configuration, with dedicated workers running in isolated LXC sandboxes to safely execute AI-generated code.
+                    </p>
+                </div>
+
+                <!-- Observability -->
+                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll delay-100">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    <div class="flex items-start gap-4 mb-4 relative z-10">
+                        <div class="w-14 h-14 rounded-xl bg-orange-400/10 flex items-center justify-center border border-orange-400/30 app-icon-wrapper flex-shrink-0">
+                            <i class="fas fa-chart-line text-orange-400 text-2xl app-icon"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-1">Prometheus & Grafana</h3>
+                            <span class="text-xs font-bold text-orange-400 uppercase tracking-wider">Monitoring & Self-Healing</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
+                        A robust metrics pipeline utilizing Prometheus, node-exporters, and Loki for log aggregation, beautifully visualized in Grafana dashboards. The system is designed for self-healing: Alertmanager triggers custom Python scripts that automatically reboot failed containers via the Docker socket before sending a Gotify notification.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Animated Architecture Diagram -->
+            <div class="mb-16 text-center animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Traffic <span class="text-purple-400">Flow</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-emerald-500 mx-auto rounded"></div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-8 border border-white/10 mb-20 relative overflow-hidden animate-on-scroll">
+                <!-- SVG Connections -->
+                <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1;">
+                    <path class="flow-line" d="M 150 100 C 300 100, 300 200, 500 200" fill="none" stroke="rgba(59, 130, 246, 0.5)" stroke-width="3"/>
+                    <path class="flow-line" d="M 150 300 C 300 300, 300 200, 500 200" fill="none" stroke="rgba(16, 185, 129, 0.5)" stroke-width="3"/>
+                    <path class="flow-line" style="animation-direction: reverse;" d="M 500 200 L 750 200" fill="none" stroke="rgba(147, 51, 234, 0.5)" stroke-width="3" stroke-dasharray="10"/>
+                </svg>
+
+                <div class="flex flex-col md:flex-row justify-between items-center relative z-10 gap-8 min-h-[300px]">
+                    <!-- Ingress -->
+                    <div class="flex flex-col gap-12 w-full md:w-1/3 z-10">
+                        <div class="bg-gray-900 border border-white/10 p-4 rounded-xl text-center shadow-[0_0_20px_rgba(255,255,255,0.05)] transform hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-globe text-blue-400 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">External Traffic</h4>
+                            <p class="text-xs text-gray-500 mt-1">Cloudflare DNS</p>
+                        </div>
+                        <div class="bg-gray-900 border border-white/10 p-4 rounded-xl text-center shadow-[0_0_20px_rgba(255,255,255,0.05)] transform hover:scale-105 transition-transform duration-300">
+                            <i class="fas fa-network-wired text-emerald-400 text-2xl mb-2"></i>
+                            <h4 class="font-bold text-white text-sm">Internal Network</h4>
+                            <p class="text-xs text-gray-500 mt-1">Local LAN / Tailscale</p>
+                        </div>
+                    </div>
+
+                    <!-- Edge/Security -->
+                    <div class="w-full md:w-1/3 z-10 flex justify-center">
+                        <div class="bg-black border border-blue-500/50 p-6 rounded-2xl text-center shadow-[0_0_30px_rgba(59,130,246,0.2)] glow-box w-full max-w-[200px]">
+                            <i class="fas fa-shield-alt text-blue-400 text-4xl mb-3 animate-pulse"></i>
+                            <h4 class="font-bold text-white text-lg">Traefik Edge</h4>
+                            <div class="mt-3 py-1 bg-red-500/20 border border-red-500/50 rounded text-red-400 text-xs font-bold uppercase">
+                                Authelia SSO Gate
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Services Stack -->
+                    <div class="w-full md:w-1/3 z-10">
+                        <div class="bg-gray-900 border border-purple-500/30 p-6 rounded-2xl shadow-[0_0_30px_rgba(147,51,234,0.15)] flex flex-col gap-3 transform hover:scale-105 transition-transform duration-300">
+                            <h4 class="font-bold text-white text-center mb-2 border-b border-white/10 pb-2">Proxmox Services</h4>
+                            <div class="flex items-center gap-3 bg-black/50 p-2 rounded border border-white/5">
+                                <i class="fas fa-brain text-purple-400"></i> <span class="text-sm text-gray-300 font-semibold">AI Agents (Ollama)</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-black/50 p-2 rounded border border-white/5">
+                                <i class="fas fa-cogs text-emerald-400"></i> <span class="text-sm text-gray-300 font-semibold">n8n Automation</span>
+                            </div>
+                            <div class="flex items-center gap-3 bg-black/50 p-2 rounded border border-white/5">
+                                <i class="fas fa-database text-blue-400"></i> <span class="text-sm text-gray-300 font-semibold">PostgreSQL & Redis</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="text-center animate-on-scroll">
-                <a href="https://github.com/ManokarG" target="_blank" class="inline-block px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
-                    View Configs on GitHub
-                </a>
-            </div>
+
         </div>
     </section>
 
@@ -83,5 +283,45 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; 
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            ScrollTrigger.create({
+                trigger: counter,
+                start: "top 90%",
+                onEnter: updateCount,
+                once: true
+            });
+        });
+
+        // App Card Stagger Animation
+        gsap.from(".app-card", {
+            scrollTrigger: {
+                trigger: ".app-card",
+                start: "top 80%"
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "back.out(1.5)"
+        });
+    </script>
 </body>
 </html>
