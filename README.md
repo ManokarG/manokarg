@@ -39,10 +39,16 @@
 
 ### 📂 Featured Projects
 
-#### 🖥️ Homelab Server Setup
-> A comprehensive home server setup for self-hosting services, media management, and development environments.
-- **Tech:** Docker, Linux, Networking
-- *(Details to be updated with more information)*
+#### 🖥️ Autonomous AI & GitOps Homelab
+> Designed, provisioned, and managed an enterprise-grade, highly available homelab cluster spanning multiple bare-metal Proxmox hypervisors and ARM-based edge nodes. Managed via GitOps using Ansible and Docker Compose, featuring automated CI/CD pipelines, autonomous AI agents, and comprehensive self-healing monitoring stacks.
+- **Role:** Systems Architect & DevOps Engineer
+- **Tech:** Proxmox VE, Ansible, Docker, n8n, Traefik, Prometheus, Grafana, Local LLMs (Ollama/DeepSeek), Python, Node.js, Next.js
+- **Key Features:**
+  - **IaC & GitOps:** 100% of the infrastructure defined in code with secrets managed via Ansible Vault.
+  - **Multi-Node Architecture:** Proxmox for core VMs and Raspberry Pi cluster for edge routing and failover.
+  - **Advanced AI:** Locally hosted LLMs powering LangGraph workflows and a secure, sandboxed n8n code execution environment.
+  - **Observability:** Prometheus, Loki, and Grafana stack with automated remediation via custom Python scripts.
+  - **Zero-Trust Security:** Edge routing via Traefik and strict SSO access control enforced via Authelia.
 
 #### 🛒 E-Commerce Platform
 > A full-stack e-commerce solution with user authentication, product management, shopping cart, and payment gateway integration.
