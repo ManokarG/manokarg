@@ -93,7 +93,7 @@ if (document.querySelector(".hero-title")) {
       .from(".hero-badge", { scale: 0, opacity: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" }, "-=0.4");
 }
 
-// Generic Animate on Scroll
+// Generic Animate on Scroll (Zoom In effect)
 const sections = gsap.utils.toArray('section');
 sections.forEach(section => {
     const animatedElements = section.querySelectorAll('.animate-on-scroll');
@@ -101,14 +101,31 @@ sections.forEach(section => {
         gsap.from(animatedElements, {
             scrollTrigger: {
                 trigger: section,
-                start: "top 75%",
-                toggleActions: "play none none reverse"
+                start: "top 85%",
+                toggleActions: "play reverse play reverse"
             },
-            y: 40,
+            y: 50,
+            scale: 0.85,
             opacity: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: "power3.out"
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "back.out(1.2)"
+        });
+    }
+});
+
+// Advanced Zoom Parallax for Project Cards
+gsap.utils.toArray('.project-card, .interest-card, .glass-panel.glow-box').forEach(card => {
+    if(!card.classList.contains('no-zoom')) {
+        gsap.to(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1
+            },
+            scale: 1.05,
+            ease: "none"
         });
     }
 });
