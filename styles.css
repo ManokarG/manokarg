@@ -1,6 +1,6 @@
 /* Base styles and Glassmorphism */
 :root {
-    --bg-color: #0a0a0a;
+    --bg-color: #050505;
     --primary-glow: rgba(59, 130, 246, 0.5);
     --secondary-glow: rgba(147, 51, 234, 0.5);
 }
@@ -23,18 +23,26 @@ body {
 }
 
 .glass-panel {
-    background: rgba(20, 20, 20, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    background: rgba(15, 15, 15, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
 .text-gradient {
-    background: linear-gradient(to right, #60a5fa, #c084fc);
+    background: linear-gradient(to right, #60a5fa, #c084fc, #34d399);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
 }
 
 .glow-box {
@@ -44,17 +52,17 @@ body {
 .glow-box::before {
     content: "";
     position: absolute;
-    inset: -2px;
-    border-radius: 1rem;
-    background: linear-gradient(45deg, #3b82f6, #9333ea, #3b82f6);
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(45deg, #3b82f6, #9333ea, #10b981);
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.3s ease;
-    filter: blur(8px);
+    transition: opacity 0.5s ease;
+    filter: blur(10px);
 }
 
 .glow-box:hover::before {
-    opacity: 1;
+    opacity: 0.6;
 }
 
 /* Custom Scrollbar */
@@ -96,15 +104,71 @@ body {
 
 /* Interest icons hover */
 .interest-card {
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .interest-card:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-10px) scale(1.02);
+}
+.interest-card:hover .interest-icon {
+    color: #fff;
+    filter: drop-shadow(0 0 15px currentColor);
+    transform: scale(1.1);
 }
 .interest-icon {
     transition: all 0.4s ease;
 }
-.interest-card:hover .interest-icon {
-    color: #fff;
-    filter: drop-shadow(0 0 10px currentColor);
+
+/* Timeline specific */
+.timeline-line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(255,255,255,0.1);
+}
+.timeline-progress {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #3b82f6, #9333ea);
+    height: 0%; /* controlled by JS */
+}
+
+/* Homelab specific animations */
+.server-node {
+    transition: all 0.3s ease;
+}
+.server-node:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5);
+    border-color: rgba(59, 130, 246, 0.8);
+}
+.data-path {
+    stroke-dasharray: 10;
+    animation: dash 20s linear infinite;
+}
+@keyframes dash {
+    to {
+        stroke-dashoffset: 1000;
+    }
+}
+.ai-pulse {
+    animation: aipulse 2s infinite alternate;
+}
+@keyframes aipulse {
+    from { filter: drop-shadow(0 0 5px rgba(147, 51, 234, 0.5)); }
+    to { filter: drop-shadow(0 0 20px rgba(147, 51, 234, 1)); }
+}
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+.floating-delayed {
+    animation: float 6s ease-in-out 3s infinite;
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }

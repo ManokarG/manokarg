@@ -47,18 +47,18 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div class="md:w-2/3">
                 <div class="flex gap-3 mb-6 hero-badge flex-wrap">
-                    <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 backdrop-blur-md">Full Stack Developer</span>
-                    <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20 backdrop-blur-md">AI Enthusiast</span>
-                    <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 backdrop-blur-md">Maker & Tinkerer</span>
+                    <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 backdrop-blur-md">Systems Architect</span>
+                    <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-purple-500/10 text-purple-400 border border-purple-500/20 backdrop-blur-md">DevOps Engineer</span>
+                    <span class="px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 backdrop-blur-md">Full Stack Developer</span>
                 </div>
                 <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 tracking-tight hero-title">
                     Hi, I'm <br/><span class="text-gradient">Manokar G.</span>
                 </h1>
                 <h2 class="text-2xl md:text-3xl text-gray-400 font-light mb-8 hero-subtitle max-w-2xl">
-                    Bridging the gap between software and hardware through code, electronics, and craftsmanship.
+                    Architecting intelligent infrastructure, autonomous systems, and enterprise web applications.
                 </h2>
                 <p class="text-lg text-gray-500 mb-10 max-w-xl hero-description">
-                    I build scalable web applications, automate my home with custom electronics, explore artificial intelligence, and craft things with wood. Welcome to my digital sandbox.
+                    I build highly available environments using GitOps, experiment with local AI models, automate operations, and craft beautiful digital experiences.
                 </p>
                 <div class="flex gap-4 hero-buttons">
                     <a href="#projects" class="px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
@@ -85,50 +85,67 @@
                 <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded"></div>
             </div>
 
-            <div class="relative border-l border-gray-800 ml-4 md:ml-0">
+            <!-- Animated Timeline Container -->
+            <div class="relative ml-4 md:ml-0 timeline-container pb-10">
+                <div class="timeline-line hidden md:block md:left-[50%] -translate-x-[1px]"></div>
+                <div class="timeline-progress hidden md:block md:left-[50%] -translate-x-[1px]"></div>
+
                 <!-- Timeline Item 1 -->
-                <div class="mb-12 ml-8 md:ml-12 animate-on-scroll relative">
-                    <div class="absolute -left-10 md:-left-14 top-1 w-4 h-4 rounded-full bg-blue-500 shadow-[0_0_10px_#3b82f6]"></div>
-                    <div class="glass-panel p-8 rounded-2xl glow-box">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-white">Full Stack Developer</h3>
-                                <p class="text-blue-400 font-medium">Tech Solutions Inc.</p>
+                <div class="mb-16 relative flex flex-col md:flex-row justify-between items-center w-full animate-on-scroll">
+                    <div class="order-1 md:w-5/12 hidden md:block"></div>
+                    
+                    <div class="timeline-node z-10 absolute left-[-2rem] md:left-[50%] md:-translate-x-1/2 w-8 h-8 rounded-full bg-blue-500 border-4 border-[#050505] shadow-[0_0_15px_#3b82f6] flex items-center justify-center">
+                        <i class="fas fa-code-branch text-[10px] text-white"></i>
+                    </div>
+
+                    <div class="order-1 w-full md:w-5/12 pl-8 md:pl-0">
+                        <div class="glass-panel p-8 rounded-2xl glow-box">
+                            <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">Systems Architect</h3>
+                                    <p class="text-blue-400 font-medium">Enterprise Corp.</p>
+                                </div>
+                                <span class="mt-2 md:mt-0 px-3 py-1 bg-white/5 rounded-full text-sm text-gray-400 border border-white/10">2022 - Present</span>
                             </div>
-                            <span class="mt-2 md:mt-0 px-3 py-1 bg-white/5 rounded-full text-sm text-gray-400 border border-white/10">2022 - Present</span>
-                        </div>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
-                            Architected and developed scalable enterprise web applications. Integrated AI APIs for automated data processing, and built robust CI/CD pipelines. Managed microservices using Docker and Kubernetes.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">React & Next.js</span>
-                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">Node.js</span>
-                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">PostgreSQL</span>
-                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">Docker</span>
+                            <p class="text-gray-400 mb-6 leading-relaxed text-sm">
+                                Architected and managed highly available infrastructure using GitOps methodologies. Designed robust CI/CD pipelines, integrated AI automation workflows, and ensured zero-trust security across all deployments.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300"><i class="fab fa-docker mr-1 text-blue-400"></i> Docker & K8s</span>
+                                <span class="px-2 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300"><i class="fas fa-server mr-1 text-red-400"></i> Ansible</span>
+                                <span class="px-2 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300"><i class="fas fa-chart-line mr-1 text-orange-400"></i> Prometheus</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Timeline Item 2 -->
-                <div class="ml-8 md:ml-12 animate-on-scroll relative">
-                    <div class="absolute -left-10 md:-left-14 top-1 w-4 h-4 rounded-full bg-purple-500 shadow-[0_0_10px_#9333ea]"></div>
-                    <div class="glass-panel p-8 rounded-2xl glow-box">
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                            <div>
-                                <h3 class="text-2xl font-bold text-white">Frontend Developer</h3>
-                                <p class="text-purple-400 font-medium">Creative Agency</p>
+                <div class="mb-16 relative flex flex-col md:flex-row justify-between items-center w-full animate-on-scroll">
+                    <div class="order-1 w-full md:w-5/12 pl-8 md:pl-0 md:pr-0 md:text-right">
+                        <div class="glass-panel p-8 rounded-2xl glow-box">
+                            <div class="flex flex-col md:flex-row-reverse md:justify-between md:items-start mb-4">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">Full Stack Developer</h3>
+                                    <p class="text-purple-400 font-medium">Tech Solutions</p>
+                                </div>
+                                <span class="mt-2 md:mt-0 px-3 py-1 bg-white/5 rounded-full text-sm text-gray-400 border border-white/10">2020 - 2022</span>
                             </div>
-                            <span class="mt-2 md:mt-0 px-3 py-1 bg-white/5 rounded-full text-sm text-gray-400 border border-white/10">2020 - 2022</span>
-                        </div>
-                        <p class="text-gray-400 mb-6 leading-relaxed">
-                            Created highly interactive and animated user interfaces for high-profile clients. Focused on web performance, accessibility, and pixel-perfect design implementation using modern CSS frameworks and WebGL.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">Vue.js</span>
-                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">Three.js</span>
-                            <span class="px-3 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300">Tailwind CSS</span>
+                            <p class="text-gray-400 mb-6 leading-relaxed text-sm md:text-right">
+                                Developed complex web applications focusing on scalable backends and highly responsive frontend interfaces. Utilized modern frameworks to deliver seamless user experiences and integrated third-party REST APIs.
+                            </p>
+                            <div class="flex flex-wrap gap-2 md:justify-end">
+                                <span class="px-2 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300"><i class="fab fa-react mr-1 text-blue-400"></i> React</span>
+                                <span class="px-2 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300"><i class="fab fa-node-js mr-1 text-green-400"></i> Node.js</span>
+                                <span class="px-2 py-1 bg-gray-800/50 rounded text-xs font-semibold text-gray-300"><i class="fas fa-database mr-1 text-blue-500"></i> PostgreSQL</span>
+                            </div>
                         </div>
                     </div>
+                    
+                    <div class="timeline-node z-10 absolute left-[-2rem] md:left-[50%] md:-translate-x-1/2 w-8 h-8 rounded-full bg-purple-500 border-4 border-[#050505] shadow-[0_0_15px_#9333ea] flex items-center justify-center">
+                        <i class="fas fa-laptop-code text-[10px] text-white"></i>
+                    </div>
+
+                    <div class="order-1 md:w-5/12 hidden md:block"></div>
                 </div>
             </div>
         </div>
@@ -142,66 +159,124 @@
                 <p class="text-gray-400 max-w-2xl mx-auto">Where software meets hardware. My personal infrastructure and automation ecosystem.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Homelab Project -->
-                <div class="project-card glass-panel rounded-2xl overflow-hidden animate-on-scroll group border border-white/10 hover:border-blue-500/50 transition-colors">
-                    <div class="h-64 relative overflow-hidden bg-gray-900">
-                        <!-- Abstract Server Rack Representation -->
-                        <div class="absolute inset-0 opacity-20 flex flex-col justify-around p-4">
-                            <div class="h-8 bg-blue-500/20 border border-blue-500/30 rounded flex items-center px-4"><div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div></div>
-                            <div class="h-8 bg-blue-500/20 border border-blue-500/30 rounded flex items-center px-4"><div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse delay-75"></div></div>
-                            <div class="h-8 bg-blue-500/20 border border-blue-500/30 rounded flex items-center px-4"><div class="w-2 h-2 bg-green-400 rounded-full animate-pulse delay-150"></div></div>
-                            <div class="h-8 bg-blue-500/20 border border-blue-500/30 rounded flex items-center px-4"><div class="w-2 h-2 bg-red-400 rounded-full"></div></div>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
-                        <div class="absolute bottom-6 left-6 right-6">
-                            <div class="flex items-center gap-3 mb-2">
-                                <i class="fas fa-server text-blue-400 text-2xl"></i>
-                                <h3 class="text-2xl font-bold text-white">Autonomous AI & GitOps Homelab</h3>
+            <!-- Massive Homelab Feature -->
+            <div class="mb-12 glass-panel rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(147,51,234,0.15)] animate-on-scroll">
+                <div class="grid lg:grid-cols-2 gap-0">
+                    
+                    <!-- Advanced Animated SVG Architecture Graphic -->
+                    <div class="relative bg-[#080808] border-b lg:border-b-0 lg:border-r border-white/5 p-8 flex items-center justify-center min-h-[400px] overflow-hidden" id="homelab-graphic">
+                        <!-- Grid Background -->
+                        <div class="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+                        
+                        <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1;">
+                            <!-- Animated Connections -->
+                            <path class="hl-connection data-path" d="M 30% 30% Q 50% 10% 70% 30%" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="8 8" opacity="0.5"/>
+                            <path class="hl-connection data-path" style="animation-direction: reverse;" d="M 30% 70% Q 50% 90% 70% 70%" fill="none" stroke="#9333ea" stroke-width="2" stroke-dasharray="8 8" opacity="0.5"/>
+                            <path class="hl-connection data-path" d="M 50% 30% L 50% 70%" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="5 5" opacity="0.3"/>
+                        </svg>
+
+                        <div class="relative w-full h-full max-w-md mx-auto" style="z-index: 2;">
+                            <!-- Node: Traefik / Edge -->
+                            <div class="hl-node floating absolute top-[15%] left-[50%] -translate-x-1/2 text-center">
+                                <div class="w-16 h-16 rounded-xl bg-gray-900 border border-blue-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.3)] mx-auto mb-2 relative overflow-hidden group">
+                                    <div class="absolute inset-0 bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors"></div>
+                                    <i class="hl-icon fas fa-network-wired text-blue-400 text-2xl"></i>
+                                </div>
+                                <span class="hl-text text-xs font-bold text-gray-300 bg-black/50 px-2 py-1 rounded">Traefik Edge</span>
+                            </div>
+
+                            <!-- Node: Proxmox VMs -->
+                            <div class="hl-node floating-delayed absolute top-[50%] left-[20%] -translate-y-1/2 text-center">
+                                <div class="w-16 h-16 rounded-xl bg-gray-900 border border-purple-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(147,51,234,0.3)] mx-auto mb-2 relative overflow-hidden group ai-pulse">
+                                    <div class="absolute inset-0 bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors"></div>
+                                    <i class="hl-icon fas fa-brain text-purple-400 text-2xl"></i>
+                                </div>
+                                <span class="hl-text text-xs font-bold text-gray-300 bg-black/50 px-2 py-1 rounded">Ollama AI</span>
+                            </div>
+
+                            <!-- Node: n8n Automation -->
+                            <div class="hl-node floating absolute top-[50%] right-[20%] -translate-y-1/2 text-center">
+                                <div class="w-16 h-16 rounded-xl bg-gray-900 border border-emerald-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(16,185,129,0.3)] mx-auto mb-2 relative overflow-hidden group">
+                                    <div class="absolute inset-0 bg-emerald-500/10 group-hover:bg-emerald-500/20 transition-colors"></div>
+                                    <i class="hl-icon fas fa-cogs text-emerald-400 text-2xl"></i>
+                                </div>
+                                <span class="hl-text text-xs font-bold text-gray-300 bg-black/50 px-2 py-1 rounded">n8n GitOps</span>
+                            </div>
+
+                            <!-- Node: Prom/Grafana -->
+                            <div class="hl-node floating-delayed absolute bottom-[15%] left-[50%] -translate-x-1/2 text-center">
+                                <div class="w-16 h-16 rounded-xl bg-gray-900 border border-orange-500/30 flex items-center justify-center shadow-[0_0_15px_rgba(249,115,22,0.3)] mx-auto mb-2 relative overflow-hidden group">
+                                    <div class="absolute inset-0 bg-orange-500/10 group-hover:bg-orange-500/20 transition-colors"></div>
+                                    <i class="hl-icon fas fa-chart-pie text-orange-400 text-2xl"></i>
+                                </div>
+                                <span class="hl-text text-xs font-bold text-gray-300 bg-black/50 px-2 py-1 rounded">Observability</span>
                             </div>
                         </div>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                            An enterprise-grade, highly available cluster spanning bare-metal Proxmox hypervisors and ARM edge nodes. 100% managed via GitOps (Ansible & Docker). Features asynchronous n8n automation, local LLMs (Ollama/DeepSeek) for autonomous AI agents, comprehensive self-healing monitoring (Prometheus/Grafana), and strict zero-trust security.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Proxmox</span>
-                            <span class="text-xs font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">GitOps / Ansible</span>
-                            <span class="text-xs font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Local AI (Ollama)</span>
-                            <span class="text-xs font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Docker / n8n</span>
+
+                    <!-- Project Details -->
+                    <div class="p-8 lg:p-12 flex flex-col justify-center">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="fas fa-server text-purple-400 text-3xl"></i>
+                            <h3 class="text-3xl font-black text-white tracking-tight">Autonomous AI & GitOps Homelab</h3>
+                        </div>
+                        <p class="text-blue-400 font-bold text-sm uppercase tracking-wider mb-6">Systems Architect & DevOps Engineer</p>
+                        
+                        <div class="space-y-4 text-gray-400 text-sm leading-relaxed mb-8">
+                            <p>
+                                Designed, provisioned, and managed an enterprise-grade, highly available homelab cluster spanning multiple bare-metal Proxmox hypervisors and ARM-based edge nodes (Raspberry Pis).
+                            </p>
+                            <p>
+                                <strong>IaC & GitOps:</strong> 100% of the infrastructure is defined in code via Ansible and Docker Compose, featuring automated CI/CD pipelines and secrets managed via Ansible Vault.
+                            </p>
+                            <p>
+                                <strong>Advanced AI & Automation:</strong> Deployed an asynchronous n8n automation cluster and locally hosted LLMs (Ollama/DeepSeek) powering LangGraph workflows and secure agentic sandboxes.
+                            </p>
+                            <p>
+                                <strong>Self-Healing:</strong> Comprehensive monitoring utilizing Prometheus, Loki, and Grafana. Custom Python health-check scripts trigger automated remediation prior to human intervention.
+                            </p>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded font-semibold text-xs text-gray-300 flex items-center"><i class="fab fa-linux text-yellow-500 mr-2"></i> Proxmox VE</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-network-wired text-blue-500 mr-2"></i> Traefik</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-brain text-purple-500 mr-2"></i> Local LLMs</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded font-semibold text-xs text-gray-300 flex items-center"><i class="fab fa-docker text-blue-400 mr-2"></i> Docker</span>
+                            <span class="px-3 py-1 bg-white/5 border border-white/10 rounded font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-robot text-emerald-500 mr-2"></i> n8n</span>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Home Automation Project -->
-                <div class="project-card glass-panel rounded-2xl overflow-hidden animate-on-scroll group border border-white/10 hover:border-emerald-500/50 transition-colors">
-                    <div class="h-64 relative overflow-hidden bg-gray-900">
-                        <!-- Abstract Smart Home Representation -->
-                        <div class="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMSIgZmlsbD0iIzRmZmZhYyIvPjwvc3ZnPg==')]"></div>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                             <div class="w-32 h-32 rounded-full border border-emerald-500/30 flex items-center justify-center animate-[spin_10s_linear_infinite]">
-                                <div class="w-24 h-24 rounded-full border-t-2 border-emerald-400 animate-[spin_3s_linear_infinite_reverse]"></div>
-                             </div>
+            <!-- Other Projects Grid -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Smart Home -->
+                <div class="project-card glass-panel rounded-2xl p-8 border border-white/10 animate-on-scroll group hover:border-emerald-500/50">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/30 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-microchip text-emerald-400 text-xl"></i>
                         </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
-                        <div class="absolute bottom-6 left-6 right-6">
-                            <div class="flex items-center gap-3 mb-2">
-                                <i class="fas fa-microchip text-emerald-400 text-2xl"></i>
-                                <h3 class="text-2xl font-bold text-white">Smart Home IoT</h3>
-                            </div>
-                        </div>
+                        <h3 class="text-xl font-bold text-white">Smart Home IoT</h3>
                     </div>
-                    <div class="p-6">
-                        <p class="text-gray-400 mb-6 text-sm leading-relaxed">
-                            A centralized Home Assistant instance orchestrating custom-built ESP32 sensors and commercial IoT devices. Features localized voice control (Rhasspy), automated climate management based on room occupancy, and custom dashboard interfaces built with React. No cloud dependency.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded">Home Assistant</span>
-                            <span class="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded">ESP32 / C++</span>
-                            <span class="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded">Zigbee</span>
-                            <span class="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded">MQTT</span>
+                    <p class="text-gray-400 text-sm mb-6">A centralized Home Assistant instance orchestrating custom-built ESP32 sensors and commercial IoT devices. Features localized voice control and automated climate management.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded">Home Assistant</span>
+                        <span class="text-xs font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-1 rounded">ESP32</span>
+                    </div>
+                </div>
+
+                <!-- E-Commerce -->
+                <div class="project-card glass-panel rounded-2xl p-8 border border-white/10 animate-on-scroll group hover:border-blue-500/50">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/30 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-shopping-cart text-blue-400 text-xl"></i>
                         </div>
+                        <h3 class="text-xl font-bold text-white">E-Commerce Platform</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-6">A full-stack e-commerce solution with user authentication, product management, shopping cart, and payment gateway integration built from scratch.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-xs font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">React</span>
+                        <span class="text-xs font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Node.js</span>
                     </div>
                 </div>
             </div>
@@ -252,7 +327,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="mb-4 md:mb-0">
                 <span class="text-xl font-black text-white">M<span class="text-blue-500">.</span>G</span>
-                <p class="text-gray-500 text-sm mt-1">Full Stack • Hardware • AI</p>
+                <p class="text-gray-500 text-sm mt-1">Systems Architect • DevOps • Developer</p>
             </div>
             <div class="flex space-x-6">
                 <a href="mailto:cmano.gar04@gmail.com" class="text-gray-400 hover:text-white transition-colors text-xl">
