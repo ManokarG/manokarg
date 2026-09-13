@@ -85,13 +85,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 // Splash Screen Zoom Out
 if (document.querySelector("#splash-screen")) {
+    
+    // Pin the main content so it doesn't scroll away while the splash screen is active
+    ScrollTrigger.create({
+        trigger: "#main-content",
+        start: "top top",
+        end: "+=1000",
+        pin: true,
+        pinSpacing: true
+    });
+
     const splashTl = gsap.timeline({
         scrollTrigger: {
-            trigger: "#splash-screen",
+            trigger: "body",
             start: "top top",
-            end: "+=800",
-            scrub: 1,
-            pin: true
+            end: "1000px top", // match the pin duration
+            scrub: 1
         }
     });
 
@@ -106,22 +115,11 @@ if (document.querySelector("#splash-screen")) {
         pointerEvents: "none"
     }, 0.5);
 
-    // After the splash fades, bring in the Hero section
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: "#home",
-            start: "top top",
-            end: "+=100",
-            scrub: false,
-            // Only play after we scroll past the splash area
-        }
-    });
-    
-    // We'll animate Hero elements based on a slight delay so they appear after splash is mostly gone
+    // Animate Hero elements in after splash fades
     gsap.from(".hero-title", {
         scrollTrigger: {
             trigger: "body",
-            start: "top -400px", 
+            start: "800px top", 
             toggleActions: "play none none reverse"
         },
         y: 50, opacity: 0, duration: 1, ease: "power4.out" 
@@ -129,7 +127,7 @@ if (document.querySelector("#splash-screen")) {
     gsap.from(".hero-subtitle, .hero-description, .hero-buttons", {
         scrollTrigger: {
             trigger: "body",
-            start: "top -400px",
+            start: "800px top",
             toggleActions: "play none none reverse"
         },
         y: 20, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power3.out"
@@ -137,7 +135,7 @@ if (document.querySelector("#splash-screen")) {
     gsap.from(".hero-badge", {
         scrollTrigger: {
             trigger: "body",
-            start: "top -400px",
+            start: "800px top",
             toggleActions: "play none none reverse"
         },
         scale: 0, opacity: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" 
