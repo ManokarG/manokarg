@@ -8,7 +8,7 @@
 - 🔭 I’m currently working on **Full Stack Web Applications**
 - 🌱 I’m currently exploring **Docker, Linux, and Advanced Networking**
 - 💬 Ask me about **React, Node.js, and Homelab configurations**
-- 📫 Reach me at: [hello@example.com](mailto:hello@example.com)
+- 📫 Reach me at: [cmano.gar04@gmail.com](mailto:cmano.gar04@gmail.com)
 
 ---
 
