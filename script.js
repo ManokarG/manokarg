@@ -14,7 +14,7 @@ if (canvasContainer && typeof THREE !== 'undefined') {
     const particlesCount = 900;
     const posArray = new Float32Array(particlesCount * 3);
 
-    for(let i = 0; i < particlesCount * 3; i++) {
+    for (let i = 0; i < particlesCount * 3; i++) {
         posArray[i] = (Math.random() - 0.5) * 15;
     }
 
@@ -63,7 +63,7 @@ if (canvasContainer && typeof THREE !== 'undefined') {
         
         // Wave effect
         const positions = particlesMesh.geometry.attributes.position.array;
-        for(let i = 0; i < particlesCount; i++) {
+        for (let i = 0; i < particlesCount; i++) {
             const i3 = i * 3;
             const x = particlesGeometry.attributes.position.array[i3];
             positions[i3 + 1] += Math.sin(elapsedTime + x) * 0.001;
@@ -81,6 +81,100 @@ if (canvasContainer && typeof THREE !== 'undefined') {
     });
 }
 
+// --- Lenis Momentum Smooth Scrolling (Phenomenon Studio & Nixtio standard) ---
+let lenis = null;
+if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        wheelMultiplier: 1.0,
+        touchMultiplier: 1.5,
+    });
+
+    if (typeof ScrollTrigger !== 'undefined') {
+        lenis.on('scroll', ScrollTrigger.update);
+    }
+
+    if (typeof gsap !== 'undefined') {
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+    } else {
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+    }
+}
+
+// --- Custom Fluid Cursor with Lerp Follower ---
+const cursorDot = document.getElementById('cursor-dot');
+const cursorRing = document.getElementById('cursor-ring');
+if (cursorDot && cursorRing) {
+    let mousePos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    let ringPos = { x: mousePos.x, y: mousePos.y };
+
+    window.addEventListener('mousemove', (e) => {
+        mousePos.x = e.clientX;
+        mousePos.y = e.clientY;
+        cursorDot.style.transform = `translate(${mousePos.x}px, ${mousePos.y}px)`;
+    });
+
+    function updateCursorRing() {
+        ringPos.x += (mousePos.x - ringPos.x) * 0.18;
+        ringPos.y += (mousePos.y - ringPos.y) * 0.18;
+        cursorRing.style.transform = `translate(${ringPos.x}px, ${ringPos.y}px)`;
+        requestAnimationFrame(updateCursorRing);
+    }
+    updateCursorRing();
+
+    // Hover state expansion
+    const interactiveEls = document.querySelectorAll('a, button, .spotlight-card, input, [role="button"]');
+    interactiveEls.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+}
+
+// --- Interactive Spotlight Cards & 3D Tilt ---
+document.querySelectorAll('.spotlight-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+
+        // Subtle 3D perspective tilt
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -4;
+        const rotateY = ((x - centerX) / centerX) * 4;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+    });
+});
+
+// --- Magnetic Buttons Effect ---
+document.querySelectorAll('.magnetic-btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+    });
+});
+
 // --- GSAP Animations & Navigation ---
 if (typeof gsap !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -88,16 +182,21 @@ if (typeof gsap !== 'undefined') {
     let splashDismissed = false;
     let heroAnimated = false;
 
-    // Smooth scroll helper with fixed navbar offset
+    // Smooth scroll helper with Lenis
     function scrollToTarget(selector) {
         const target = document.querySelector(selector);
         if (!target) return;
-        const navHeight = 75;
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
+
+        if (lenis) {
+            lenis.scrollTo(target, { offset: -75, duration: 1.2 });
+        } else {
+            const navHeight = 75;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            window.scrollTo({
+                top: Math.max(0, targetPosition),
+                behavior: 'smooth'
+            });
+        }
     }
 
     // Hero entrance animation
@@ -107,7 +206,7 @@ if (typeof gsap !== 'undefined') {
 
         if (document.querySelector(".hero-title")) {
             const tl = gsap.timeline();
-            tl.from(".hero-badge", { scale: 0.8, opacity: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.5)" })
+            tl.from(".hero-badge", { scale: 0.85, opacity: 0, duration: 0.6, stagger: 0.1, ease: "back.out(1.5)" })
               .from(".hero-title", { y: 40, opacity: 0, duration: 0.8, ease: "power3.out" }, "-=0.3")
               .from(".hero-subtitle", { y: 20, opacity: 0, duration: 0.6, ease: "power3.out" }, "-=0.5")
               .from(".hero-description", { y: 20, opacity: 0, duration: 0.6, ease: "power3.out" }, "-=0.4")
@@ -115,9 +214,11 @@ if (typeof gsap !== 'undefined') {
         }
     }
 
-    // Splash Screen Transition
+    // Splash Screen Transition with Digital Counter
     const splashScreen = document.getElementById('splash-screen');
     const splashText = document.getElementById('splash-text');
+    const splashCounter = document.getElementById('splash-counter');
+    const splashBar = document.getElementById('splash-bar');
 
     function dismissSplash(targetHash) {
         if (splashDismissed) {
@@ -156,37 +257,50 @@ if (typeof gsap !== 'undefined') {
             splashDismissed = true;
             animateHero();
             if (window.location.hash) {
-                setTimeout(() => scrollToTarget(window.location.hash), 100);
+                setTimeout(() => scrollToTarget(window.location.hash), 150);
             }
         } else {
-            // Auto dismiss after 2.5s if user remains idle
-            let dismissTimer = setTimeout(() => {
-                dismissSplash();
-            }, 2500);
+            // Animate numeric progress loader from 0% to 100%
+            let progressObj = { value: 0 };
+            const countTween = gsap.to(progressObj, {
+                value: 100,
+                duration: 1.2,
+                ease: "power2.out",
+                onUpdate: () => {
+                    const val = Math.round(progressObj.value);
+                    if (splashCounter) splashCounter.textContent = `${val}%`;
+                    if (splashBar) splashBar.style.width = `${val}%`;
+                },
+                onComplete: () => {
+                    setTimeout(() => {
+                        dismissSplash();
+                    }, 200);
+                }
+            });
 
-            function handleTrigger() {
-                clearTimeout(dismissTimer);
+            function handleImmediateDismiss() {
+                countTween.kill();
                 dismissSplash();
             }
 
-            // Listen for user scroll gestures or clicks
+            // User can skip or scroll through immediately
             window.addEventListener('wheel', (e) => {
-                if (e.deltaY > 5) handleTrigger();
+                if (e.deltaY > 5) handleImmediateDismiss();
             }, { passive: true });
 
-            window.addEventListener('touchmove', handleTrigger, { passive: true });
+            window.addEventListener('touchmove', handleImmediateDismiss, { passive: true });
 
             window.addEventListener('keydown', (e) => {
                 if (['ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) {
-                    handleTrigger();
+                    handleImmediateDismiss();
                 }
             });
 
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 10) handleTrigger();
+                if (window.scrollY > 10) handleImmediateDismiss();
             }, { passive: true });
 
-            splashScreen.addEventListener('click', handleTrigger);
+            splashScreen.addEventListener('click', handleImmediateDismiss);
         }
     } else {
         animateHero();
