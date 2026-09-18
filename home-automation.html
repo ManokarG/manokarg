@@ -1,309 +1,283 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Home IoT | Manokar G</title>
+    <title>Enterprise Smart Home IoT & Hardware Automation | Manokar G</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .iot-card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-        .iot-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.3);
-            border-color: rgba(16, 185, 129, 0.5);
-            z-index: 10;
-        }
-        .iot-icon-wrapper {
-            transition: transform 0.5s ease;
-        }
-        .iot-card:hover .iot-icon-wrapper {
-            transform: rotateY(180deg);
-        }
-        .iot-icon {
-            transition: transform 0.5s ease;
-        }
-        .iot-card:hover .iot-icon {
-            transform: rotateY(-180deg);
-        }
-        
-        .stat-glow-emerald {
-            text-shadow: 0 0 20px rgba(16, 185, 129, 0.8);
-        }
-
-        /* Floorplan / Topology SVG Animations */
-        .signal-wave {
-            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-        }
-        @keyframes pulse-ring {
-            0% { transform: scale(0.8); opacity: 0.8; }
-            100% { transform: scale(2.5); opacity: 0; }
-        }
-        
-        .mqtt-line {
-            stroke-dasharray: 8;
-            animation: mqttDash 2s linear infinite;
-        }
-        @keyframes mqttDash {
-            to { stroke-dashoffset: -100; }
-        }
-    </style>
 </head>
-<body class="antialiased">
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Custom Cursor (Desktop Only) -->
+    <div id="cursor-dot" class="cursor-dot hidden lg:block"></div>
+    <div id="cursor-ring" class="cursor-ring hidden lg:block"></div>
+
+    <!-- Ambient Aurora Background Mesh -->
+    <div class="aurora-bg">
+        <div class="aurora-orb aurora-orb-1"></div>
+        <div class="aurora-orb aurora-orb-2"></div>
+        <div class="aurora-orb aurora-orb-3"></div>
+    </div>
+
+    <!-- 3D Background Canvas -->
     <div id="canvas-container"></div>
 
-    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/10">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/10 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0">
-                    <a href="index.html" class="text-white hover:text-emerald-400 transition-colors flex items-center gap-2 font-bold uppercase tracking-wider text-sm">
-                        <i class="fas fa-arrow-left"></i> Back to Portfolio
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="magnetic-btn px-4 py-2 rounded-xl glass-panel text-white hover:text-emerald-400 hover:border-emerald-500/30 transition-all flex items-center gap-2 font-mono text-xs uppercase tracking-wider">
+                        <i class="fas fa-arrow-left text-xs"></i> Back to Portfolio
                     </a>
                 </div>
-                <div class="hidden md:block text-gray-400 text-sm font-semibold tracking-widest uppercase">
-                    IoT & Hardware Engineering
+                <!-- Live Status -->
+                <div class="flex items-center gap-3">
+                    <div class="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>100% LOCAL / ZERO CLOUD DEPENDENCY</span>
+                    </div>
+                    <a href="https://github.com/ManokarG" target="_blank" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-10 relative z-10">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Hero Section -->
-            <div class="text-center mb-16 animate-on-scroll">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-6">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    100% Local / Zero Cloud
+    <!-- Main Content -->
+    <div class="pt-32 pb-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Hero Header -->
+            <div class="text-center max-w-4xl mx-auto mb-20">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono tracking-widest uppercase mb-6">
+                    <i class="fas fa-microchip"></i> Edge Hardware & Embedded Systems
                 </div>
-                <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight hero-title leading-tight">
-                    <span class="text-gradient">Smart Home IoT</span> <br/>& Automation
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6 font-heading tracking-tight leading-[1.08]">
+                    Smart Home IoT & <br/><span class="text-gradient">Hardware Automation</span>
                 </h1>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed">
-                    A cloud-independent ecosystem orchestrated by Home Assistant. Featuring custom PCB engineering, millimeter-wave presence detection, and robust Zigbee mesh networking.
+                <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed mb-10">
+                    A cloud-independent, privacy-first automation ecosystem orchestrated by Home Assistant OS on a dedicated Proxmox VM. Featuring custom ESP32 firmware, mmWave presence detection, automated energy balancing, and simulated hardware edge test suites.
                 </p>
-            </div>
-
-            <!-- Animated Stats Row -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-100 glow-box">
-                    <i class="fas fa-network-wired text-emerald-500 text-2xl mb-2"></i>
-                    <h3 class="text-3xl font-black text-white stat-glow-emerald counter" data-target="80">0</h3><span class="text-3xl font-black text-white stat-glow-emerald">+</span>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Zigbee Nodes</p>
-                </div>
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-200 glow-box">
-                    <i class="fas fa-microchip text-emerald-400 text-2xl mb-2"></i>
-                    <h3 class="text-3xl font-black text-white stat-glow-emerald counter" data-target="15">0</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Custom ESP32s</p>
-                </div>
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-300 glow-box">
-                    <i class="fas fa-tachometer-alt text-emerald-300 text-2xl mb-2"></i>
-                    <h3 class="text-3xl font-black text-white stat-glow-emerald"><span class="counter" data-target="10">0</span>ms</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Avg Latency</p>
-                </div>
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-400 glow-box">
-                    <i class="fas fa-lock text-emerald-600 text-2xl mb-2"></i>
-                    <h3 class="text-3xl font-black text-white stat-glow-emerald counter" data-target="100">0</h3><span class="text-3xl font-black text-white stat-glow-emerald">%</span>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Offline Privacy</p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Home Assistant OS</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">ESP32 & ESPHome</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">MQTT Event Broker</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Zigbee 3.0 Mesh</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Solar & Phase Simulators</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">WireGuard VPN Ingress</span>
                 </div>
             </div>
 
-            <div class="mb-16 text-center animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Hardware & Software <span class="text-emerald-400">Stack</span></h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto rounded"></div>
+            <!-- Key Metrics Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24">
+                <div class="spotlight-card p-6 rounded-2xl text-center">
+                    <i class="fas fa-network-wired text-emerald-400 text-2xl mb-3 block"></i>
+                    <h3 class="text-4xl font-black text-white font-heading">85+</h3>
+                    <p class="text-xs font-mono text-gray-400 uppercase tracking-wider mt-1">Zigbee & IoT Nodes</p>
+                </div>
+                <div class="spotlight-card p-6 rounded-2xl text-center">
+                    <i class="fas fa-microchip text-blue-400 text-2xl mb-3 block"></i>
+                    <h3 class="text-4xl font-black text-white font-heading">15+</h3>
+                    <p class="text-xs font-mono text-gray-400 uppercase tracking-wider mt-1">Custom ESP32 Controllers</p>
+                </div>
+                <div class="spotlight-card p-6 rounded-2xl text-center">
+                    <i class="fas fa-tachometer-alt text-purple-400 text-2xl mb-3 block"></i>
+                    <h3 class="text-4xl font-black text-white font-heading">&lt; 12ms</h3>
+                    <p class="text-xs font-mono text-gray-400 uppercase tracking-wider mt-1">Local Response Latency</p>
+                </div>
+                <div class="spotlight-card p-6 rounded-2xl text-center">
+                    <i class="fas fa-user-shield text-emerald-400 text-2xl mb-3 block"></i>
+                    <h3 class="text-4xl font-black text-white font-heading">100%</h3>
+                    <p class="text-xs font-mono text-gray-400 uppercase tracking-wider mt-1">Offline Privacy</p>
+                </div>
             </div>
 
-            <!-- Detailed App Grid -->
-            <div class="grid md:grid-cols-2 gap-8 mb-20">
-                
-                <!-- Home Assistant -->
-                <div class="iot-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                    <div class="flex items-start gap-4 mb-4 relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/30 iot-icon-wrapper flex-shrink-0">
-                            <i class="fas fa-home text-blue-400 text-2xl iot-icon"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-1">Home Assistant Core</h3>
-                            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">The Orchestrator</span>
-                        </div>
+            <!-- Architecture Breakdown -->
+            <div class="mb-24">
+                <div class="text-center mb-16">
+                    <div class="text-emerald-400 font-mono text-xs uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
+                        <span class="w-8 h-[1px] bg-emerald-500"></span> System Topology
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
-                        Running in a dedicated Docker container on the Proxmox cluster. It acts as the central brain, unifying dozens of disparate protocols (Zigbee, WiFi, Bluetooth). I utilize Node-RED addon for complex, visually mapped automation flows that handle state machines for HVAC and lighting.
-                    </p>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white font-heading">Embedded Hardware & <span class="text-emerald-400">Mesh Topology</span></h2>
                 </div>
 
-                <!-- Custom ESP32 -->
-                <div class="iot-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll delay-100">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                    <div class="flex items-start gap-4 mb-4 relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/30 iot-icon-wrapper flex-shrink-0">
-                            <i class="fas fa-microchip text-emerald-400 text-2xl iot-icon"></i>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6">
+                            <i class="fas fa-server text-xl"></i>
                         </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-1">Custom ESP32 Sensors</h3>
-                            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Hardware Engineering</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
-                        Commercial sensors are often slow and limited. I designed custom PCBs housing ESP32 microcontrollers flashed with ESPHome (C++). These multi-sensors track temperature, humidity, lux, and utilize mmWave radar for hyper-accurate, sub-second human presence detection (ignoring pets).
-                    </p>
-                </div>
-
-                <!-- Zigbee2MQTT -->
-                <div class="iot-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                    <div class="flex items-start gap-4 mb-4 relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-yellow-500/10 flex items-center justify-center border border-yellow-500/30 iot-icon-wrapper flex-shrink-0">
-                            <i class="fas fa-project-diagram text-yellow-400 text-2xl iot-icon"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-1">Zigbee2MQTT</h3>
-                            <span class="text-xs font-bold text-yellow-400 uppercase tracking-wider">Mesh Networking</span>
+                        <h3 class="text-xl font-bold text-white mb-2 font-heading">Home Assistant OS VM</h3>
+                        <p class="text-gray-400 text-xs font-mono mb-4">Dedicated Proxmox Virtual Machine (VM 210)</p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Runs Home Assistant OS with dedicated hardware passthrough for the Zigbee coordinator. Automatically creates hourly snapshot backups to the MergerFS NAS pool, ensuring instant zero-data-loss rollback capability.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-300">
+                            <span class="px-2 py-1 bg-white/5 rounded">Dedicated VM</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">USB Passthrough</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">Automated Snapshots</span>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
-                        To avoid crowding the 2.4GHz WiFi band, all smart bulbs, door sensors, and switches communicate via Zigbee. A Sonoff USB coordinator passed through to a Docker container runs Zigbee2MQTT, translating device states into MQTT topics for lightning-fast, local-only communication.
-                    </p>
-                </div>
 
-                <!-- Local Voice Control -->
-                <div class="iot-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll delay-100">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                    <div class="flex items-start gap-4 mb-4 relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/30 iot-icon-wrapper flex-shrink-0">
-                            <i class="fas fa-microphone-slash text-purple-400 text-2xl iot-icon"></i>
+                    <!-- Card 2 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-6">
+                            <i class="fas fa-microchip text-xl"></i>
                         </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-1">Rhasspy Voice Assistant</h3>
-                            <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Offline NLP processing</span>
+                        <h3 class="text-xl font-bold text-white mb-2 font-heading">Custom ESP32 Sensor Nodes</h3>
+                        <p class="text-gray-400 text-xs font-mono mb-4">Custom Firmware & 3D Printed Enclosures</p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Custom ESP32 microcontrollers flashed via ESPHome. Incorporates 24GHz mmWave radar (LD2410) for micro-movement presence detection, BME280 environmental sensors, and non-invasive current transformers for energy auditing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-300">
+                            <span class="px-2 py-1 bg-white/5 rounded">mmWave Radar</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">ESPHome</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">MQTT Streaming</span>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
-                        No Alexa, no Google Home. I built custom smart speakers using Raspberry Pi Zeros and ReSpeaker HATs. Audio is streamed to a central server running Rhasspy, which handles Wake Word detection (Porcupine), Speech-to-Text, and Intent Recognition entirely offline, ensuring absolute privacy.
-                    </p>
-                </div>
 
+                    <!-- Card 3 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                            <i class="fas fa-solar-panel text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 font-heading">Hardware Simulation Suite</h3>
+                        <p class="text-gray-400 text-xs font-mono mb-4">Edge Raspberry Pi Automated Mocking</p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            To thoroughly test complex state machines without physical risk, a dedicated edge suite on Node 4 simulates solar inverter irradiance, three-phase electrical grid loads, and water reservoir levels before production deployment.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-300">
+                            <span class="px-2 py-1 bg-white/5 rounded">Solar Inverter Mock</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">Phase Load Balancing</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">Edge Node 4</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 mb-6">
+                            <i class="fas fa-project-diagram text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 font-heading">Zigbee 3.0 Self-Healing Mesh</h3>
+                        <p class="text-gray-400 text-xs font-mono mb-4">High-Density Wireless Coordinator</p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            A low-latency, resilient Zigbee 3.0 mesh network coordinating 85+ smart switches, thermal radiator valves, and contact sensors. Routed through mains-powered repeaters to guarantee zero packet loss across physical structural walls.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-300">
+                            <span class="px-2 py-1 bg-white/5 rounded">Zigbee 3.0</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">Mesh Routing</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">85+ Endpoints</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-6">
+                            <i class="fas fa-robot text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 font-heading">Event-Driven Automation Bus</h3>
+                        <p class="text-gray-400 text-xs font-mono mb-4">RabbitMQ & n8n Enterprise Bridging</p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Home Assistant events publish directly to the homelab's central RabbitMQ message bus. This triggers complex asynchronous n8n workflows, local LLM voice announcements, and security dispatch without burdening the core automation engine.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-300">
+                            <span class="px-2 py-1 bg-white/5 rounded">RabbitMQ Bus</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">n8n Integration</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">AI Voice Pipeline</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 mb-6">
+                            <i class="fas fa-key text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2 font-heading">Zero-Trust Encrypted Access</h3>
+                        <p class="text-gray-400 text-xs font-mono mb-4">Tailscale WireGuard Mesh VPN</p>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Remote management and dashboard monitoring operate via a point-to-point WireGuard mesh (Tailscale). Not a single port is forwarded through the home router, eliminating external attack vectors while providing seamless mobile access.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-300">
+                            <span class="px-2 py-1 bg-white/5 rounded">WireGuard Mesh</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">Zero Open Ports</span>
+                            <span class="px-2 py-1 bg-white/5 rounded">Point-to-Point</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- Animated Architecture Diagram -->
-            <div class="mb-16 text-center animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">IoT <span class="text-emerald-400">Topology</span></h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto rounded"></div>
-            </div>
+            <!-- Interactive Architecture Flow -->
+            <div class="spotlight-card p-8 lg:p-12 rounded-2xl mb-24">
+                <div class="text-center mb-10">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white font-heading mb-2">Event Flow & Telemetry Pipeline</h3>
+                    <p class="text-gray-400 text-sm">How physical sensor state changes propagate securely through local microservices.</p>
+                </div>
 
-            <div class="glass-panel rounded-2xl p-8 border border-white/10 mb-20 relative overflow-hidden animate-on-scroll">
-                <!-- SVG Connections -->
-                <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1;">
-                    <!-- MQTT Lines -->
-                    <path class="mqtt-line" d="M 200 150 L 500 250" fill="none" stroke="rgba(16, 185, 129, 0.4)" stroke-width="2"/>
-                    <path class="mqtt-line" d="M 200 350 L 500 250" fill="none" stroke="rgba(16, 185, 129, 0.4)" stroke-width="2"/>
-                    <path class="mqtt-line" d="M 800 150 L 500 250" fill="none" stroke="rgba(59, 130, 246, 0.4)" stroke-width="2"/>
-                    <path class="mqtt-line" d="M 800 350 L 500 250" fill="none" stroke="rgba(59, 130, 246, 0.4)" stroke-width="2"/>
-                </svg>
-
-                <div class="flex flex-col md:flex-row justify-center items-center relative z-10 gap-16 md:gap-24 min-h-[400px] max-w-5xl mx-auto">
-                    <!-- Edge Devices Left (Sensors) -->
-                    <div class="flex flex-col gap-12 w-full md:w-56 z-10">
-                        <div class="bg-gray-900 border border-emerald-500/30 p-4 rounded-xl text-center relative z-10">
-                            <div class="absolute inset-0 border-2 border-emerald-500/50 rounded-xl signal-wave"></div>
-                            <i class="fas fa-running text-emerald-400 text-2xl mb-2"></i>
-                            <h4 class="font-bold text-white text-sm">mmWave Sensor</h4>
-                            <p class="text-xs text-emerald-500 mt-1">ESP32 (WiFi)</p>
-                        </div>
-                        <div class="bg-gray-900 border border-yellow-500/30 p-4 rounded-xl text-center z-10">
-                            <i class="fas fa-lightbulb text-yellow-400 text-2xl mb-2"></i>
-                            <h4 class="font-bold text-white text-sm">Smart Relays</h4>
-                            <p class="text-xs text-yellow-500 mt-1">Zigbee Mesh</p>
-                        </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+                    <div class="p-5 rounded-xl bg-gray-900/80 border border-white/5">
+                        <span class="text-emerald-400 font-mono text-xs font-bold block mb-2">INPUT</span>
+                        <h4 class="text-white font-bold text-sm mb-1">Physical Sensor Trigger</h4>
+                        <p class="text-gray-400 text-xs">mmWave radar or CT clamp senses state change.</p>
                     </div>
-
-                    <!-- Core Broker -->
-                    <div class="w-full md:w-80 z-10 flex justify-center">
-                        <div class="bg-black border border-emerald-500/50 p-8 rounded-2xl text-center shadow-[0_0_40px_rgba(16,185,129,0.2)] glow-box relative w-full">
-                            <!-- MQTT Broker -->
-                            <div class="absolute -top-4 -right-4 bg-gray-900 border border-white/10 p-2 rounded-lg shadow-lg flex items-center gap-2">
-                                <i class="fas fa-exchange-alt text-gray-400"></i>
-                                <span class="text-xs font-bold text-white">MQTT Broker</span>
-                            </div>
-                            <i class="fas fa-home text-blue-400 text-5xl mb-4"></i>
-                            <h4 class="font-bold text-white text-2xl">Home Assistant</h4>
-                            <div class="mt-4 flex gap-2 justify-center">
-                                <span class="py-1 px-3 bg-blue-500/20 border border-blue-500/50 rounded text-blue-400 text-xs font-bold">Node-RED</span>
-                                <span class="py-1 px-3 bg-yellow-500/20 border border-yellow-500/50 rounded text-yellow-400 text-xs font-bold">Z2M</span>
-                            </div>
-                        </div>
+                    <div class="p-5 rounded-xl bg-gray-900/80 border border-white/5">
+                        <span class="text-blue-400 font-mono text-xs font-bold block mb-2">TRANSPORT</span>
+                        <h4 class="text-white font-bold text-sm mb-1">ESPHome & MQTT</h4>
+                        <p class="text-gray-400 text-xs">Transmits sub-millisecond JSON payload over local WiFi/Zigbee.</p>
                     </div>
-
-                    <!-- Edge Devices Right (Interfaces) -->
-                    <div class="flex flex-col gap-12 w-full md:w-56 z-10">
-                        <div class="bg-gray-900 border border-purple-500/30 p-4 rounded-xl text-center z-10">
-                            <i class="fas fa-microphone text-purple-400 text-2xl mb-2"></i>
-                            <h4 class="font-bold text-white text-sm">Voice Satellites</h4>
-                            <p class="text-xs text-purple-500 mt-1">Rhasspy (UDP)</p>
-                        </div>
-                        <div class="bg-gray-900 border border-blue-500/30 p-4 rounded-xl text-center z-10">
-                            <i class="fab fa-react text-blue-400 text-2xl mb-2 animate-[spin_4s_linear_infinite]"></i>
-                            <h4 class="font-bold text-white text-sm">Wall Dashboards</h4>
-                            <p class="text-xs text-blue-500 mt-1">React / WebSockets</p>
-                        </div>
+                    <div class="p-5 rounded-xl bg-gray-900/80 border border-white/5">
+                        <span class="text-purple-400 font-mono text-xs font-bold block mb-2">PROCESSING</span>
+                        <h4 class="text-white font-bold text-sm mb-1">HAOS & RabbitMQ</h4>
+                        <p class="text-gray-400 text-xs">Evaluates state machines, triggers scripts, and streams event bus.</p>
+                    </div>
+                    <div class="p-5 rounded-xl bg-gray-900/80 border border-white/5">
+                        <span class="text-orange-400 font-mono text-xs font-bold block mb-2">ACTION</span>
+                        <h4 class="text-white font-bold text-sm mb-1">Actuation & Triage</h4>
+                        <p class="text-gray-400 text-xs">Relay switches load, n8n logs metrics, and Prometheus stores TSDB.</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 text-center">
+                <a href="homelab.html" class="magnetic-btn px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold rounded-xl transition-all font-mono text-xs uppercase tracking-wider">
+                    <i class="fas fa-server mr-2"></i> View Homelab Hybrid Cloud
+                </a>
+                <a href="index.html" class="magnetic-btn px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-all font-mono text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+                    <i class="fas fa-home mr-2"></i> Back to Main Portfolio
+                </a>
             </div>
 
         </div>
-    </section>
+    </div>
 
+    <!-- Footer -->
+    <footer class="border-t border-white/10 glass-panel py-10 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-500">
+            <div>
+                <span>Manokar G. • Embedded Systems & Smart Infrastructure</span>
+            </div>
+            <div>
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Return to Portfolio Overview</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        // Number Counter Animation
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200; 
-
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / speed;
-
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 20);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            
-            ScrollTrigger.create({
-                trigger: counter,
-                start: "top 90%",
-                onEnter: updateCount,
-                once: true
-            });
-        });
-
-        // IoT Card Stagger Animation
-        gsap.from(".iot-card", {
-            scrollTrigger: {
-                trigger: ".iot-card",
-                start: "top 80%"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "back.out(1.5)"
-        });
-    </script>
 </body>
 </html>

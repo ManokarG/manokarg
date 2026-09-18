@@ -1,327 +1,596 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autonomous AI & GitOps Homelab | Manokar G</title>
+    <title>Enterprise-Grade Hybrid Cloud & Autonomous AI Homelab | Manokar G</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .app-card {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-        .app-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.3);
-            border-color: rgba(59, 130, 246, 0.5);
-            z-index: 10;
-        }
-        .app-icon-wrapper {
-            transition: transform 0.5s ease;
-        }
-        .app-card:hover .app-icon-wrapper {
-            transform: rotateY(180deg);
-        }
-        .app-icon {
-            transition: transform 0.5s ease;
-        }
-        .app-card:hover .app-icon {
-            transform: rotateY(-180deg);
-        }
-        
-        .stat-glow {
-            text-shadow: 0 0 20px rgba(147, 51, 234, 0.8);
-        }
-        
-        /* Architecture Flow Lines */
-        .flow-line {
-            stroke-dasharray: 10;
-            animation: flowDash 3s linear infinite;
-        }
-        @keyframes flowDash {
-            to { stroke-dashoffset: -100; }
-        }
-    </style>
 </head>
-<body class="antialiased">
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Custom Cursor (Desktop Only) -->
+    <div id="cursor-dot" class="cursor-dot hidden lg:block"></div>
+    <div id="cursor-ring" class="cursor-ring hidden lg:block"></div>
+
+    <!-- Ambient Aurora Background Mesh -->
+    <div class="aurora-bg">
+        <div class="aurora-orb aurora-orb-1"></div>
+        <div class="aurora-orb aurora-orb-2"></div>
+        <div class="aurora-orb aurora-orb-3"></div>
+    </div>
+
+    <!-- 3D Canvas Background -->
     <div id="canvas-container"></div>
 
-    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/10">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b-0 border-white/10 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0">
-                    <a href="index.html" class="text-white hover:text-blue-400 transition-colors flex items-center gap-2 font-bold uppercase tracking-wider text-sm">
-                        <i class="fas fa-arrow-left"></i> Back to Portfolio
+                <div class="flex items-center gap-4">
+                    <a href="index.html" class="magnetic-btn px-4 py-2 rounded-xl glass-panel text-white hover:text-blue-400 hover:border-blue-500/30 transition-all flex items-center gap-2 font-mono text-xs uppercase tracking-wider">
+                        <i class="fas fa-arrow-left text-xs"></i> Back to Portfolio
                     </a>
                 </div>
-                <div class="hidden md:block text-gray-400 text-sm font-semibold tracking-widest">
-                    SYSTEMS ARCHITECTURE & DEVOPS
+                <!-- Live Cluster Status -->
+                <div class="flex items-center gap-3">
+                    <div class="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>4 NODES OPERATIONAL • 100% GITOPS</span>
+                    </div>
+                    <a href="https://github.com/ManokarG" target="_blank" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
+                        <i class="fab fa-github text-lg"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <section class="pt-32 pb-10 relative z-10">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Hero Section -->
-            <div class="text-center mb-16 animate-on-scroll">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6">
-                    <span class="relative flex h-2 w-2">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                    </span>
-                    Live Production Environment
+    <!-- Main Content -->
+    <div class="pt-32 pb-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Hero Header -->
+            <div class="text-center max-w-4xl mx-auto mb-20">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono tracking-widest uppercase mb-6">
+                    <i class="fas fa-microchip"></i> Enterprise Architecture Case Study
                 </div>
-                <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight hero-title leading-tight">
-                    <span class="text-gradient">Autonomous AI</span> <br/>& GitOps Homelab
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6 font-heading tracking-tight leading-[1.08]">
+                    Enterprise-Grade <br/><span class="text-gradient">Self-Hosted Hybrid Cloud</span>
                 </h1>
-                <p class="text-xl text-gray-400 max-w-3xl mx-auto font-light leading-relaxed">
-                    An enterprise-grade, highly available local cloud bridging bare-metal hypervisors and edge compute. Designed with zero single points of failure, full GitOps lifecycle management, and autonomous AI agents.
+                <p class="text-lg sm:text-xl text-gray-300 font-light leading-relaxed mb-10">
+                    A distributed, high-availability virtualization and autonomous AI laboratory engineered to enterprise reliability standards. Combining bare-metal hypervisors, distributed event queuing, zero-trust edge proxies, multi-terabyte storage pooling, and closed-loop automated self-healing.
                 </p>
-            </div>
-
-            <!-- Animated Stats Row -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-100 glow-box">
-                    <i class="fas fa-server text-blue-500 text-2xl mb-2"></i>
-                    <h3 class="text-3xl font-black text-white stat-glow">3+</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Physical Nodes</p>
-                </div>
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-200 glow-box">
-                    <i class="fab fa-docker text-blue-400 text-2xl mb-2"></i>
-                    <h3 class="text-3xl font-black text-white stat-glow counter" data-target="45">0</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Active Containers</p>
-                </div>
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-300 glow-box">
-                    <i class="fas fa-brain text-purple-500 text-2xl mb-2"></i>
-                    <h3 class="text-3xl font-black text-white stat-glow counter" data-target="100">0</h3><span class="text-3xl font-black text-white stat-glow">%</span>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Local AI Processing</p>
-                </div>
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 text-center animate-on-scroll delay-400 glow-box">
-                    <i class="fas fa-cloud-slash text-emerald-500 text-2xl mb-2"></i>
-                    <h3 class="text-3xl font-black text-white stat-glow">0</h3>
-                    <p class="text-xs text-gray-400 uppercase tracking-widest mt-1">Cloud Dependencies</p>
+                <div class="flex flex-wrap justify-center gap-3">
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Proxmox VE 8.x</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">GitOps & Ansible Vault</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Traefik v3 & Authelia SSO</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">LangGraph & Local LLMs</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">MergerFS NAS Pool</span>
+                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Automated Closed-Loop Remediation</span>
                 </div>
             </div>
 
-            <div class="mb-16 text-center animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Core Infrastructure <span class="text-blue-400">Stack</span></h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded"></div>
-            </div>
-
-            <!-- Detailed App Grid -->
-            <div class="grid md:grid-cols-2 gap-8 mb-20">
-                
-                <!-- Proxmox -->
-                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                    <div class="flex items-start gap-4 mb-4 relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-orange-500/10 flex items-center justify-center border border-orange-500/30 app-icon-wrapper flex-shrink-0">
-                            <i class="fab fa-linux text-orange-400 text-2xl app-icon"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-1">Proxmox VE Cluster</h3>
-                            <span class="text-xs font-bold text-orange-400 uppercase tracking-wider">Hypervisor & Compute</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
-                        The foundation of the environment. Multiple bare-metal nodes form a highly available cluster. Utilizing ZFS for resilient storage and automatic snapshots. Virtual Machines (VMs) run heavy Docker hosts, while lightweight services are deployed directly as unprivileged LXC containers to minimize overhead.
-                    </p>
+            <!-- Key Metrics Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24">
+                <div class="spotlight-card p-6 rounded-2xl text-center">
+                    <i class="fas fa-server text-blue-400 text-2xl mb-3 block"></i>
+                    <h3 class="text-4xl font-black text-white font-heading">4</h3>
+                    <p class="text-xs font-mono text-gray-400 uppercase tracking-wider mt-1">Physical Compute Nodes</p>
                 </div>
-
-                <!-- Ansible & GitOps -->
-                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll delay-100">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                    <div class="flex items-start gap-4 mb-4 relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-red-500/10 flex items-center justify-center border border-red-500/30 app-icon-wrapper flex-shrink-0">
-                            <i class="fas fa-cogs text-red-400 text-2xl app-icon"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-1">Ansible & GitOps</h3>
-                            <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Infrastructure as Code</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
-                        Infrastructure drift is eliminated. 100% of the homelab's state—from OS updates and Docker Compose deployments to network configurations—is defined in YAML. Pushing a commit to the local Git server automatically triggers an Ansible playbook. Secrets are aggressively protected using Ansible Vault.
-                    </p>
+                <div class="spotlight-card p-6 rounded-2xl text-center">
+                    <i class="fab fa-docker text-purple-400 text-2xl mb-3 block"></i>
+                    <h3 class="text-4xl font-black text-white font-heading">20+</h3>
+                    <p class="text-xs font-mono text-gray-400 uppercase tracking-wider mt-1">Managed Microservices</p>
                 </div>
-
-                <!-- Traefik & Authelia -->
-                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                    <div class="flex items-start gap-4 mb-4 relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/30 app-icon-wrapper flex-shrink-0">
-                            <i class="fas fa-shield-alt text-blue-400 text-2xl app-icon"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-1">Traefik & Authelia</h3>
-                            <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Zero-Trust Security</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
-                        All incoming traffic hits the Traefik reverse proxy, which dynamically discovers Docker services and provisions wildcard Let's Encrypt SSL certificates via DNS challenge. Access to sensitive dashboards is blocked at the edge by Authelia, enforcing strict OIDC Single Sign-On (SSO) and Multi-Factor Authentication (MFA).
-                    </p>
+                <div class="spotlight-card p-6 rounded-2xl text-center">
+                    <i class="fas fa-database text-emerald-400 text-2xl mb-3 block"></i>
+                    <h3 class="text-4xl font-black text-white font-heading">6.9 TB</h3>
+                    <p class="text-xs font-mono text-gray-400 uppercase tracking-wider mt-1">Hybrid Storage Fabric</p>
                 </div>
-
-                <!-- Local AI & Ollama -->
-                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll delay-100">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                    <div class="flex items-start gap-4 mb-4 relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/30 app-icon-wrapper flex-shrink-0">
-                            <i class="fas fa-brain text-purple-400 text-2xl app-icon"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-1">Ollama & DeepSeek</h3>
-                            <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Autonomous AI Agents</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
-                        A dedicated GPU-passthrough VM runs Ollama, exposing a local OpenAI-compatible API. This powers open-source models (like Llama 3 and DeepSeek) for complete offline privacy. Integrated with LangGraph and AnythingLLM, these models process local documents via RAG and act as autonomous agents for coding tasks.
-                    </p>
-                </div>
-
-                <!-- n8n Automation -->
-                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                    <div class="flex items-start gap-4 mb-4 relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/30 app-icon-wrapper flex-shrink-0">
-                            <i class="fas fa-network-wired text-emerald-400 text-2xl app-icon"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-1">n8n Workflow Engine</h3>
-                            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Asynchronous Automation</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
-                        Moving beyond simple cron jobs, a highly available n8n cluster handles complex automation logic. It manages backup verifications, AI agent pipelines, and webhook parsing. It runs in a distributed master/worker configuration, with dedicated workers running in isolated LXC sandboxes to safely execute AI-generated code.
-                    </p>
-                </div>
-
-                <!-- Observability -->
-                <div class="app-card glass-panel p-8 rounded-2xl border border-white/10 relative overflow-hidden animate-on-scroll delay-100">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-400/10 rounded-full blur-3xl -mr-10 -mt-10"></div>
-                    <div class="flex items-start gap-4 mb-4 relative z-10">
-                        <div class="w-14 h-14 rounded-xl bg-orange-400/10 flex items-center justify-center border border-orange-400/30 app-icon-wrapper flex-shrink-0">
-                            <i class="fas fa-chart-line text-orange-400 text-2xl app-icon"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold text-white mb-1">Prometheus & Grafana</h3>
-                            <span class="text-xs font-bold text-orange-400 uppercase tracking-wider">Monitoring & Self-Healing</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed relative z-10">
-                        A robust metrics pipeline utilizing Prometheus, node-exporters, and Loki for log aggregation, beautifully visualized in Grafana dashboards. The system is designed for self-healing: Alertmanager triggers custom Python scripts that automatically reboot failed containers via the Docker socket before sending a Gotify notification.
-                    </p>
+                <div class="spotlight-card p-6 rounded-2xl text-center">
+                    <i class="fas fa-shield-virus text-orange-400 text-2xl mb-3 block"></i>
+                    <h3 class="text-4xl font-black text-white font-heading">100%</h3>
+                    <p class="text-xs font-mono text-gray-400 uppercase tracking-wider mt-1">Automated Self-Healing</p>
                 </div>
             </div>
 
-            <!-- Animated Architecture Diagram -->
-            <div class="mb-16 text-center animate-on-scroll">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Traffic <span class="text-purple-400">Flow</span></h2>
-                <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-emerald-500 mx-auto rounded"></div>
-            </div>
+            <!-- Core Architectural Pillars -->
+            <div class="mb-24">
+                <div class="text-center mb-16">
+                    <div class="text-blue-400 font-mono text-xs uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
+                        <span class="w-8 h-[1px] bg-blue-500"></span> Architectural Philosophy
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white font-heading">Core Engineering <span class="text-blue-400">Pillars</span></h2>
+                </div>
 
-            <div class="glass-panel rounded-2xl p-8 border border-white/10 mb-20 relative overflow-hidden animate-on-scroll">
-                <!-- SVG Connections -->
-                <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 1;">
-                    <path class="flow-line" d="M 150 100 C 300 100, 300 200, 500 200" fill="none" stroke="rgba(59, 130, 246, 0.5)" stroke-width="3"/>
-                    <path class="flow-line" d="M 150 300 C 300 300, 300 200, 500 200" fill="none" stroke="rgba(16, 185, 129, 0.5)" stroke-width="3"/>
-                    <path class="flow-line" style="animation-direction: reverse;" d="M 500 200 L 750 200" fill="none" stroke="rgba(147, 51, 234, 0.5)" stroke-width="3" stroke-dasharray="10"/>
-                </svg>
-
-                <div class="flex flex-col md:flex-row justify-center items-center relative z-10 gap-12 md:gap-16 min-h-[300px] max-w-5xl mx-auto">
-                    <!-- Ingress -->
-                    <div class="flex flex-col gap-12 w-full md:w-64 z-10">
-                        <div class="bg-gray-900 border border-white/10 p-4 rounded-xl text-center shadow-[0_0_20px_rgba(255,255,255,0.05)] transform hover:scale-105 transition-transform duration-300">
-                            <i class="fas fa-globe text-blue-400 text-2xl mb-2"></i>
-                            <h4 class="font-bold text-white text-sm">External Traffic</h4>
-                            <p class="text-xs text-gray-500 mt-1">Cloudflare DNS</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Pillar 1 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-6">
+                            <i class="fas fa-code-branch text-xl"></i>
                         </div>
-                        <div class="bg-gray-900 border border-white/10 p-4 rounded-xl text-center shadow-[0_0_20px_rgba(255,255,255,0.05)] transform hover:scale-105 transition-transform duration-300">
-                            <i class="fas fa-network-wired text-emerald-400 text-2xl mb-2"></i>
-                            <h4 class="font-bold text-white text-sm">Internal Network</h4>
-                            <p class="text-xs text-gray-500 mt-1">Local LAN / Tailscale</p>
+                        <h3 class="text-xl font-bold text-white mb-3 font-heading">GitOps & Single Source of Truth</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            All configurations, Docker Compose stacks, Traefik dynamic routes, and Ansible automation playbooks are version-controlled in Git. The infrastructure is tracked by a master executable lab specification and an indexed knowledge graph, eliminating configuration drift across all physical and virtual nodes.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-mono bg-blue-500/10 text-blue-300 border border-blue-500/20 px-2 py-1 rounded">Declarative Compose</span>
+                            <span class="text-xs font-mono bg-blue-500/10 text-blue-300 border border-blue-500/20 px-2 py-1 rounded">Ansible Vault</span>
+                            <span class="text-xs font-mono bg-blue-500/10 text-blue-300 border border-blue-500/20 px-2 py-1 rounded">Master Spec</span>
                         </div>
                     </div>
 
-                    <!-- Edge/Security -->
-                    <div class="w-full md:w-64 z-10 flex justify-center">
-                        <div class="bg-black border border-blue-500/50 p-6 rounded-2xl text-center shadow-[0_0_30px_rgba(59,130,246,0.2)] glow-box w-full max-w-[200px]">
-                            <i class="fas fa-shield-alt text-blue-400 text-4xl mb-3 animate-pulse"></i>
-                            <h4 class="font-bold text-white text-lg">Traefik Edge</h4>
-                            <div class="mt-3 py-1 bg-red-500/20 border border-red-500/50 rounded text-red-400 text-xs font-bold uppercase">
-                                Authelia SSO Gate
+                    <!-- Pillar 2 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6">
+                            <i class="fas fa-shield-alt text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-heading">Zero Trust & Perimeter Edge Ingress</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            A centralized perimeter reverse proxy powered by Traefik v3 and Authelia enforces Forward Authentication, OIDC (OpenID Connect), and Multi-Factor Authentication (TOTP / WebAuthn). Cloudflare DNS challenges manage automated wildcard SSL certificates, ensuring no internal administrative dashboard is directly exposed.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20 px-2 py-1 rounded">Traefik v3 Edge</span>
+                            <span class="text-xs font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20 px-2 py-1 rounded">Authelia MFA/SSO</span>
+                            <span class="text-xs font-mono bg-purple-500/10 text-purple-300 border border-purple-500/20 px-2 py-1 rounded">Wildcard SSL</span>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6">
+                            <i class="fas fa-brain text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-heading">Distributed AI & Secure Sandboxing</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Distributed workflow execution across multiple compute nodes via a RabbitMQ message bus. An asynchronous n8n cluster leverages dedicated, isolated LXC sandboxes to safely execute AI-generated Python and shell code. Multi-agent DAGs run on LangGraph with LangSmith tracing, complemented by local Ollama/DeepSeek inference.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-2 py-1 rounded">RabbitMQ Broker</span>
+                            <span class="text-xs font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-2 py-1 rounded">LXC Code Sandbox</span>
+                            <span class="text-xs font-mono bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 px-2 py-1 rounded">LangGraph DAGs</span>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 mb-6">
+                            <i class="fas fa-heartbeat text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-heading">Closed-Loop Automated Self-Healing</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                            Full telemetry ingestion with Prometheus, cAdvisor, and Loki. When a service degradation is detected by 24/7 edge probing, an automated remediation pipeline pulls the trailing log buffer, performs LLM root-cause triage, and triggers target Ansible playbooks to self-heal without human intervention.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-mono bg-orange-500/10 text-orange-300 border border-orange-500/20 px-2 py-1 rounded">Prometheus & Loki</span>
+                            <span class="text-xs font-mono bg-orange-500/10 text-orange-300 border border-orange-500/20 px-2 py-1 rounded">LLM Triage</span>
+                            <span class="text-xs font-mono bg-orange-500/10 text-orange-300 border border-orange-500/20 px-2 py-1 rounded">Ansible Self-Heal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hardware Fleet Matrix -->
+            <div class="mb-24">
+                <div class="text-center mb-16">
+                    <div class="text-purple-400 font-mono text-xs uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
+                        <span class="w-8 h-[1px] bg-purple-500"></span> Bare-Metal Fleet
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white font-heading">Physical Hardware <span class="text-purple-400">Inventory</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto mt-2 text-sm">Four dedicated bare-metal computing nodes operating in synchronized orchestration across physical compute, NAS storage, and edge resilience.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Node 1 -->
+                    <div class="spotlight-card p-6 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 text-xs font-mono font-bold border border-blue-500/20">NODE 1</span>
+                                <span class="text-xs font-mono text-gray-500">AMD Ryzen 6C/12T</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-1">Mini PC Primary</h3>
+                            <p class="text-xs font-mono text-blue-400 mb-4">Proxmox VE 8.x • Core Host</p>
+                            
+                            <ul class="text-xs font-mono space-y-2 text-gray-300 border-t border-white/5 pt-4 mb-4">
+                                <li class="flex justify-between"><span class="text-gray-500">Memory:</span> <span>24 GB DDR4</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">Boot/Root:</span> <span>Dual 512GB NVMe</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">Bulk Storage:</span> <span>4TB + 2TB NAS HDDs</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">Role:</span> <span class="text-blue-300 text-right">VMs, NAS, Edge LXC</span></li>
+                            </ul>
+                        </div>
+                        <div class="pt-3 border-t border-white/5 text-[11px] font-mono text-gray-400">
+                            Hosts Core Docker, PostgreSQL, RabbitMQ, and Storage Pool.
+                        </div>
+                    </div>
+
+                    <!-- Node 2 -->
+                    <div class="spotlight-card p-6 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-mono font-bold border border-purple-500/20">NODE 2</span>
+                                <span class="text-xs font-mono text-gray-500">Intel Core 8C/8T</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-1">OptiPlex Compute</h3>
+                            <p class="text-xs font-mono text-purple-400 mb-4">Proxmox VE 8.x • AI Cluster</p>
+                            
+                            <ul class="text-xs font-mono space-y-2 text-gray-300 border-t border-white/5 pt-4 mb-4">
+                                <li class="flex justify-between"><span class="text-gray-500">Memory:</span> <span>16 GB DDR4</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">Storage:</span> <span>512 GB High-Speed NVMe</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">Execution:</span> <span>Privileged Sandboxes</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">Role:</span> <span class="text-purple-300 text-right">AI DAGs, LangGraph</span></li>
+                            </ul>
+                        </div>
+                        <div class="pt-3 border-t border-white/5 text-[11px] font-mono text-gray-400">
+                            Dedicated AI execution sandboxes and multi-agent DAGs.
+                        </div>
+                    </div>
+
+                    <!-- Node 3 (Pi 1) -->
+                    <div class="spotlight-card p-6 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-mono font-bold border border-emerald-500/20">NODE 3</span>
+                                <span class="text-xs font-mono text-gray-500">BCM2711 4C ARM64</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-1">Raspberry Pi 4B</h3>
+                            <p class="text-xs font-mono text-emerald-400 mb-4">Debian • Edge Diagnostics</p>
+                            
+                            <ul class="text-xs font-mono space-y-2 text-gray-300 border-t border-white/5 pt-4 mb-4">
+                                <li class="flex justify-between"><span class="text-gray-500">Memory:</span> <span>4 GB LPDDR4</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">Storage:</span> <span>120 GB SSD (USB 3.0)</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">RAM Disk:</span> <span>log2ram 256MB</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">Role:</span> <span class="text-emerald-300 text-right">Primary DNS, Probing</span></li>
+                            </ul>
+                        </div>
+                        <div class="pt-3 border-t border-white/5 text-[11px] font-mono text-gray-400">
+                            AdGuard Home, 24/7 Uptime Kuma probing, WatchYourLAN ARP.
+                        </div>
+                    </div>
+
+                    <!-- Node 4 (Pi 2) -->
+                    <div class="spotlight-card p-6 rounded-2xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="px-2.5 py-1 rounded-md bg-orange-500/10 text-orange-400 text-xs font-mono font-bold border border-orange-500/20">NODE 4</span>
+                                <span class="text-xs font-mono text-gray-500">BCM2711 4C ARM64</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white font-heading mb-1">Raspberry Pi 4B</h3>
+                            <p class="text-xs font-mono text-orange-400 mb-4">Debian • Mesh VPN & UX</p>
+                            
+                            <ul class="text-xs font-mono space-y-2 text-gray-300 border-t border-white/5 pt-4 mb-4">
+                                <li class="flex justify-between"><span class="text-gray-500">Memory:</span> <span>4 GB LPDDR4</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">Storage:</span> <span>120 GB SSD (USB 3.0)</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">VPN:</span> <span>Tailscale WireGuard</span></li>
+                                <li class="flex justify-between"><span class="text-gray-500">Role:</span> <span class="text-orange-300 text-right">Dashboards, IoT Mock</span></li>
+                            </ul>
+                        </div>
+                        <div class="pt-3 border-t border-white/5 text-[11px] font-mono text-gray-400">
+                            Unified telemetry portals, WireGuard mesh, and IoT simulation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Virtualization & Guest Topology (Proxmox Breakdown) -->
+            <div class="mb-24">
+                <div class="text-center mb-16">
+                    <div class="text-emerald-400 font-mono text-xs uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
+                        <span class="w-8 h-[1px] bg-emerald-500"></span> Virtualization Architecture
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white font-heading">Proxmox VE <span class="text-emerald-400">Guest Topology</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto mt-2 text-sm">Segmentation between isolated Virtual Machines (VMs) for heavy workloads and unprivileged LXC containers for zero-overhead performance.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- main-server VM -->
+                    <div class="spotlight-card p-6 rounded-2xl">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 font-mono text-xs">VM</span>
+                            <div>
+                                <h4 class="font-bold text-white text-base font-heading">Core Automation Host</h4>
+                                <span class="text-xs font-mono text-gray-500">4 vCPU • 6 GB RAM • NVMe</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            Primary Docker host running n8n Core orchestrator, RabbitMQ enterprise message broker, AnythingLLM, Promtail, and cAdvisor metrics.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
+                            <span class="px-2 py-0.5 bg-white/5 rounded">n8n Core</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">RabbitMQ</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">AnythingLLM</span>
+                        </div>
+                    </div>
+
+                    <!-- omv-node1 NAS VM -->
+                    <div class="spotlight-card p-6 rounded-2xl">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 font-mono text-xs">VM</span>
+                            <div>
+                                <h4 class="font-bold text-white text-base font-heading">Enterprise NAS Storage</h4>
+                                <span class="text-xs font-mono text-gray-500">2 vCPU • 2 GB RAM • Direct SATA</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            OpenMediaVault 8 with hardware SATA controller passthrough (4TB Seagate IronWolf + 2TB WD Red). Pooled via MergerFS into a unified 5.4TB net share.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
+                            <span class="px-2 py-0.5 bg-white/5 rounded">MergerFS Pool</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">SMB/CIFS Shares</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">Zero RAID Lock-in</span>
+                        </div>
+                    </div>
+
+                    <!-- edge-router LXC -->
+                    <div class="spotlight-card p-6 rounded-2xl">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 font-mono text-xs">LXC</span>
+                            <div>
+                                <h4 class="font-bold text-white text-base font-heading">Perimeter Gateway</h4>
+                                <span class="text-xs font-mono text-gray-500">2 vCPU • 512 MB RAM • Fast Boot</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            The security perimeter. Traefik v3 reverse proxy with Let's Encrypt wildcard SSL automation and Authelia Forward-Auth Single Sign-On.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
+                            <span class="px-2 py-0.5 bg-white/5 rounded">Traefik v3</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">Authelia MFA</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">Zero-Trust Boundary</span>
+                        </div>
+                    </div>
+
+                    <!-- monitoring LXC -->
+                    <div class="spotlight-card p-6 rounded-2xl">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400 font-mono text-xs">LXC</span>
+                            <div>
+                                <h4 class="font-bold text-white text-base font-heading">Telemetry & Logs</h4>
+                                <span class="text-xs font-mono text-gray-500">2 vCPU • 1 GB RAM • TSDB</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            Prometheus 2.x time-series engine, Grafana 10.x visualization dashboards, and Grafana Loki log ingestion with a 28-day retention window.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
+                            <span class="px-2 py-0.5 bg-white/5 rounded">Prometheus</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">Grafana 10</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">Grafana Loki</span>
+                        </div>
+                    </div>
+
+                    <!-- n8n-sandbox LXC -->
+                    <div class="spotlight-card p-6 rounded-2xl">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 font-mono text-xs">LXC</span>
+                            <div>
+                                <h4 class="font-bold text-white text-base font-heading">AI Execution Sandbox</h4>
+                                <span class="text-xs font-mono text-gray-500">4 vCPU • 4 GB RAM • Isolated</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            Privileged, dedicated container sandbox runtime. Allows AI agents to generate, test, and execute arbitrary Python and shell scripts without touching host filesystems.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
+                            <span class="px-2 py-0.5 bg-white/5 rounded">Isolated Sandbox</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">Python Runner</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">Secure Runtime</span>
+                        </div>
+                    </div>
+
+                    <!-- langgraph LXC -->
+                    <div class="spotlight-card p-6 rounded-2xl">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-8 h-8 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400 font-mono text-xs">LXC</span>
+                            <div>
+                                <h4 class="font-bold text-white text-base font-heading">LangGraph DAG Runtime</h4>
+                                <span class="text-xs font-mono text-gray-500">1 vCPU • 1 GB RAM • Tracing</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                            Stateful Python multi-agent orchestration engine executing multi-step reasoning DAGs with LangSmith instrumentation for step-by-step token and latency auditing.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 text-[11px] font-mono text-gray-300">
+                            <span class="px-2 py-0.5 bg-white/5 rounded">LangGraph</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">LangSmith Tracing</span>
+                            <span class="px-2 py-0.5 bg-white/5 rounded">Autonomous DAGs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multi-Tier Storage Architecture -->
+            <div class="mb-24">
+                <div class="text-center mb-16">
+                    <div class="text-blue-400 font-mono text-xs uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
+                        <span class="w-8 h-[1px] bg-blue-500"></span> Storage Engineering
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white font-heading">Multi-Tier Storage <span class="text-blue-400">Architecture</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto mt-2 text-sm">Separating ultra-low latency flash compute from resilient, expandable bulk storage.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Tier 1 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-bolt text-yellow-400 text-2xl"></i>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white font-heading">Tier 1: Hot NVMe Flash</h3>
+                                    <span class="text-xs font-mono text-yellow-400">1.5 TB Total Across PVE Hosts</span>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs font-mono rounded-full">&lt; 0.5ms I/O</span>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            High-throughput solid-state flash backing all virtual machine root disks, PostgreSQL relational databases, Redis memory stores, and active Docker volumes. Ensures instantaneous container startup and database query execution.
+                        </p>
+                        <ul class="text-xs font-mono space-y-2.5 text-gray-300">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400"></i> Proxmox VM and LXC root partitions</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400"></i> High-IOPS PostgreSQL 16 & Redis caches</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-yellow-400"></i> Active container state and telemetry databases</li>
+                        </ul>
+                    </div>
+
+                    <!-- Tier 2 -->
+                    <div class="spotlight-card p-8 rounded-2xl">
+                        <div class="flex justify-between items-center mb-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-hdd text-emerald-400 text-2xl"></i>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white font-heading">Tier 2: Warm/Cold Bulk NAS</h3>
+                                    <span class="text-xs font-mono text-emerald-400">6.0 TB Raw / 5.4 TB Net MergerFS</span>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono rounded-full">Zero Vendor Lock-in</span>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Rather than using fragile hardware RAID or rigid ZFS that mandates identical drive sizes, MergerFS combines a 4TB Seagate IronWolf and a 2TB WD Red into a single unified mount point. If any single drive ever fails, files on remaining drives stay 100% readable.
+                        </p>
+                        <ul class="text-xs font-mono space-y-2.5 text-gray-300">
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-400"></i> 4TB Seagate IronWolf + 2TB Western Digital Red NAS</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-400"></i> Unified MergerFS mount exposed via SMB/CIFS</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-check text-emerald-400"></i> Raspberry Pis utilize 256MB log2ram disks to protect flash memory</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Closed-Loop Self-Healing Stack -->
+            <div class="mb-24">
+                <div class="text-center mb-16">
+                    <div class="text-orange-400 font-mono text-xs uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
+                        <span class="w-8 h-[1px] bg-orange-500"></span> Autonomous Incident Remediation
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white font-heading">Closed-Loop <span class="text-orange-400">Self-Healing Pipeline</span></h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto mt-2 text-sm">Observe → Alert → Analyze → Remediate. An automated event loop powered by LLMs and Ansible that diagnoses and fixes incidents autonomously.</p>
+                </div>
+
+                <div class="spotlight-card p-8 lg:p-12 rounded-2xl">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+                        <!-- Step 1 -->
+                        <div class="bg-gray-900/80 border border-white/10 p-6 rounded-xl relative">
+                            <span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 font-mono text-xs font-bold mb-3 inline-block">STAGE 01</span>
+                            <h4 class="font-bold text-white text-base font-heading mb-2">Detection & Probing</h4>
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                24/7 edge health probes via Uptime Kuma and Prometheus Alertmanager detect service degradation or non-200 HTTP responses.
+                            </p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="bg-gray-900/80 border border-white/10 p-6 rounded-xl relative">
+                            <span class="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 font-mono text-xs font-bold mb-3 inline-block">STAGE 02</span>
+                            <h4 class="font-bold text-white text-base font-heading mb-2">Event Dispatch</h4>
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                Alert triggers a webhook to the n8n "Lab Medic" orchestrator, which immediately pulls the last 50 log lines from Grafana Loki.
+                            </p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="bg-gray-900/80 border border-white/10 p-6 rounded-xl relative">
+                            <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono text-xs font-bold mb-3 inline-block">STAGE 03</span>
+                            <h4 class="font-bold text-white text-base font-heading mb-2">LLM Log Triage</h4>
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                A local LLM evaluates the error buffer to distinguish between transient network timeouts and fatal application crashes.
+                            </p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="bg-gray-900/80 border border-white/10 p-6 rounded-xl relative">
+                            <span class="px-2 py-0.5 rounded bg-orange-500/10 text-orange-400 font-mono text-xs font-bold mb-3 inline-block">STAGE 04</span>
+                            <h4 class="font-bold text-white text-base font-heading mb-2">Ansible Remediation</h4>
+                            <p class="text-gray-400 text-xs leading-relaxed">
+                                If resolvable, n8n invokes Ansible's self_heal playbook to recycle target containers; otherwise, escalates to Telegram and Gotify.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 p-4 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-gray-400 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-terminal text-emerald-400"></i>
+                            <span>ansible-playbook -i inventory.ini self_heal.yml --extra-vars "target=service"</span>
+                        </div>
+                        <span class="text-emerald-400 font-bold flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Mean Time To Recovery: &lt; 45 Seconds
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safe Two-Wave Maintenance Cycle & IaC -->
+            <div class="spotlight-card p-8 lg:p-12 rounded-2xl mb-24">
+                <div class="grid lg:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <div class="text-purple-400 font-mono text-xs uppercase tracking-widest mb-2 flex items-center gap-2">
+                            <span class="w-8 h-[1px] bg-purple-500"></span> Operational Rigor
+                        </div>
+                        <h3 class="text-3xl font-bold text-white font-heading mb-4">Zero-Downtime Two-Wave Maintenance</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            System reboots and kernel upgrades are orchestrated via Ansible in a strict two-wave dependency chain. Wave 1 cycles stateless workers, proxy caches, and edge nodes. Wave 2 safely coordinates database checkpoints, storage unmounts, and hypervisor maintenance, eliminating deadlock states.
+                        </p>
+                        <div class="space-y-3 font-mono text-xs text-gray-300">
+                            <div class="flex items-center gap-3">
+                                <span class="w-6 h-6 rounded bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold">1</span>
+                                <span>Wave 1: Worker LXCs, telemetry forwarders, edge DNS nodes</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="w-6 h-6 rounded bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold">2</span>
+                                <span>Wave 2: Storage pools, PostgreSQL primary, core orchestration hypervisor</span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Services Stack -->
-                    <div class="w-full md:w-72 z-10">
-                        <div class="bg-gray-900 border border-purple-500/30 p-6 rounded-2xl shadow-[0_0_30px_rgba(147,51,234,0.15)] flex flex-col gap-3 transform hover:scale-105 transition-transform duration-300">
-                            <h4 class="font-bold text-white text-center mb-2 border-b border-white/10 pb-2">Proxmox Services</h4>
-                            <div class="flex items-center gap-3 bg-black/50 p-2 rounded border border-white/5">
-                                <i class="fas fa-brain text-purple-400"></i> <span class="text-sm text-gray-300 font-semibold">AI Agents (Ollama)</span>
-                            </div>
-                            <div class="flex items-center gap-3 bg-black/50 p-2 rounded border border-white/5">
-                                <i class="fas fa-cogs text-emerald-400"></i> <span class="text-sm text-gray-300 font-semibold">n8n Automation</span>
-                            </div>
-                            <div class="flex items-center gap-3 bg-black/50 p-2 rounded border border-white/5">
-                                <i class="fas fa-database text-blue-400"></i> <span class="text-sm text-gray-300 font-semibold">PostgreSQL & Redis</span>
-                            </div>
+                    <div class="bg-[#08080c] border border-white/10 rounded-xl p-6 font-mono text-xs text-gray-300">
+                        <div class="flex items-center justify-between pb-3 border-b border-white/10 text-gray-500 mb-4">
+                            <span>repo-structure.txt</span>
+                            <span class="text-blue-400">100% Declarative</span>
                         </div>
+                        <pre class="text-gray-400 leading-relaxed overflow-x-auto">
+├── ansible/
+│   ├── inventory.ini        # Target node registry
+│   ├── playbooks/           # deploy.yml, self_heal.yml, reboot.yml
+│   └── vault.yml            # Encrypted credentials & secrets
+├── docker-compose/          # Master declarative service manifests
+├── terraform/               # Proxmox VM & LXC provisioning specs
+└── LAB_SPEC.md              # Master executable lab specification</pre>
                     </div>
                 </div>
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="text-center">
+                <a href="home-automation.html" class="magnetic-btn inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-all font-mono text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+                    Explore Smart Home IoT Ecosystem <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
 
         </div>
-    </section>
+    </div>
 
+    <!-- Footer -->
+    <footer class="border-t border-white/10 glass-panel py-10 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-gray-500">
+            <div>
+                <span>Manokar G. • Enterprise Systems Architecture & DevOps</span>
+            </div>
+            <div>
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Return to Portfolio Overview</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        // Number Counter Animation
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200; 
-
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / speed;
-
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 20);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            
-            ScrollTrigger.create({
-                trigger: counter,
-                start: "top 90%",
-                onEnter: updateCount,
-                once: true
-            });
-        });
-
-        // App Card Stagger Animation
-        gsap.from(".app-card", {
-            scrollTrigger: {
-                trigger: ".app-card",
-                start: "top 80%"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "back.out(1.5)"
-        });
-    </script>
 </body>
 </html>

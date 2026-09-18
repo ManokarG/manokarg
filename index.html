@@ -339,34 +339,34 @@
                         <div class="p-8 lg:p-12 flex flex-col justify-center">
                             <div class="flex items-center gap-3 mb-4">
                                 <i class="fas fa-server text-purple-400 text-3xl"></i>
-                                <h3 class="text-3xl font-black text-white tracking-tight font-heading">Autonomous AI & GitOps Homelab</h3>
+                                <h3 class="text-3xl font-black text-white tracking-tight font-heading">Enterprise Hybrid Cloud & AI Lab</h3>
                             </div>
-                            <p class="text-blue-400 font-bold text-xs uppercase tracking-widest font-mono mb-6">Proxmox VE • Ansible • Docker • Tailscale</p>
+                            <p class="text-blue-400 font-bold text-xs uppercase tracking-widest font-mono mb-6">4 Physical Nodes • Proxmox VE 8.x • LangGraph • 6.9TB MergerFS</p>
                             
                             <div class="space-y-4 text-gray-400 text-sm leading-relaxed mb-8">
                                 <p>
-                                    Designed, provisioned, and managed an enterprise-grade, highly available homelab cluster spanning multiple bare-metal Proxmox hypervisors and ARM-based edge nodes (Raspberry Pis).
+                                    Provisioned and orchestrated a 4-node bare-metal hybrid cloud spanning AMD Ryzen and Intel Core hypervisors paired with ARM64 edge diagnostics nodes.
                                 </p>
                                 <p>
-                                    <strong>IaC & GitOps:</strong> 100% of the infrastructure is defined in code via Ansible and Docker Compose, featuring automated CI/CD pipelines and secrets managed via Ansible Vault.
+                                    <strong>Distributed AI & Code Sandboxes:</strong> Deployed RabbitMQ message queuing, PegaProx multi-model gateway, and LangGraph DAGs with LangSmith tracing. Equipped with isolated LXC container sandboxes for safe AI code execution.
                                 </p>
                                 <p>
-                                    <strong>Advanced AI & Automation:</strong> Deployed an asynchronous n8n automation cluster and locally hosted LLMs (Ollama/DeepSeek) powering LangGraph workflows and secure agentic sandboxes.
+                                    <strong>Closed-Loop Self-Healing:</strong> Integrated Prometheus, Loki, and Uptime Kuma with local LLM log analysis. Automatically triggers Ansible remediation playbooks to recover services in under 45 seconds without human intervention.
                                 </p>
                                 <p>
-                                    <strong>Self-Healing:</strong> Comprehensive monitoring utilizing Prometheus, Loki, and Grafana. Custom Python health-check scripts trigger automated remediation prior to human intervention.
+                                    <strong>Resilient Storage Tiering:</strong> 1.5TB hot NVMe flash for VM roots and PostgreSQL, unified with a 5.4TB net MergerFS bulk NAS pool via hardware SATA passthrough.
                                 </p>
                             </div>
                             
                             <div class="flex flex-wrap gap-2 mb-8">
                                 <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fab fa-linux text-yellow-500 mr-2"></i> Proxmox VE</span>
-                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-network-wired text-blue-500 mr-2"></i> Traefik</span>
-                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-brain text-purple-500 mr-2"></i> Local LLMs</span>
-                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fab fa-docker text-blue-400 mr-2"></i> Docker</span>
-                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-robot text-emerald-500 mr-2"></i> n8n</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-shield-alt text-purple-400 mr-2"></i> Authelia & Traefik v3</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-brain text-blue-400 mr-2"></i> LangGraph & Ollama</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-database text-emerald-400 mr-2"></i> MergerFS 5.4TB</span>
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-heartbeat text-orange-400 mr-2"></i> Closed-Loop Self-Healing</span>
                             </div>
                             <a href="homelab.html" class="magnetic-btn inline-block px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold rounded-xl transition-all text-center text-xs font-mono uppercase tracking-wider shadow-[0_0_20px_rgba(147,51,234,0.25)]">
-                                Read Full Case Study <i class="fas fa-arrow-right ml-2"></i>
+                                Read Full Architecture Case Study <i class="fas fa-arrow-right ml-2"></i>
                             </a>
                         </div>
                     </div>
