@@ -16,10 +16,13 @@
 <body class="antialiased overflow-x-hidden">
 
     <!-- Splash Screen Intro -->
-    <div id="splash-screen" class="fixed inset-0 z-[100] flex items-center justify-center bg-[#050505]">
-        <h1 id="splash-text" class="text-6xl md:text-9xl font-black text-white tracking-tighter">Manokar G<span class="text-blue-500">.</span></h1>
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-500 text-sm tracking-widest uppercase">
-            Scroll Down
+    <div id="splash-screen" class="fixed inset-0 z-[100] flex items-center justify-center bg-[#050505] cursor-pointer select-none">
+        <div class="text-center px-4">
+            <h1 id="splash-text" class="text-6xl md:text-9xl font-black text-white tracking-tighter">Manokar G<span class="text-blue-500">.</span></h1>
+            <div id="splash-scroll-prompt" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-400 hover:text-white transition-colors text-sm tracking-widest uppercase flex items-center gap-2">
+                <span>Scroll Down</span>
+                <i class="fas fa-chevron-down text-xs"></i>
+            </div>
         </div>
     </div>
     <!-- 3D Background Canvas -->
@@ -32,7 +35,7 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-black tracking-tighter text-white">M<span class="text-blue-500">.</span>G</a>
+                    <a href="#home" class="text-2xl font-black tracking-tighter text-white">M<span class="text-blue-500">.</span>G</a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
@@ -42,12 +45,23 @@
                         <a href="#interests" class="nav-link font-medium text-sm uppercase tracking-wider">Interests</a>
                     </div>
                 </div>
-                <div>
+                <div class="flex items-center gap-4">
                     <a href="https://github.com/ManokarG" target="_blank" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fab fa-github text-xl"></i>
                     </a>
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-btn" class="md:hidden text-gray-400 hover:text-white focus:outline-none text-xl p-1" aria-label="Toggle navigation">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
             </div>
+        </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/10 px-6 pt-3 pb-5 space-y-3">
+            <a href="#home" class="mobile-nav-link block font-medium text-sm uppercase tracking-wider py-2 text-gray-300 hover:text-white">Home</a>
+            <a href="#experience" class="mobile-nav-link block font-medium text-sm uppercase tracking-wider py-2 text-gray-300 hover:text-white">Experience</a>
+            <a href="#projects" class="mobile-nav-link block font-medium text-sm uppercase tracking-wider py-2 text-gray-300 hover:text-white">Lab & Projects</a>
+            <a href="#interests" class="mobile-nav-link block font-medium text-sm uppercase tracking-wider py-2 text-gray-300 hover:text-white">Interests</a>
         </div>
     </nav>
 
@@ -82,12 +96,14 @@
         
         <!-- Scroll indicator -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-gray-500 text-xl"></i>
+            <a href="#experience" class="text-gray-500 hover:text-white transition-colors block p-2" aria-label="Scroll to experience">
+                <i class="fas fa-chevron-down text-xl"></i>
+            </a>
         </div>
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-32 relative z-10">
+    <section id="experience" class="py-20 md:py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16 animate-on-scroll">
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Professional <span class="text-blue-400">Experience</span></h2>
@@ -161,7 +177,7 @@
     </section>
 
     <!-- Lab & Projects Section -->
-    <section id="projects" class="py-32 relative z-10 bg-black/40 border-y border-white/5">
+    <section id="projects" class="py-20 md:py-24 relative z-10 bg-black/40 border-y border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16 animate-on-scroll text-center">
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Personal <span class="text-purple-400">Lab & Projects</span></h2>
@@ -301,7 +317,7 @@
     </section>
 
     <!-- Interests Section -->
-    <section id="interests" class="py-32 relative z-10">
+    <section id="interests" class="py-20 md:py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16 animate-on-scroll">
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Beyond the <span class="text-emerald-400">Screen</span></h2>
