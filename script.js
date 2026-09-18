@@ -226,7 +226,6 @@ if (typeof gsap !== 'undefined') {
             return;
         }
         splashDismissed = true;
-        sessionStorage.setItem('splashDismissed', 'true');
 
         if (!splashScreen) {
             animateHero();
@@ -251,20 +250,18 @@ if (typeof gsap !== 'undefined') {
     }
 
     if (splashScreen) {
-        // If already dismissed in this session or arriving with a hash, dismiss immediately
-        if (sessionStorage.getItem('splashDismissed') === 'true' || window.location.hash) {
+        // If arriving with a hash, dismiss immediately and jump to anchor
+        if (window.location.hash) {
             splashScreen.style.display = 'none';
             splashDismissed = true;
             animateHero();
-            if (window.location.hash) {
-                setTimeout(() => scrollToTarget(window.location.hash), 150);
-            }
+            setTimeout(() => scrollToTarget(window.location.hash), 150);
         } else {
             // Animate numeric progress loader from 0% to 100%
             let progressObj = { value: 0 };
             const countTween = gsap.to(progressObj, {
                 value: 100,
-                duration: 1.2,
+                duration: 0.9,
                 ease: "power2.out",
                 onUpdate: () => {
                     const val = Math.round(progressObj.value);
@@ -274,7 +271,7 @@ if (typeof gsap !== 'undefined') {
                 onComplete: () => {
                     setTimeout(() => {
                         dismissSplash();
-                    }, 200);
+                    }, 150);
                 }
             });
 
