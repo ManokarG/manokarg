@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=2026.05">
+    <link rel="stylesheet" href="styles.css?v=2026.06">
 </head>
 <body class="antialiased overflow-x-hidden">
 
@@ -21,15 +21,11 @@
     <div id="cursor-dot" class="cursor-dot hidden lg:block"></div>
     <div id="cursor-ring" class="cursor-ring hidden lg:block"></div>
 
-    <!-- Ambient Aurora Mesh Background -->
-    <div class="aurora-bg">
-        <div class="aurora-orb aurora-orb-1"></div>
-        <div class="aurora-orb aurora-orb-2"></div>
-        <div class="aurora-orb aurora-orb-3"></div>
-    </div>
+    <!-- 3D Cosmic Space Background Canvas -->
+    <div id="canvas-container"></div>
 
     <!-- Splash Screen Intro (Awwwards Studio Style) -->
-    <div id="splash-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050508] cursor-pointer select-none">
+    <div id="splash-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050508]/85 backdrop-blur-sm cursor-pointer select-none">
         <div class="text-center px-6 max-w-2xl w-full">
             <div class="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono tracking-widest uppercase">
                 <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping"></span>
@@ -52,9 +48,6 @@
             </div>
         </div>
     </div>
-
-    <!-- 3D Background Canvas -->
-    <div id="canvas-container"></div>
 
     <!-- Main Content Wrapper -->
     <div id="main-content">
@@ -495,6 +488,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-    <script src="script.js?v=2026.05"></script>
+    <script src="script.js?v=2026.06"></script>
 </body>
 </html>

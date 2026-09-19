@@ -30,58 +30,6 @@ h1, h2, h3, h4, .font-heading {
     letter-spacing: -0.03em;
 }
 
-/* Ambient Aurora Glow Orbs */
-.aurora-bg {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.aurora-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.16;
-    animation: orbFloat 16s ease-in-out infinite alternate;
-    will-change: transform;
-}
-
-.aurora-orb-1 {
-    width: 600px;
-    height: 600px;
-    top: -150px;
-    left: -100px;
-    background: radial-gradient(circle, #3b82f6 0%, rgba(59, 130, 246, 0) 70%);
-}
-
-.aurora-orb-2 {
-    width: 700px;
-    height: 700px;
-    top: 35%;
-    right: -200px;
-    background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0) 70%);
-    animation-duration: 20s;
-    animation-delay: -6s;
-}
-
-.aurora-orb-3 {
-    width: 550px;
-    height: 550px;
-    bottom: 5%;
-    left: 15%;
-    background: radial-gradient(circle, #10b981 0%, rgba(16, 185, 129, 0) 70%);
-    animation-duration: 22s;
-    animation-delay: -10s;
-}
-
-@keyframes orbFloat {
-    0% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(60px, 40px) scale(1.08); }
-    100% { transform: translate(-50px, 80px) scale(0.95); }
-}
-
 #canvas-container {
     position: fixed;
     top: 0;
@@ -90,6 +38,7 @@ h1, h2, h3, h4, .font-heading {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
+    overflow: hidden;
 }
 
 /* Glassmorphism & Panel Styling */
