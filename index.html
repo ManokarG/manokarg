@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=2026.08">
+    <link rel="stylesheet" href="styles.css?v=2026.09">
 </head>
 <body class="antialiased overflow-x-hidden">
 
@@ -365,53 +365,34 @@
                     </div>
                 </div>
 
-                <!-- Other Projects Grid -->
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Smart Home -->
-                    <div class="spotlight-card rounded-2xl p-8 border border-white/10 animate-on-scroll group flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-4 mb-6">
-                                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/30 group-hover:scale-110 transition-transform">
+                <!-- Smart Home & IoT Automation Feature -->
+                <div class="spotlight-card rounded-2xl p-8 md:p-10 border border-white/10 shadow-[0_0_40px_rgba(16,185,129,0.12)] animate-on-scroll">
+                    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+                        <div class="lg:w-2/3">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/30">
                                     <i class="fas fa-microchip text-emerald-400 text-xl"></i>
                                 </div>
                                 <div>
-                                    <h3 class="text-xl font-bold text-white font-heading">Smart Home IoT</h3>
-                                    <span class="text-emerald-400 text-xs font-mono">Edge Computing & Automation</span>
+                                    <h3 class="text-2xl font-bold text-white font-heading">Smart Home IoT & Edge Automation</h3>
+                                    <span class="text-emerald-400 text-xs font-mono">Hardware Interfacing • Local Voice AI • ESPHome Sensor Fleet</span>
                                 </div>
                             </div>
-                            <p class="text-gray-400 text-sm mb-6 leading-relaxed">A centralized Home Assistant instance orchestrating custom-built ESP32 sensors and commercial IoT devices. Features localized voice control and automated climate management.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="text-xs font-mono font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-md">Home Assistant</span>
-                                <span class="text-xs font-mono font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-md">ESP32</span>
-                                <span class="text-xs font-mono font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-md">MQTT</span>
+                            <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                                A high-availability local Home Assistant automation cluster orchestrating custom-soldered ESP32 microcontroller nodes, multi-protocol Zigbee & Matter sensor meshes, local offline voice processing via Piper & Whisper, and automated climate/energy management.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs font-mono font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-lg">Home Assistant Supervised</span>
+                                <span class="text-xs font-mono font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-lg">Custom ESP32 / ESPHome</span>
+                                <span class="text-xs font-mono font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-lg">MQTT Broker & Zigbee</span>
+                                <span class="text-xs font-mono font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-lg">Local Voice AI</span>
+                                <span class="text-xs font-mono font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-lg">Adaptive Lighting</span>
                             </div>
                         </div>
-                        <a href="home-automation.html" class="magnetic-btn inline-block text-center w-full py-2.5 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 font-bold rounded-lg transition-colors text-xs font-mono uppercase tracking-wider">
-                            View Project Details <i class="fas fa-arrow-right ml-1"></i>
-                        </a>
-                    </div>
-
-                    <!-- E-Commerce -->
-                    <div class="spotlight-card rounded-2xl p-8 border border-white/10 animate-on-scroll group flex flex-col justify-between">
-                        <div>
-                            <div class="flex items-center gap-4 mb-6">
-                                <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/30 group-hover:scale-110 transition-transform">
-                                    <i class="fas fa-shopping-cart text-blue-400 text-xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-bold text-white font-heading">E-Commerce Platform</h3>
-                                    <span class="text-blue-400 text-xs font-mono">Full Stack Engineering</span>
-                                </div>
-                            </div>
-                            <p class="text-gray-400 text-sm mb-6 leading-relaxed">A full-stack e-commerce solution with user authentication, product management, shopping cart, and payment gateway integration built from scratch.</p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="text-xs font-mono font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-md">React</span>
-                                <span class="text-xs font-mono font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-md">Node.js</span>
-                                <span class="text-xs font-mono font-semibold text-blue-300 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-md">PostgreSQL</span>
-                            </div>
-                        </div>
-                        <div class="text-xs font-mono text-gray-500 py-2.5 text-center bg-white/5 rounded-lg border border-white/5">
-                            Enterprise Solution
+                        <div class="lg:w-1/3 flex flex-col justify-center">
+                            <a href="home-automation.html" class="magnetic-btn inline-block text-center py-4 px-6 bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 font-bold rounded-xl transition-all text-xs font-mono uppercase tracking-wider shadow-[0_0_25px_rgba(16,185,129,0.2)]">
+                                Read Smart Home Case Study <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -488,6 +469,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-    <script src="script.js?v=2026.08"></script>
+    <script src="script.js?v=2026.09"></script>
 </body>
 </html>
