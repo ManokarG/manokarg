@@ -138,12 +138,14 @@ if (typeof Lenis !== 'undefined') {
     }
 }
 
-// --- Custom Fluid Cursor with Lerp Follower ---
+// --- Custom Fluid Cursor with AI Robot Companion ---
 const cursorDot = document.getElementById('cursor-dot');
-const cursorRing = document.getElementById('cursor-ring');
-if (cursorDot && cursorRing) {
+const cursorRobot = document.getElementById('cursor-robot') || document.getElementById('cursor-ring');
+if (cursorDot && cursorRobot) {
     let mousePos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    let ringPos = { x: mousePos.x, y: mousePos.y };
+    let robotPos = { x: mousePos.x, y: mousePos.y };
+    let prevX = mousePos.x;
+    let tilt = 0;
 
     window.addEventListener('mousemove', (e) => {
         mousePos.x = e.clientX;
@@ -151,20 +153,34 @@ if (cursorDot && cursorRing) {
         cursorDot.style.transform = `translate(${mousePos.x}px, ${mousePos.y}px)`;
     });
 
-    function updateCursorRing() {
-        ringPos.x += (mousePos.x - ringPos.x) * 0.18;
-        ringPos.y += (mousePos.y - ringPos.y) * 0.18;
-        cursorRing.style.transform = `translate(${ringPos.x}px, ${ringPos.y}px)`;
-        requestAnimationFrame(updateCursorRing);
-    }
-    updateCursorRing();
+    function updateCursorRobot() {
+        // Smooth lerping follower physics
+        const dx = mousePos.x - robotPos.x;
+        const dy = mousePos.y - robotPos.y;
+        robotPos.x += dx * 0.16;
+        robotPos.y += dy * 0.16;
 
-    // Hover state expansion
+        // Dynamic tilt based on horizontal velocity
+        const vx = robotPos.x - prevX;
+        prevX = robotPos.x;
+        tilt += (vx * 1.5 - tilt) * 0.2;
+        const clampedTilt = Math.max(-25, Math.min(25, tilt));
+
+        cursorRobot.style.transform = `translate(${robotPos.x}px, ${robotPos.y}px) translate(-50%, -50%) rotate(${clampedTilt}deg)`;
+        requestAnimationFrame(updateCursorRobot);
+    }
+    updateCursorRobot();
+
+    // Hover state reactions
     const interactiveEls = document.querySelectorAll('a, button, .spotlight-card, input, [role="button"]');
     interactiveEls.forEach(el => {
         el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
         el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
     });
+
+    // Click reaction on robot
+    window.addEventListener('mousedown', () => cursorRobot.classList.add('robot-click'));
+    window.addEventListener('mouseup', () => cursorRobot.classList.remove('robot-click'));
 }
 
 // --- Interactive Spotlight Cards & 3D Tilt ---
