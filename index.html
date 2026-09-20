@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=2026.10">
+    <link rel="stylesheet" href="styles.css?v=2026.11">
 </head>
 <body class="antialiased overflow-x-hidden">
 
@@ -48,12 +48,12 @@
                 Manokar G<span class="text-blue-500">.</span>
             </h1>
             <!-- Progress loader -->
-            <div class="w-48 sm:w-64 h-1 bg-white/10 rounded-full mx-auto overflow-hidden relative mb-4">
+            <div class="w-56 sm:w-80 h-1.5 bg-white/10 rounded-full mx-auto overflow-hidden relative mb-4 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
                 <div id="splash-bar" class="absolute left-0 top-0 bottom-0 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-400 w-0 transition-all duration-300"></div>
             </div>
-            <div class="font-mono text-xs text-gray-500 tracking-widest uppercase flex items-center justify-center gap-3">
-                <span>INITIALIZING SYSTEM</span>
-                <span id="splash-counter" class="text-blue-400 font-bold">0%</span>
+            <div class="font-mono text-xs text-gray-400 tracking-widest uppercase flex items-center justify-center gap-3">
+                <span id="splash-status" class="transition-colors duration-300">INITIALIZING KERNEL & HYPERVISORS</span>
+                <span id="splash-counter" class="text-blue-400 font-bold font-mono">0%</span>
             </div>
             <div id="splash-scroll-prompt" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-gray-400 hover:text-white transition-colors text-xs font-mono tracking-widest uppercase flex items-center gap-2">
                 <span>Click or Scroll to Enter</span>
@@ -424,31 +424,280 @@
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-6">
-                    <!-- AI -->
-                    <div class="interest-card spotlight-card p-8 rounded-2xl animate-on-scroll">
-                        <i class="fas fa-brain text-5xl text-purple-500 mb-6 interest-icon block"></i>
-                        <h3 class="text-xl font-bold text-white mb-3 font-heading">Artificial Intelligence</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Fascinated by neural networks, LLMs, and computer vision. I experiment with fine-tuning models locally in my homelab and integrating AI agents into web applications to solve real-world problems autonomously.
-                        </p>
+                    <!-- Artificial Intelligence: Neural Computation & LLM DAG -->
+                    <div class="interest-card neural-card spotlight-card p-6 sm:p-8 rounded-2xl animate-on-scroll flex flex-col justify-between">
+                        <div>
+                            <!-- Visual LLM & Neural Architecture Graph (SVG) -->
+                            <div class="relative w-full rounded-xl overflow-hidden mb-6 border border-purple-500/20 bg-[#080514]/90 p-3">
+                                <div class="flex items-center justify-between pb-2 mb-2 border-b border-purple-500/15 font-mono text-[10px] text-purple-300">
+                                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span> DAG::AUTONOMOUS_CYCLE</span>
+                                    <span class="text-gray-400">LAT: 18ms • 128k CTX</span>
+                                </div>
+                                <svg class="w-full h-36" viewBox="0 0 340 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <filter id="purpleGlow" x="-20%" y="-20%" width="140%" height="140%">
+                                            <feGaussianBlur stdDeviation="3" result="blur"/>
+                                            <feMerge>
+                                                <feMergeNode in="blur"/>
+                                                <feMergeNode in="SourceGraphic"/>
+                                            </feMerge>
+                                        </filter>
+                                        <linearGradient id="edgeGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.8"/>
+                                            <stop offset="100%" stop-color="#a855f7" stop-opacity="0.9"/>
+                                        </linearGradient>
+                                        <linearGradient id="edgeGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#34d399" stop-opacity="0.8"/>
+                                            <stop offset="100%" stop-color="#a855f7" stop-opacity="0.9"/>
+                                        </linearGradient>
+                                        <linearGradient id="edgeGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#a855f7" stop-opacity="0.9"/>
+                                            <stop offset="100%" stop-color="#818cf8" stop-opacity="0.8"/>
+                                        </linearGradient>
+                                    </defs>
+
+                                    <!-- Directed Flow Edges -->
+                                    <path d="M 68 40 C 110 40, 110 65, 140 68" stroke="url(#edgeGrad1)" stroke-width="1.5" class="dag-edge"/>
+                                    <path d="M 68 100 C 110 100, 110 75, 140 72" stroke="url(#edgeGrad2)" stroke-width="1.5" class="dag-edge"/>
+                                    <path d="M 198 65 C 225 62, 230 40, 260 40" stroke="url(#edgeGrad3)" stroke-width="1.5" class="dag-edge"/>
+                                    <path d="M 198 75 C 225 78, 230 100, 260 100" stroke="#f59e0b" stroke-width="1.5" class="dag-edge" stroke-opacity="0.8"/>
+                                    <path d="M 270 30 C 240 10, 160 10, 168 50" stroke="#c084fc" stroke-width="1.25" class="dag-edge-rev" stroke-dasharray="4 3"/>
+
+                                    <!-- Node 1: Context & Prompt -->
+                                    <rect x="8" y="26" width="60" height="28" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+                                    <text x="38" y="43" fill="#e2e8f0" font-size="8.5" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="bold">Context</text>
+
+                                    <!-- Node 2: Vector RAG -->
+                                    <rect x="8" y="86" width="60" height="28" rx="6" fill="#062016" stroke="#34d399" stroke-width="1"/>
+                                    <text x="38" y="103" fill="#6ee7b7" font-size="8.5" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="bold">Qdrant RAG</text>
+
+                                    <!-- Central Node: Transformer LLM Engine -->
+                                    <g class="synaptic-node">
+                                        <circle cx="168" cy="70" r="28" fill="#1e1035" stroke="#a855f7" stroke-width="1.75" filter="url(#purpleGlow)"/>
+                                        <circle cx="168" cy="70" r="14" fill="#2e1065" stroke="#c084fc" stroke-width="1"/>
+                                        <text x="168" y="68" fill="#ffffff" font-size="8" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="bold">ATTENTION</text>
+                                        <text x="168" y="78" fill="#d8b4fe" font-size="7" font-family="'JetBrains Mono', monospace" text-anchor="middle">LLM CORE</text>
+                                    </g>
+
+                                    <!-- Node 4: LangGraph Cyclic Router -->
+                                    <rect x="260" y="26" width="72" height="28" rx="6" fill="#1e1b4b" stroke="#818cf8" stroke-width="1"/>
+                                    <text x="296" y="38" fill="#e0e7ff" font-size="7.5" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="bold">LangGraph</text>
+                                    <text x="296" y="48" fill="#a5b4fc" font-size="6.5" font-family="'JetBrains Mono', monospace" text-anchor="middle">Cyclic Router</text>
+
+                                    <!-- Node 5: LXC Sandbox & Tools -->
+                                    <rect x="260" y="86" width="72" height="28" rx="6" fill="#1f1a10" stroke="#f59e0b" stroke-width="1"/>
+                                    <text x="296" y="98" fill="#fef3c7" font-size="7.5" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="bold">Tool Eval</text>
+                                    <text x="296" y="108" fill="#fcd34d" font-size="6.5" font-family="'JetBrains Mono', monospace" text-anchor="middle">LXC Sandbox</text>
+                                </svg>
+                            </div>
+
+                            <div class="flex items-center gap-2 mb-2 font-mono text-xs text-purple-400 uppercase tracking-wider">
+                                <i class="fas fa-network-wired text-sm"></i>
+                                <span>Neural Architecture & Agents</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3 font-heading">Artificial Intelligence & LLM DAGs</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Architecting deterministic agent workflows, localized LLM inference, and autonomous cognitive loops. Designing cyclic LangGraph state machines with schema-validated tool calling, Qdrant vector memory retrieval with reciprocal rank fusion, and quantized open weights (Llama 3, Qwen) executed locally in isolated sandboxes.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-4 border-t border-purple-500/15">
+                            <span class="px-2.5 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-[11px] font-mono text-purple-300">LangGraph DAGs</span>
+                            <span class="px-2.5 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-[11px] font-mono text-purple-300">Vector RAG</span>
+                            <span class="px-2.5 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-[11px] font-mono text-purple-300">Local vLLM</span>
+                            <span class="px-2.5 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-[11px] font-mono text-purple-300">Sandboxed Tools</span>
+                        </div>
                     </div>
 
-                    <!-- Electronics -->
-                    <div class="interest-card spotlight-card p-8 rounded-2xl animate-on-scroll" style="transition-delay: 100ms;">
-                        <i class="fas fa-robot text-5xl text-blue-500 mb-6 interest-icon block"></i>
-                        <h3 class="text-xl font-bold text-white mb-3 font-heading">Electronics & PCBs</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            I enjoy designing custom PCBs and programming microcontrollers (ESP32, Arduino). Building physical interfaces, custom sensors for home automation, and understanding the hardware that powers software.
-                        </p>
+                    <!-- Electronics: Custom PCB Design & SMT Fabrication -->
+                    <div class="interest-card pcb-card spotlight-card p-6 sm:p-8 rounded-2xl animate-on-scroll flex flex-col justify-between" style="transition-delay: 100ms;">
+                        <div>
+                            <!-- Visual PCB Schematic Diagram (SVG) -->
+                            <div class="relative w-full rounded-xl overflow-hidden mb-6 border border-emerald-500/25 bg-[#04140d]/90 p-3">
+                                <div class="flex items-center justify-between pb-2 mb-2 border-b border-emerald-500/15 font-mono text-[10px] text-emerald-300">
+                                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> SCHEMATIC::REV_2.4</span>
+                                    <span class="text-amber-400/90 font-mono">FR-4 • 4-LAYER</span>
+                                </div>
+                                <svg class="w-full h-36" viewBox="0 0 340 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="pcbGridSub" width="14" height="14" patternUnits="userSpaceOnUse">
+                                            <path d="M 14 0 L 0 0 0 14" fill="none" stroke="rgba(16, 185, 129, 0.07)" stroke-width="0.75"/>
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#pcbGridSub)"/>
+
+                                    <!-- Ground & Signal Traces (45° routing) -->
+                                    <path d="M 15 35 L 75 35 L 105 65 L 132 65" class="pcb-trace"/>
+                                    <path d="M 15 35 L 75 35 L 105 65 L 132 65" class="pcb-signal"/>
+
+                                    <path d="M 15 65 L 60 65 L 90 95 L 132 95" class="pcb-trace" stroke-opacity="0.7"/>
+
+                                    <path d="M 170 18 L 170 38" class="pcb-trace"/>
+                                    <path d="M 170 18 L 170 38" class="pcb-signal"/>
+
+                                    <path d="M 208 65 L 235 65 L 265 35 L 325 35" class="pcb-trace"/>
+                                    <path d="M 208 65 L 235 65 L 265 35 L 325 35" class="pcb-signal"/>
+
+                                    <path d="M 208 95 L 245 95 L 275 125 L 310 125" class="pcb-trace"/>
+                                    <path d="M 208 95 L 245 95 L 275 125 L 310 125" class="pcb-signal"/>
+
+                                    <!-- Plated Through-Hole Vias (Gold Annular Rings) -->
+                                    <circle cx="75" cy="35" r="3.5" class="pcb-pad"/>
+                                    <circle cx="75" cy="35" r="1.5" fill="#04140d"/>
+
+                                    <circle cx="60" cy="65" r="3.5" class="pcb-pad"/>
+                                    <circle cx="60" cy="65" r="1.5" fill="#04140d"/>
+
+                                    <circle cx="265" cy="35" r="3.5" class="pcb-pad"/>
+                                    <circle cx="265" cy="35" r="1.5" fill="#04140d"/>
+
+                                    <circle cx="275" cy="125" r="3.5" class="pcb-pad"/>
+                                    <circle cx="275" cy="125" r="1.5" fill="#04140d"/>
+
+                                    <!-- SMD Resistor R1 (0603) -->
+                                    <rect x="25" y="90" width="16" height="8" rx="1" fill="#1e293b" stroke="#fbbf24" stroke-width="0.75"/>
+                                    <text x="33" y="85" fill="#94a3b8" font-size="6.5" font-family="'JetBrains Mono', monospace" text-anchor="middle">R1: 10k</text>
+
+                                    <!-- SMD Decoupling Cap C1 -->
+                                    <rect x="135" y="24" width="16" height="8" rx="1" fill="#854d0e" stroke="#fbbf24" stroke-width="0.75"/>
+                                    <text x="143" y="19" fill="#94a3b8" font-size="6.5" font-family="'JetBrains Mono', monospace" text-anchor="middle">C1: 100nF</text>
+
+                                    <!-- Central Microcontroller IC (ESP32-S3 SMT) -->
+                                    <g>
+                                        <rect x="132" y="42" width="76" height="66" rx="4" class="pcb-chip-body"/>
+                                        <circle cx="140" cy="50" r="1.75" fill="#fbbf24"/>
+                                        <text x="170" y="68" fill="#ffffff" font-size="8.5" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="bold">ESP32-S3</text>
+                                        <text x="170" y="79" fill="#10b981" font-size="6.5" font-family="'JetBrains Mono', monospace" text-anchor="middle">WROOM-1</text>
+                                        <text x="170" y="92" fill="#6ee7b7" font-size="5.5" font-family="'JetBrains Mono', monospace" text-anchor="middle">MANOKAR LABS</text>
+
+                                        <!-- SMD Pins on Left & Right -->
+                                        <rect x="127" y="52" width="5" height="2.5" fill="#fbbf24"/>
+                                        <rect x="127" y="60" width="5" height="2.5" fill="#fbbf24"/>
+                                        <rect x="127" y="68" width="5" height="2.5" fill="#fbbf24"/>
+                                        <rect x="127" y="76" width="5" height="2.5" fill="#fbbf24"/>
+                                        <rect x="127" y="84" width="5" height="2.5" fill="#fbbf24"/>
+                                        <rect x="127" y="92" width="5" height="2.5" fill="#fbbf24"/>
+
+                                        <rect x="208" y="52" width="5" height="2.5" fill="#fbbf24"/>
+                                        <rect x="208" y="60" width="5" height="2.5" fill="#fbbf24"/>
+                                        <rect x="208" y="68" width="5" height="2.5" fill="#fbbf24"/>
+                                        <rect x="208" y="76" width="5" height="2.5" fill="#fbbf24"/>
+                                        <rect x="208" y="84" width="5" height="2.5" fill="#fbbf24"/>
+                                        <rect x="208" y="92" width="5" height="2.5" fill="#fbbf24"/>
+                                    </g>
+
+                                    <!-- Status LED (SMD 0805) -->
+                                    <rect x="310" y="121" width="10" height="8" rx="1" fill="#065f46" stroke="#10b981" stroke-width="0.75"/>
+                                    <circle cx="315" cy="125" r="3.5" fill="#34d399" class="pcb-led"/>
+                                    <text x="315" y="115" fill="#a7f3d0" font-size="6.5" font-family="'JetBrains Mono', monospace" text-anchor="middle">LED_PWM</text>
+
+                                    <!-- Bus Labels in Silkscreen Font -->
+                                    <text x="15" y="27" fill="#6ee7b7" font-size="6.5" font-family="'JetBrains Mono', monospace">I2C: SDA/SCL</text>
+                                    <text x="325" y="27" fill="#6ee7b7" font-size="6.5" font-family="'JetBrains Mono', monospace" text-anchor="end">SPI_BUS</text>
+                                </svg>
+                            </div>
+
+                            <div class="flex items-center gap-2 mb-2 font-mono text-xs text-emerald-400 uppercase tracking-wider">
+                                <i class="fas fa-microchip text-sm"></i>
+                                <span>Embedded Hardware & SMT</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3 font-heading">Electronics & Custom PCB Design</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Bridging the physical-digital frontier from schematic capture to surface-mount board fabrication. Designing multi-layer PCBs with KiCad for IoT telemetry, optocoupler-isolated relays, buck/LDO power stages, and high-speed I2C/SPI sensor buses. Hands-on SMD hot-air reflow soldering, oscilloscope signal debugging, and custom bare-metal C++/ESPHome firmware development.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-4 border-t border-emerald-500/15">
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono text-emerald-300">KiCad Schematics</span>
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono text-emerald-300">SMD Reflow</span>
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono text-emerald-300">I2C / SPI Buses</span>
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono text-emerald-300">ESP32 Firmware</span>
+                        </div>
                     </div>
 
-                    <!-- Carpentry -->
-                    <div class="interest-card spotlight-card p-8 rounded-2xl animate-on-scroll" style="transition-delay: 200ms;">
-                        <i class="fas fa-hammer text-5xl text-amber-600 mb-6 interest-icon block"></i>
-                        <h3 class="text-xl font-bold text-white mb-3 font-heading">Carpentry</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Stepping away from screens to work with my hands. I design and build custom furniture, server racks, and workbench setups. Carpentry teaches me patience, precision, and architectural planning in the physical world.
-                        </p>
+                    <!-- Physical Engineering: Carpentry, Electrical & Plumbing Combined -->
+                    <div class="interest-card blueprint-card spotlight-card p-6 sm:p-8 rounded-2xl animate-on-scroll flex flex-col justify-between" style="transition-delay: 200ms;">
+                        <div>
+                            <!-- Visual Architectural Blueprint Diagram (SVG) -->
+                            <div class="relative w-full rounded-xl overflow-hidden mb-6 border border-sky-500/25 bg-[#061527]/90 p-3">
+                                <div class="flex items-center justify-between pb-2 mb-2 border-b border-sky-500/15 font-mono text-[10px] text-sky-300">
+                                    <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span> RESIDENTIAL_BLUEPRINT</span>
+                                    <span class="text-amber-400 font-bold font-mono">100% PERSONAL BUILD</span>
+                                </div>
+                                <svg class="w-full h-36" viewBox="0 0 340 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="blueprintGridSub" width="14" height="14" patternUnits="userSpaceOnUse">
+                                            <path d="M 14 0 L 0 0 0 14" fill="none" stroke="rgba(56, 189, 248, 0.08)" stroke-width="0.75"/>
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#blueprintGridSub)"/>
+
+                                    <!-- Section 1: Structural Carpentry (Left) -->
+                                    <g>
+                                        <rect x="15" y="25" width="80" height="95" rx="3" fill="none" stroke="#d97706" stroke-width="1.2" stroke-dasharray="2 2"/>
+                                        <line x1="15" y1="25" x2="95" y2="120" stroke="#f59e0b" stroke-width="1.5"/>
+                                        <line x1="15" y1="120" x2="95" y2="25" stroke="#f59e0b" stroke-width="1.5"/>
+                                        <rect x="22" y="32" width="66" height="20" fill="#78350f" fill-opacity="0.4" stroke="#d97706" stroke-width="1"/>
+                                        <rect x="22" y="65" width="66" height="20" fill="#78350f" fill-opacity="0.4" stroke="#d97706" stroke-width="1"/>
+                                        <text x="55" y="45" fill="#fde68a" font-size="6.5" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="bold">CARPENTRY</text>
+                                        <text x="55" y="77" fill="#fcd34d" font-size="5.5" font-family="'JetBrains Mono', monospace" text-anchor="middle">Framing & Joinery</text>
+                                        <text x="55" y="112" fill="#d97706" font-size="5.5" font-family="'JetBrains Mono', monospace" text-anchor="middle">Custom Cabinetry</text>
+                                    </g>
+
+                                    <!-- Section 2: Residential Electrical Subpanel (Center) -->
+                                    <g>
+                                        <rect x="115" y="20" width="105" height="105" rx="4" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+                                        <rect x="120" y="25" width="95" height="16" fill="#1e293b" stroke="#0284c7" stroke-width="0.75"/>
+                                        <text x="167" y="36" fill="#7dd3fc" font-size="7" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="bold">120V / 240V SUBPANEL</text>
+                                        
+                                        <!-- Breakers Array -->
+                                        <rect x="123" y="46" width="42" height="10" fill="#0369a1" stroke="#38bdf8" stroke-width="0.5"/>
+                                        <rect x="169" y="46" width="42" height="10" fill="#0369a1" stroke="#38bdf8" stroke-width="0.5"/>
+                                        <rect x="123" y="60" width="42" height="10" fill="#0369a1" stroke="#38bdf8" stroke-width="0.5"/>
+                                        <rect x="169" y="60" width="42" height="10" fill="#0369a1" stroke="#38bdf8" stroke-width="0.5"/>
+                                        <rect x="123" y="74" width="42" height="10" fill="#0369a1" stroke="#38bdf8" stroke-width="0.5"/>
+                                        <rect x="169" y="74" width="42" height="10" fill="#0369a1" stroke="#38bdf8" stroke-width="0.5"/>
+
+                                        <!-- Spark Indicator / Live Bus -->
+                                        <circle cx="167" cy="98" r="4" fill="#fbbf24" class="elec-pulse"/>
+                                        <text x="167" y="115" fill="#fde68a" font-size="5.5" font-family="'JetBrains Mono', monospace" text-anchor="middle">AFCI / GFCI Load Split</text>
+                                    </g>
+
+                                    <!-- Section 3: PEX-A Homerun Plumbing (Right) -->
+                                    <g>
+                                        <rect x="235" y="25" width="90" height="95" rx="3" fill="#0c1e33" stroke="#0ea5e9" stroke-width="1.2"/>
+                                        <text x="280" y="38" fill="#bae6fd" font-size="6.5" font-family="'JetBrains Mono', monospace" text-anchor="middle" font-weight="bold">PEX-A MANIFOLD</text>
+
+                                        <!-- Hot Trunk & Zones -->
+                                        <path d="M 245 50 L 315 50" class="pex-hot" stroke-width="2"/>
+                                        <path d="M 245 62 L 315 62" class="pex-hot" stroke-width="1.5"/>
+                                        <text x="320" y="58" fill="#f87171" font-size="5" font-family="'JetBrains Mono', monospace">HOT</text>
+
+                                        <!-- Cold Trunk & Zones -->
+                                        <path d="M 245 78 L 315 78" class="pex-cold" stroke-width="2"/>
+                                        <path d="M 245 90 L 315 90" class="pex-cold" stroke-width="1.5"/>
+                                        <text x="320" y="86" fill="#38bdf8" font-size="5" font-family="'JetBrains Mono', monospace">COLD</text>
+
+                                        <!-- Auto Shutoff Solenoid Badge -->
+                                        <rect x="245" y="100" width="70" height="13" rx="2" fill="#082f49" stroke="#38bdf8" stroke-width="0.75"/>
+                                        <text x="280" y="109" fill="#7dd3fc" font-size="5" font-family="'JetBrains Mono', monospace" text-anchor="middle">AUTO-SHUTOFF SOLENOID</text>
+                                    </g>
+                                </svg>
+                            </div>
+
+                            <div class="flex items-center gap-2 mb-2 font-mono text-xs text-sky-400 uppercase tracking-wider">
+                                <i class="fas fa-tools text-sm"></i>
+                                <span>Multi-Discipline Physical Engineering</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-3 font-heading">Carpentry, Electrical & Plumbing</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Extending systems engineering beyond the terminal into physical reality. Personally planned and executed the vast majority of my house work: engineered custom structural framing and architectural finish joinery; wired complete 120V/240V residential electrical subpanels with balanced circuit loads, EMT conduits, and smart telemetry; and routed a whole-house PEX-A homerun manifold plumbing network with water filtration and automated emergency shutoff solenoids.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 pt-4 border-t border-sky-500/15">
+                            <span class="px-2.5 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-[11px] font-mono text-sky-300">House Work Executed</span>
+                            <span class="px-2.5 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-[11px] font-mono text-sky-300">120/240V Subpanels</span>
+                            <span class="px-2.5 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-[11px] font-mono text-sky-300">Structural Joinery</span>
+                            <span class="px-2.5 py-1 rounded bg-sky-500/10 border border-sky-500/20 text-[11px] font-mono text-sky-300">PEX-A Manifolds</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -482,6 +731,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-    <script src="script.js?v=2026.10"></script>
+    <script src="script.js?v=2026.11"></script>
 </body>
 </html>

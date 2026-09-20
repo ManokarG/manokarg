@@ -289,7 +289,7 @@ body.cursor-hover .robot-beacon {
 
 /* Interest card hover micro-animations */
 .interest-card {
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .interest-card:hover {
@@ -304,6 +304,116 @@ body.cursor-hover .robot-beacon {
 
 .interest-icon {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Smart Tech Card Variants: AI Neural DAG, PCB Circuit, and Physical Engineering Blueprint */
+.neural-card {
+    background: linear-gradient(180deg, rgba(16, 11, 29, 0.8) 0%, rgba(9, 7, 18, 0.9) 100%);
+    border-color: rgba(168, 85, 247, 0.22);
+}
+.neural-card:hover {
+    border-color: rgba(168, 85, 247, 0.55);
+    box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.8), 0 0 35px -5px rgba(168, 85, 247, 0.25);
+}
+
+.pcb-card {
+    background: linear-gradient(180deg, rgba(6, 26, 17, 0.8) 0%, rgba(3, 14, 9, 0.9) 100%);
+    border-color: rgba(16, 185, 129, 0.22);
+}
+.pcb-card:hover {
+    border-color: rgba(16, 185, 129, 0.55);
+    box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.8), 0 0 35px -5px rgba(16, 185, 129, 0.25);
+}
+
+.blueprint-card {
+    background: linear-gradient(180deg, rgba(7, 23, 42, 0.8) 0%, rgba(4, 13, 26, 0.9) 100%);
+    border-color: rgba(56, 189, 248, 0.22);
+}
+.blueprint-card:hover {
+    border-color: rgba(56, 189, 248, 0.55);
+    box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.8), 0 0 35px -5px rgba(56, 189, 248, 0.25);
+}
+
+/* Neural DAG & Synapse Animations */
+@keyframes dagEdgeFlow {
+    from { stroke-dashoffset: 36; }
+    to { stroke-dashoffset: 0; }
+}
+@keyframes dagEdgeFlowRev {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: 36; }
+}
+@keyframes synapsePulse {
+    0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #a855f7); }
+    50% { transform: scale(1.05); filter: drop-shadow(0 0 10px #c084fc); }
+}
+.dag-edge {
+    stroke-dasharray: 5 4;
+    animation: dagEdgeFlow 2s linear infinite;
+}
+.dag-edge-rev {
+    stroke-dasharray: 5 4;
+    animation: dagEdgeFlowRev 2.4s linear infinite;
+}
+.synaptic-node {
+    transform-origin: center;
+    animation: synapsePulse 3.5s ease-in-out infinite;
+}
+
+/* PCB Trace & SMT Circuit Animations */
+@keyframes pcbSignalMove {
+    from { stroke-dashoffset: 70; }
+    to { stroke-dashoffset: 0; }
+}
+@keyframes pcbLedBlink {
+    0%, 100% { opacity: 0.35; filter: drop-shadow(0 0 2px #10b981); }
+    50% { opacity: 1; filter: drop-shadow(0 0 12px #34d399); }
+}
+.pcb-trace {
+    stroke: #10b981;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.pcb-signal {
+    stroke: #fbbf24;
+    stroke-dasharray: 10 24;
+    animation: pcbSignalMove 3s linear infinite;
+}
+.pcb-pad {
+    fill: #f59e0b;
+    stroke: #fbbf24;
+}
+.pcb-chip-body {
+    fill: #05140d;
+    stroke: #10b981;
+    stroke-width: 1.5;
+}
+.pcb-led {
+    animation: pcbLedBlink 1.8s ease-in-out infinite;
+}
+
+/* Blueprint & Physical Infrastructure Animations */
+@keyframes fluidFlow {
+    from { stroke-dashoffset: 40; }
+    to { stroke-dashoffset: 0; }
+}
+@keyframes elecPulse {
+    0%, 100% { opacity: 0.45; }
+    50% { opacity: 1; filter: drop-shadow(0 0 9px #f59e0b); }
+}
+.pex-hot {
+    stroke: #ef4444;
+    stroke-dasharray: 6 5;
+    animation: fluidFlow 2s linear infinite;
+}
+.pex-cold {
+    stroke: #0ea5e9;
+    stroke-dasharray: 6 5;
+    animation: fluidFlow 2s linear infinite;
+}
+.elec-pulse {
+    animation: elecPulse 2.2s ease-in-out infinite;
 }
 
 /* Timeline elements */

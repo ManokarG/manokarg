@@ -258,11 +258,12 @@ if (typeof gsap !== 'undefined') {
         }
     }
 
-    // Splash Screen Transition with Digital Counter
+    // Splash Screen Transition with Digital Counter & Technical Status
     const splashScreen = document.getElementById('splash-screen');
     const splashText = document.getElementById('splash-text');
     const splashCounter = document.getElementById('splash-counter');
     const splashBar = document.getElementById('splash-bar');
+    const splashStatus = document.getElementById('splash-status');
 
     function dismissSplash(targetHash) {
         if (splashDismissed) {
@@ -286,11 +287,11 @@ if (typeof gsap !== 'undefined') {
                 }
             }
         })
-        .to(splashText, { scale: 0.85, opacity: 0, duration: 0.35, ease: "power2.inOut" })
-        .to(splashScreen, { opacity: 0, duration: 0.35, ease: "power2.out" }, "-=0.15")
+        .to(splashText, { scale: 0.9, opacity: 0, duration: 0.45, ease: "power2.inOut" })
+        .to(splashScreen, { opacity: 0, duration: 0.45, ease: "power2.out" }, "-=0.2")
         .add(() => {
             animateHero();
-        }, "-=0.1");
+        }, "-=0.15");
     }
 
     if (splashScreen) {
@@ -301,21 +302,40 @@ if (typeof gsap !== 'undefined') {
             animateHero();
             setTimeout(() => scrollToTarget(window.location.hash), 150);
         } else {
-            // Animate numeric progress loader from 0% to 100%
+            // Cinematic numeric progress loader (2.6s duration so visitor can clearly see the intro screen)
             let progressObj = { value: 0 };
             const countTween = gsap.to(progressObj, {
                 value: 100,
-                duration: 0.9,
-                ease: "power2.out",
+                duration: 2.6,
+                ease: "power1.inOut",
                 onUpdate: () => {
                     const val = Math.round(progressObj.value);
                     if (splashCounter) splashCounter.textContent = `${val}%`;
                     if (splashBar) splashBar.style.width = `${val}%`;
+
+                    if (splashStatus) {
+                        if (val < 18) {
+                            splashStatus.textContent = "INITIALIZING KERNEL & HYPERVISORS";
+                        } else if (val < 42) {
+                            splashStatus.textContent = "ORCHESTRATING LOCAL AI & NEURAL DAGs";
+                        } else if (val < 68) {
+                            splashStatus.textContent = "SYNCING GITOPS INFRASTRUCTURE";
+                        } else if (val < 88) {
+                            splashStatus.textContent = "ENGAGING ZERO-TRUST EDGE MESH";
+                        } else if (val < 100) {
+                            splashStatus.textContent = "VERIFYING TELEMETRY & HARDWARE BUS";
+                        } else {
+                            splashStatus.textContent = "SYSTEM ARCHITECTURE READY • ONLINE";
+                            splashStatus.classList.remove('text-gray-500');
+                            splashStatus.classList.add('text-emerald-400');
+                        }
+                    }
                 },
                 onComplete: () => {
+                    // Hold 500ms at 100% so the completed state is clearly visible
                     setTimeout(() => {
                         dismissSplash();
-                    }, 150);
+                    }, 500);
                 }
             });
 
@@ -324,9 +344,9 @@ if (typeof gsap !== 'undefined') {
                 dismissSplash();
             }
 
-            // User can skip or scroll through immediately
+            // User can skip or scroll through immediately if desired
             window.addEventListener('wheel', (e) => {
-                if (e.deltaY > 5) handleImmediateDismiss();
+                if (e.deltaY > 25) handleImmediateDismiss();
             }, { passive: true });
 
             window.addEventListener('touchmove', handleImmediateDismiss, { passive: true });
@@ -338,7 +358,7 @@ if (typeof gsap !== 'undefined') {
             });
 
             window.addEventListener('scroll', () => {
-                if (window.scrollY > 10) handleImmediateDismiss();
+                if (window.scrollY > 40) handleImmediateDismiss();
             }, { passive: true });
 
             splashScreen.addEventListener('click', handleImmediateDismiss);
