@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=2026.11">
+    <link rel="stylesheet" href="styles.css?v=2026.12">
 </head>
 <body class="antialiased overflow-x-hidden">
 
@@ -82,6 +82,10 @@
                     <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">LangGraph & Local LLMs</span>
                     <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">MergerFS NAS Pool</span>
                     <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Automated Closed-Loop Remediation</span>
+                    <a href="#roadmap" class="px-3 py-1.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-xs font-mono text-blue-300 transition-colors flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                        <span>Roadmap & In-Progress Work <i class="fas fa-arrow-down text-[10px] ml-0.5"></i></span>
+                    </a>
                 </div>
             </div>
 
@@ -570,6 +574,165 @@
                 </div>
             </div>
 
+            <!-- Future Work & Engineering Roadmap Section -->
+            <div id="roadmap" class="mb-24 animate-on-scroll">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="text-blue-400 font-mono text-xs uppercase tracking-widest mb-3 flex items-center justify-center gap-2">
+                        <span class="w-8 h-[1px] bg-blue-500"></span> Active Horizons & Next-Gen Architecture <span class="w-8 h-[1px] bg-blue-500"></span>
+                    </div>
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-heading mb-4">
+                        Engineering Roadmap: <span class="text-gradient">In-Progress & Future Work</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                        The homelab operates as an active production laboratory. Beyond deployed infrastructure, here is the active engineering backlog and high-priority initiatives currently undergoing development, testing, and deployment.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Task 1: Autonomous Multi-Agent Swarm -->
+                    <div class="spotlight-card p-8 rounded-2xl flex flex-col justify-between border border-purple-500/25 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div>
+                            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30 flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span> IN ACTIVE SPRINT
+                                </span>
+                                <span class="text-gray-400 font-mono text-xs">Target: AI Utility Cluster</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-lg">
+                                    <i class="fas fa-network-wired"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white font-heading">LangGraph Autonomous Agent Swarm & FastMCP</h4>
+                                    <span class="text-purple-400 font-mono text-xs">Multi-Agent State Machines • FastMCP Protocol</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Orchestrating an autonomous 4-bot agent swarm consisting of specialized personas (<strong>Manager</strong>, <strong>Monitor</strong>, <strong>Reviewer</strong>, and <strong>Executor</strong>) running cyclic LangGraph state machines in Python. Integrating FastMCP (Model Context Protocol) servers to provide sandboxed local LLMs with secure schema-validated tool-calling directly into homelab diagnostics, metrics, and Docker APIs over Telegram and Discord.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-xs font-mono text-purple-300">LangGraph DAGs</span>
+                            <span class="px-2.5 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-xs font-mono text-purple-300">FastMCP / Model Context</span>
+                            <span class="px-2.5 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-xs font-mono text-purple-300">Role-Based Agents</span>
+                            <span class="px-2.5 py-1 rounded bg-purple-500/10 border border-purple-500/20 text-xs font-mono text-purple-300">Secure Sandboxed Exec</span>
+                        </div>
+                    </div>
+
+                    <!-- Task 2: High-Availability Secondary DNS Mesh -->
+                    <div class="spotlight-card p-8 rounded-2xl flex flex-col justify-between border border-blue-500/25 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div>
+                            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-blue-500/15 text-blue-300 border border-blue-500/30 flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span> PLANNED ARCHITECTURE
+                                </span>
+                                <span class="text-gray-400 font-mono text-xs">Target: Edge ARM64 Fleet</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-lg">
+                                    <i class="fas fa-shield-halved"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white font-heading">Zero-SPOF Secondary High-Availability DNS</h4>
+                                    <span class="text-blue-400 font-mono text-xs">Redundant Recursive Resolver • adguardhome-sync</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Eliminating the single point of failure in network name resolution. Currently, edge DNS runs on a primary node; implementing a mirrored secondary AdGuard Home recursive DNS resolver onto a secondary ARM64 node. Incorporating <code class="text-blue-300">adguardhome-sync</code> for bi-directional blocklist replication and configuring dual-resolver DHCP dispatch so client machines fail over seamlessly with zero downtime during maintenance reboots.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-300">Secondary DNS Mesh</span>
+                            <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-300">adguardhome-sync</span>
+                            <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-300">Zero-SPOF High Availability</span>
+                            <span class="px-2.5 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-xs font-mono text-blue-300">Dual DHCP Dispatch</span>
+                        </div>
+                    </div>
+
+                    <!-- Task 3: Autonomous Web Intelligence & Scraping Agent -->
+                    <div class="spotlight-card p-8 rounded-2xl flex flex-col justify-between border border-emerald-500/25 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div>
+                            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> IN ACTIVE DEVELOPMENT
+                                </span>
+                                <span class="text-gray-400 font-mono text-xs">Target: Hermes Autonomous Agent</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-lg">
+                                    <i class="fas fa-magnifying-glass-chart"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white font-heading">Autonomous Web Intelligence & Market Arbitrage</h4>
+                                    <span class="text-emerald-400 font-mono text-xs">Playwright Stealth • Hermes Agent • Real-Time Scraping</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Engineering a stealth Playwright browser automation tool and reverse-engineered API scraping client integrated directly into the Hermes autonomous agent VM. Designed to periodically scrape and cross-compare multi-vendor product catalogs and rapid-commerce pricing data, identifying pricing discrepancies and pushing instant event alerts via RabbitMQ and Telegram.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-300">Playwright Stealth</span>
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-300">Hermes Autonomous Bot</span>
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-300">Automated Scraping</span>
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-300">Event-Driven Alerts</span>
+                        </div>
+                    </div>
+
+                    <!-- Task 4: Declarative Proxmox Provisioning & CI/CD Linting -->
+                    <div class="spotlight-card p-8 rounded-2xl flex flex-col justify-between border border-cyan-500/25 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div>
+                            <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                                <span class="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> TESTING & VALIDATION
+                                </span>
+                                <span class="text-gray-400 font-mono text-xs">Target: Core GitOps Pipeline</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-3">
+                                <div class="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-lg">
+                                    <i class="fas fa-cubes-stacked"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold text-white font-heading">Automated Proxmox Provisioning & Pre-Commit CI</h4>
+                                    <span class="text-cyan-400 font-mono text-xs">Terraform Proxmox Provider • Pre-Commit Hooks • Auto-Docs</span>
+                                </div>
+                            </div>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Advancing from declarative service configuration to full lifecycle infrastructure automation. Finalizing one-click Proxmox LXC/VM provisioning via Ansible and Terraform providers, integrating strict Git pre-commit hooks to lint Docker Compose and Ansible YAML syntax prior to commit, and auto-generating human-readable architecture documentation directly from machine-readable JSON topology specifications.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-white/10 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-300">Terraform Proxmox</span>
+                            <span class="px-2.5 py-1 rounded bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-300">Ansible Provisioning</span>
+                            <span class="px-2.5 py-1 rounded bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-300">Pre-Commit Linter</span>
+                            <span class="px-2.5 py-1 rounded bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-300">Living Documentation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Full Engineering Backlog Summary Bar -->
+                <div class="mt-8 spotlight-card p-6 rounded-xl border border-white/10 bg-black/40">
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-list-check text-emerald-400 text-xl"></i>
+                            <div>
+                                <h5 class="text-sm font-bold text-white font-heading">Additional Evaluated Integrations on Backlog</h5>
+                                <p class="text-xs font-mono text-gray-400">Visual agent canvas (Langflow, Sim Studio) • Code structure indexing (CodeGraph AST) • High-throughput MCP agents (mcp-agent)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="px-3 py-1 rounded bg-white/5 border border-white/10 font-mono text-xs text-gray-300">
+                                14 Tracked Backlog Items
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Bottom CTA -->
             <div class="text-center">
                 <a href="home-automation.html" class="magnetic-btn inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-all font-mono text-xs uppercase tracking-wider shadow-[0_0_25px_rgba(255,255,255,0.2)]">
@@ -598,6 +761,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-    <script src="script.js?v=2026.11"></script>
+    <script src="script.js?v=2026.12"></script>
 </body>
 </html>
