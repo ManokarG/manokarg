@@ -13,32 +13,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=2026.12">
+    <link rel="stylesheet" href="styles.css?v=2026.13">
 </head>
 <body class="antialiased overflow-x-hidden">
 
-    <!-- Custom Cursor & AI Robot Companion (Desktop Only) -->
+    <!-- Custom Cursor (Desktop Only) -->
     <div id="cursor-dot" class="cursor-dot hidden lg:block"></div>
-    <div id="cursor-robot" class="cursor-robot hidden lg:block" aria-hidden="true">
-        <svg class="robot-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="20" cy="37" rx="7" ry="2.5" fill="#38bdf8" opacity="0.6"/>
-            <line x1="20" y1="9" x2="20" y2="4" stroke="#60a5fa" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="20" cy="3" r="2.2" fill="#38bdf8" class="robot-beacon"/>
-            <rect x="7" y="9" width="26" height="22" rx="7" fill="#0b0f19" stroke="#38bdf8" stroke-width="1.75"/>
-            <rect x="4" y="15" width="3" height="9" rx="1.5" fill="#60a5fa"/>
-            <rect x="33" y="15" width="3" height="9" rx="1.5" fill="#60a5fa"/>
-            <rect x="10.5" y="13" width="19" height="10" rx="3.5" fill="#030712" stroke="#1e293b" stroke-width="1"/>
-            <circle cx="15.5" cy="18" r="2.2" fill="#38bdf8" class="robot-eye"/>
-            <circle cx="24.5" cy="18" r="2.2" fill="#38bdf8" class="robot-eye"/>
-            <line x1="15" y1="26.5" x2="25" y2="26.5" stroke="#60a5fa" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 1.5"/>
-        </svg>
-    </div>
 
     <!-- 3D Cosmic Space Background Canvas -->
     <div id="canvas-container"></div>
 
     <!-- Splash Screen Intro (Awwwards Studio Style) -->
-    <div id="splash-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050508]/85 backdrop-blur-sm cursor-pointer select-none">
+    <div id="splash-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050508] cursor-pointer select-none">
         <div class="text-center px-4 max-w-5xl w-full">
             <div class="mb-4 inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono tracking-widest uppercase">
                 <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping"></span>
@@ -86,6 +72,7 @@
                             <a href="#experience" class="nav-link font-medium text-xs uppercase tracking-widest font-mono">Experience</a>
                             <a href="#projects" class="nav-link font-medium text-xs uppercase tracking-widest font-mono">Lab & Projects</a>
                             <a href="#interests" class="nav-link font-medium text-xs uppercase tracking-widest font-mono">Interests</a>
+                            <a href="resume.html" class="nav-link font-medium text-xs uppercase tracking-widest font-mono">Resume</a>
                         </div>
                     </div>
 
@@ -107,6 +94,7 @@
                 <a href="#experience" class="mobile-nav-link block font-medium text-sm uppercase tracking-wider py-2 text-gray-300 hover:text-white">Experience</a>
                 <a href="#projects" class="mobile-nav-link block font-medium text-sm uppercase tracking-wider py-2 text-gray-300 hover:text-white">Lab & Projects</a>
                 <a href="#interests" class="mobile-nav-link block font-medium text-sm uppercase tracking-wider py-2 text-gray-300 hover:text-white">Interests</a>
+                <a href="resume.html" class="mobile-nav-link block font-medium text-sm uppercase tracking-wider py-2 text-gray-300 hover:text-white">Resume</a>
             </div>
         </nav>
 
@@ -703,6 +691,32 @@
             </div>
         </section>
 
+        <!-- Resume / Curriculum Vitae CTA -->
+        <section class="py-20 relative z-10">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="spotlight-card glass-panel rounded-2xl p-8 md:p-12 text-center relative overflow-hidden group">
+                    <!-- Decorative gradient border glow -->
+                    <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="mb-4 inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-mono tracking-widest uppercase">
+                            <i class="fas fa-file-alt text-[10px]"></i>
+                            <span>Curriculum Vitae</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-black text-white font-heading mb-4">
+                            View Full Resume<span class="text-blue-500">.</span>
+                        </h2>
+                        <p class="text-gray-400 text-sm md:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
+                            Detailed professional background — systems architecture, DevOps engineering, AI/ML pipelines, custom PCB design, and full-stack development experience.
+                        </p>
+                        <a href="resume.html" class="magnetic-btn inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold text-sm tracking-wide hover:from-blue-500 hover:to-purple-500 transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 hover:scale-105">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Open Resume</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer -->
         <footer class="border-t border-white/10 glass-panel py-12 relative z-10">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
@@ -731,6 +745,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-    <script src="script.js?v=2026.12"></script>
+    <script src="script.js?v=2026.13"></script>
 </body>
 </html>

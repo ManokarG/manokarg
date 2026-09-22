@@ -138,38 +138,12 @@ if (typeof Lenis !== 'undefined') {
     }
 }
 
-// --- Custom Fluid Cursor with AI Robot Companion ---
+// --- Custom Fluid Cursor Dot ---
 const cursorDot = document.getElementById('cursor-dot');
-const cursorRobot = document.getElementById('cursor-robot') || document.getElementById('cursor-ring');
-if (cursorDot && cursorRobot) {
-    let mousePos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    let robotPos = { x: mousePos.x, y: mousePos.y };
-    let prevX = mousePos.x;
-    let tilt = 0;
-
+if (cursorDot) {
     window.addEventListener('mousemove', (e) => {
-        mousePos.x = e.clientX;
-        mousePos.y = e.clientY;
-        cursorDot.style.transform = `translate(${mousePos.x}px, ${mousePos.y}px)`;
+        cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
     });
-
-    function updateCursorRobot() {
-        // Smooth lerping follower physics
-        const dx = mousePos.x - robotPos.x;
-        const dy = mousePos.y - robotPos.y;
-        robotPos.x += dx * 0.16;
-        robotPos.y += dy * 0.16;
-
-        // Dynamic tilt based on horizontal velocity
-        const vx = robotPos.x - prevX;
-        prevX = robotPos.x;
-        tilt += (vx * 1.5 - tilt) * 0.2;
-        const clampedTilt = Math.max(-25, Math.min(25, tilt));
-
-        cursorRobot.style.transform = `translate(${robotPos.x}px, ${robotPos.y}px) translate(-50%, -50%) rotate(${clampedTilt}deg)`;
-        requestAnimationFrame(updateCursorRobot);
-    }
-    updateCursorRobot();
 
     // Hover state reactions
     const interactiveEls = document.querySelectorAll('a, button, .spotlight-card, input, [role="button"]');
@@ -177,11 +151,8 @@ if (cursorDot && cursorRobot) {
         el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
         el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
     });
-
-    // Click reaction on robot
-    window.addEventListener('mousedown', () => cursorRobot.classList.add('robot-click'));
-    window.addEventListener('mouseup', () => cursorRobot.classList.remove('robot-click'));
 }
+
 
 // --- Interactive Spotlight Cards & 3D Tilt ---
 document.querySelectorAll('.spotlight-card').forEach(card => {

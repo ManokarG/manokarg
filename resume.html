@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manokar G - Resume</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css?v=2026.13">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        background: '#050508',
+                        primary: '#3b82f6',
+                        secondary: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                -webkit-print-color-adjust: exact;
+            }
+            .glass-panel {
+                background: white !important;
+                border: 1px solid #e5e7eb !important;
+                box-shadow: none !important;
+            }
+            .no-print, nav, #canvas-container, #cursor-dot, #print-btn {
+                display: none !important;
+            }
+            .text-white {
+                color: #111827 !important;
+            }
+            .text-gray-300, .text-gray-400 {
+                color: #4b5563 !important;
+            }
+            .bg-blue-500\/10 {
+                background-color: #eff6ff !important;
+            }
+            .text-blue-400 {
+                color: #2563eb !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#050508] text-white font-sans antialiased overflow-x-hidden selection:bg-blue-500/30">
+
+    <!-- Background Canvas -->
+    <div id="canvas-container" class="fixed inset-0 z-[-1] opacity-50"></div>
+    
+    <!-- Custom Cursor -->
+    <div id="cursor-dot" class="cursor-dot hidden lg:block fixed w-4 h-4 bg-blue-500 rounded-full pointer-events-none z-50 mix-blend-screen transition-transform duration-100 ease-out"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 glass-panel border-b border-white/5 transition-all duration-300 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-display font-bold text-xl tracking-tight">
+                    <a href="index.html" class="hover:text-blue-400 transition-colors">Manokar G<span class="text-blue-500">.</span></a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="index.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                        <a href="homelab.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Homelab</a>
+                        <a href="home-automation.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home Automation</a>
+                        <a href="resume.html" class="text-blue-400 border-b-2 border-blue-500 px-3 py-2 text-sm font-medium">Resume</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        
+        <!-- Print Button -->
+        <button id="print-btn" onclick="window.print()" class="fixed bottom-8 right-8 z-50 glass-panel bg-blue-600/20 hover:bg-blue-600/40 border-blue-500/30 text-white p-4 rounded-full shadow-lg transition-all hover:scale-110 flex items-center justify-center group no-print">
+            <i class="fas fa-print text-xl group-hover:text-blue-300 transition-colors"></i>
+        </button>
+
+        <!-- Resume Header -->
+        <header class="glass-panel rounded-2xl p-8 mb-8 mt-8 border border-white/10 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -mr-20 -mt-20"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -ml-20 -mb-20"></div>
+            
+            <div class="relative z-10">
+                <h1 class="font-display text-4xl md:text-5xl font-bold mb-2">Manokar G</h1>
+                <h2 class="text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-medium mb-6">Systems Architect & DevOps Engineer</h2>
+                
+                <div class="flex flex-wrap gap-4 text-sm font-mono text-gray-300">
+                    <a href="mailto:cmano.gar04@gmail.com" class="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                        <i class="fas fa-envelope"></i> cmano.gar04@gmail.com
+                    </a>
+                    <a href="https://github.com/ManokarG" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                        <i class="fab fa-github"></i> github.com/ManokarG
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Professional Summary -->
+        <section class="mb-10">
+            <h3 class="font-display text-2xl font-bold mb-4 flex items-center gap-3">
+                <i class="fas fa-user-astronaut text-blue-500"></i> Professional Summary
+            </h3>
+            <div class="glass-panel rounded-xl p-6 text-gray-300 leading-relaxed">
+                <p>Systems Architect and DevOps Engineer with deep expertise in bare-metal infrastructure, container orchestration, and autonomous AI systems. Designed and operates a production-grade private cloud spanning 4 bare-metal nodes with Proxmox VE, GitOps pipelines, and self-healing infrastructure. Passionate about bridging hardware and software through custom PCB design, IoT automation, and local AI/LLM deployments.</p>
+            </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="mb-10">
+            <h3 class="font-display text-2xl font-bold mb-4 flex items-center gap-3">
+                <i class="fas fa-code text-purple-500"></i> Technical Skills
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="glass-panel rounded-xl p-5">
+                    <h4 class="font-bold text-gray-200 mb-3 text-sm uppercase tracking-wider">Infrastructure & DevOps</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-mono text-blue-300">Proxmox VE</span>
+                        <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-mono text-blue-300">Docker & LXC</span>
+                        <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-mono text-blue-300">Ansible</span>
+                        <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-mono text-blue-300">Terraform</span>
+                        <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-mono text-blue-300">GitHub Actions</span>
+                        <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-mono text-blue-300">ArgoCD</span>
+                        <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-mono text-blue-300">ZFS & MergerFS</span>
+                        <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-xs font-mono text-blue-300">Traefik</span>
+                    </div>
+                </div>
+                
+                <div class="glass-panel rounded-xl p-5">
+                    <h4 class="font-bold text-gray-200 mb-3 text-sm uppercase tracking-wider">AI & ML</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs font-mono text-purple-300">LangGraph</span>
+                        <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs font-mono text-purple-300">LangChain</span>
+                        <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs font-mono text-purple-300">Ollama (Local LLMs)</span>
+                        <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs font-mono text-purple-300">Qdrant (RAG)</span>
+                        <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs font-mono text-purple-300">FastMCP</span>
+                        <span class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-xs font-mono text-purple-300">n8n AI Workflows</span>
+                    </div>
+                </div>
+                
+                <div class="glass-panel rounded-xl p-5">
+                    <h4 class="font-bold text-gray-200 mb-3 text-sm uppercase tracking-wider">Full Stack Development</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs font-mono text-green-300">Python</span>
+                        <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs font-mono text-green-300">TypeScript</span>
+                        <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs font-mono text-green-300">React</span>
+                        <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs font-mono text-green-300">Node.js</span>
+                        <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs font-mono text-green-300">FastAPI</span>
+                        <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs font-mono text-green-300">PostgreSQL</span>
+                        <span class="px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs font-mono text-green-300">Redis</span>
+                    </div>
+                </div>
+                
+                <div class="glass-panel rounded-xl p-5">
+                    <h4 class="font-bold text-gray-200 mb-3 text-sm uppercase tracking-wider">Hardware & IoT</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs font-mono text-orange-300">ESP32</span>
+                        <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs font-mono text-orange-300">KiCad PCB Design</span>
+                        <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs font-mono text-orange-300">Home Assistant</span>
+                        <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs font-mono text-orange-300">MQTT</span>
+                        <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs font-mono text-orange-300">Zigbee / Z-Wave</span>
+                        <span class="px-3 py-1 bg-orange-500/10 border border-orange-500/20 rounded-full text-xs font-mono text-orange-300">VLAN & Zero-Trust Network</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience / Key Projects -->
+        <section class="mb-10">
+            <h3 class="font-display text-2xl font-bold mb-6 flex items-center gap-3">
+                <i class="fas fa-briefcase text-blue-400"></i> Experience & Key Projects
+            </h3>
+            
+            <div class="space-y-6">
+                <!-- Project 1 -->
+                <div class="glass-panel rounded-xl p-6 relative border-l-4 border-l-blue-500 hover:bg-white/[0.05] transition-colors">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-3">
+                        <h4 class="font-bold text-lg text-white">Private Cloud Infrastructure</h4>
+                        <span class="text-blue-400 font-mono text-sm">Systems Architect</span>
+                    </div>
+                    <ul class="list-disc list-outside ml-5 text-gray-300 space-y-2 text-sm leading-relaxed">
+                        <li>Architected 4-node bare-metal cluster running Proxmox VE with HA configuration</li>
+                        <li>Implemented GitOps-driven infrastructure with Ansible playbooks and Terraform providers</li>
+                        <li>Deployed MergerFS + SnapRAID NAS with automated parity and scrub schedules</li>
+                        <li>Zero-trust edge security with Traefik reverse proxy and Authelia MFA</li>
+                    </ul>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-panel rounded-xl p-6 relative border-l-4 border-l-purple-500 hover:bg-white/[0.05] transition-colors">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-3">
+                        <h4 class="font-bold text-lg text-white">Autonomous AI Agent Platform</h4>
+                        <span class="text-purple-400 font-mono text-sm">AI Engineer</span>
+                    </div>
+                    <ul class="list-disc list-outside ml-5 text-gray-300 space-y-2 text-sm leading-relaxed">
+                        <li>Built LangGraph-based autonomous agent swarm with FastMCP tool orchestration</li>
+                        <li>Deployed local LLM inference (Ollama) with Qdrant vector store for RAG pipelines</li>
+                        <li>Designed n8n AI automation workflows for autonomous web intelligence (Project Hermes)</li>
+                        <li>Integrated AI agents with homelab infrastructure for self-healing operations</li>
+                    </ul>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-panel rounded-xl p-6 relative border-l-4 border-l-orange-500 hover:bg-white/[0.05] transition-colors">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-3">
+                        <h4 class="font-bold text-lg text-white">Smart Home IoT Ecosystem</h4>
+                        <span class="text-orange-400 font-mono text-sm">IoT Architect</span>
+                    </div>
+                    <ul class="list-disc list-outside ml-5 text-gray-300 space-y-2 text-sm leading-relaxed">
+                        <li>Designed custom ESP32-S3 PCBs in KiCad for sensor integration</li>
+                        <li>Deployed Home Assistant with 50+ Zigbee/Z-Wave devices across the home</li>
+                        <li>Built MQTT-based event pipeline for real-time automation and monitoring</li>
+                        <li>Created dashboards for energy monitoring, climate control, and security</li>
+                    </ul>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="glass-panel rounded-xl p-6 relative border-l-4 border-l-green-500 hover:bg-white/[0.05] transition-colors">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-3">
+                        <h4 class="font-bold text-lg text-white">Full Stack Development</h4>
+                        <span class="text-green-400 font-mono text-sm">Developer</span>
+                    </div>
+                    <ul class="list-disc list-outside ml-5 text-gray-300 space-y-2 text-sm leading-relaxed">
+                        <li>Built responsive web applications with React/TypeScript frontends</li>
+                        <li>Designed RESTful APIs with FastAPI and PostgreSQL backends</li>
+                        <li>Implemented CI/CD pipelines with GitHub Actions and automated testing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Physical Engineering & Education -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+            <!-- Physical Engineering -->
+            <section class="glass-panel rounded-xl p-6">
+                <h3 class="font-display text-xl font-bold mb-4 flex items-center gap-3">
+                    <i class="fas fa-hammer text-yellow-500"></i> Physical Engineering
+                </h3>
+                <ul class="list-disc list-outside ml-5 text-gray-300 space-y-2 text-sm leading-relaxed">
+                    <li>Executed complete house renovation: structural carpentry, 120V/240V electrical subpanel wiring (AFCI/GFCI), PEX-A manifold plumbing</li>
+                    <li>Designed and built custom furniture and storage solutions</li>
+                </ul>
+            </section>
+
+            <!-- Education -->
+            <section class="glass-panel rounded-xl p-6">
+                <h3 class="font-display text-xl font-bold mb-4 flex items-center gap-3">
+                    <i class="fas fa-graduation-cap text-blue-400"></i> Education
+                </h3>
+                <ul class="list-disc list-outside ml-5 text-gray-300 space-y-2 text-sm leading-relaxed">
+                    <li>Self-directed continuous learning in Systems Architecture, AI/ML, and Electronics</li>
+                    <li>Active contributor to open-source infrastructure and automation projects</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Certifications -->
+        <section class="mb-16">
+            <h3 class="font-display text-2xl font-bold mb-4 flex items-center gap-3">
+                <i class="fas fa-certificate text-pink-500"></i> Certifications & Training
+            </h3>
+            <div class="glass-panel rounded-xl p-8 text-center border-dashed border-2 border-white/10">
+                <p class="text-gray-400 font-mono text-sm italic">
+                    <i class="fas fa-hourglass-half mr-2"></i> Section for future certifications coming soon...
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+    <script src="script.js?v=2026.13"></script>
+</body>
+</html>
