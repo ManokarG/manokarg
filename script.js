@@ -229,6 +229,11 @@ if (typeof gsap !== 'undefined') {
         }
     }
 
+    // Pre-hide hero elements so they don't flash behind the splash during its fade-out
+    if (document.getElementById('splash-screen')) {
+        gsap.set([".hero-badge", ".hero-title", ".hero-subtitle", ".hero-description", ".hero-buttons"], { opacity: 0 });
+    }
+
     // Splash Screen Transition with Digital Counter & Technical Status
     const splashScreen = document.getElementById('splash-screen');
     const splashText = document.getElementById('splash-text');
