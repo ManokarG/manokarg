@@ -496,4 +496,41 @@ if (typeof gsap !== 'undefined') {
             stagger: 0.1
         }, "-=0.4");
     }
+
+    // Homelab System Topology Interactive Filter
+    const topoFilterBtns = document.querySelectorAll('.topo-filter-btn');
+    const topoContainer = document.getElementById('topology-diagram-container');
+
+    if (topoFilterBtns.length > 0 && topoContainer) {
+        topoFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                
+                topoFilterBtns.forEach(b => {
+                    b.classList.remove('bg-blue-600', 'text-white', 'border-blue-500');
+                    b.classList.add('bg-white/5', 'text-gray-400', 'border-white/10');
+                });
+                btn.classList.remove('bg-white/5', 'text-gray-400', 'border-white/10');
+                btn.classList.add('bg-blue-600', 'text-white', 'border-blue-500');
+
+                const allItems = topoContainer.querySelectorAll('.topo-item');
+                
+                if (filter === 'all') {
+                    topoContainer.classList.remove('topo-filter-active');
+                    allItems.forEach(item => item.classList.remove('is-highlighted'));
+                } else {
+                    topoContainer.classList.add('topo-filter-active');
+                    allItems.forEach(item => {
+                        const layer = item.getAttribute('data-layer');
+                        if (layer && (layer === filter || layer.includes(filter))) {
+                            item.classList.add('is-highlighted');
+                        } else {
+                            item.classList.remove('is-highlighted');
+                        }
+                    });
+                }
+            });
+        });
+    }
 }
+

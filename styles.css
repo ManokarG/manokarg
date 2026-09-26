@@ -410,3 +410,100 @@ body.cursor-hover .cursor-dot {
     50% { transform: translateY(-8px); }
     100% { transform: translateY(0px); }
 }
+
+/* --- Homelab System Topology & Flow Diagram --- */
+.topology-grid-bg {
+    background-image: radial-gradient(rgba(59, 130, 246, 0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+@keyframes flowPulseCyan {
+    0% { stroke-dashoffset: 48; }
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes flowPulseAmber {
+    0% { stroke-dashoffset: 48; }
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes flowPulseEmerald {
+    0% { stroke-dashoffset: 48; }
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes flowPulsePurple {
+    0% { stroke-dashoffset: 48; }
+    100% { stroke-dashoffset: 0; }
+}
+
+.flow-line-ingress {
+    stroke: #38bdf8;
+    stroke-dasharray: 6 6;
+    animation: flowPulseCyan 2.2s linear infinite;
+}
+
+.flow-line-control {
+    stroke: #34d399;
+    stroke-dasharray: 6 6;
+    animation: flowPulseEmerald 2.5s linear infinite;
+}
+
+.flow-line-ai {
+    stroke: #c084fc;
+    stroke-dasharray: 6 6;
+    animation: flowPulsePurple 2s linear infinite;
+}
+
+.flow-line-telemetry {
+    stroke: #fbbf24;
+    stroke-dasharray: 6 6;
+    animation: flowPulseAmber 2.8s linear infinite;
+}
+
+/* Layer filter dimming and highlighting */
+.topo-item {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.topo-filter-active .topo-item {
+    opacity: 0.22;
+    filter: grayscale(70%) blur(0.5px);
+}
+
+.topo-filter-active .topo-item.is-highlighted {
+    opacity: 1;
+    filter: none;
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
+}
+
+.badge-metal {
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    color: #93c5fd;
+}
+
+.badge-vm {
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #d8b4fe;
+}
+
+.badge-lxc {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.35);
+    color: #6ee7b7;
+}
+
+.badge-docker {
+    background: rgba(14, 165, 233, 0.15);
+    border: 1px solid rgba(14, 165, 233, 0.35);
+    color: #7dd3fc;
+}
+
+.badge-service {
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    color: #fcd34d;
+}

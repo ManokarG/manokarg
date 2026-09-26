@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=2026.13">
+    <link rel="stylesheet" href="styles.css?v=2026.14">
 </head>
 <body class="antialiased overflow-x-hidden">
 
@@ -342,6 +342,9 @@
                                     Provisioned and orchestrated a 4-node bare-metal hybrid cloud spanning AMD Ryzen and Intel Core hypervisors paired with ARM64 edge diagnostics nodes.
                                 </p>
                                 <p>
+                                    <strong>Homelab Central Control Plane:</strong> Engineered a custom Next.js 16 & React 19 command center providing unified fleet control—integrating dynamic service discovery, ESP32 plant IoT telemetry, Hermes AI agent operation queues, and token metering.
+                                </p>
+                                <p>
                                     <strong>Distributed AI & Code Sandboxes:</strong> Deployed RabbitMQ message queuing, PegaProx multi-model gateway, and LangGraph DAGs with LangSmith tracing. Equipped with isolated LXC container sandboxes for safe AI code execution.
                                 </p>
                                 <p>
@@ -353,15 +356,21 @@
                             </div>
                             
                             <div class="flex flex-wrap gap-2 mb-8">
+                                <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-sliders text-emerald-400 mr-2"></i> Homelab Central (Next.js 16)</span>
                                 <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fab fa-linux text-yellow-500 mr-2"></i> Proxmox VE</span>
                                 <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-shield-alt text-purple-400 mr-2"></i> Authelia & Traefik v3</span>
                                 <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-brain text-blue-400 mr-2"></i> LangGraph & Ollama</span>
                                 <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-database text-emerald-400 mr-2"></i> MergerFS 5.4TB</span>
                                 <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-lg font-mono font-semibold text-xs text-gray-300 flex items-center"><i class="fas fa-heartbeat text-orange-400 mr-2"></i> Closed-Loop Self-Healing</span>
                             </div>
-                            <a href="homelab.html" class="magnetic-btn inline-block px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold rounded-xl transition-all text-center text-xs font-mono uppercase tracking-wider shadow-[0_0_20px_rgba(147,51,234,0.25)]">
-                                Read Full Architecture Case Study <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <a href="homelab.html" class="magnetic-btn inline-block px-6 py-3.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold rounded-xl transition-all text-center text-xs font-mono uppercase tracking-wider shadow-[0_0_20px_rgba(147,51,234,0.25)]">
+                                    Read Architecture Case Study <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                                <a href="homelab.html#topology" class="magnetic-btn inline-block px-6 py-3.5 bg-purple-500/15 hover:bg-purple-500/25 border border-purple-500/30 text-purple-300 font-bold rounded-xl transition-all text-center text-xs font-mono uppercase tracking-wider shadow-[0_0_20px_rgba(147,51,234,0.2)]">
+                                    View Full Topology & Flows <i class="fas fa-network-wired ml-2"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -745,6 +754,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-    <script src="script.js?v=2026.13"></script>
+    <script src="script.js?v=2026.14"></script>
 </body>
 </html>

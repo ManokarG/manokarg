@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css?v=2026.13">
+    <link rel="stylesheet" href="styles.css?v=2026.14">
 </head>
 <body class="antialiased overflow-x-hidden">
 
@@ -67,10 +67,17 @@
                     <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Traefik v3 & Authelia SSO</span>
                     <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">LangGraph & Local LLMs</span>
                     <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">MergerFS NAS Pool</span>
-                    <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-gray-300">Automated Closed-Loop Remediation</span>
+                    <a href="#central-app" class="px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-xs font-mono text-emerald-300 transition-colors flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span>Homelab Central App <i class="fas fa-arrow-down text-[10px] ml-0.5"></i></span>
+                    </a>
+                    <a href="#topology" class="px-3 py-1.5 rounded-lg bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/30 text-xs font-mono text-purple-300 transition-colors flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse"></span>
+                        <span>Topology & Service Flows <i class="fas fa-arrow-down text-[10px] ml-0.5"></i></span>
+                    </a>
                     <a href="#roadmap" class="px-3 py-1.5 rounded-lg bg-blue-500/10 hover:bg-blue-500/20 border border-blue-500/30 text-xs font-mono text-blue-300 transition-colors flex items-center gap-1.5">
-                        <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-                        <span>Roadmap & In-Progress Work <i class="fas fa-arrow-down text-[10px] ml-0.5"></i></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                        <span>Roadmap & Backlog <i class="fas fa-arrow-down text-[10px] ml-0.5"></i></span>
                     </a>
                 </div>
             </div>
@@ -273,6 +280,624 @@
                             Unified telemetry portals, WireGuard mesh, and IoT simulation.
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Homelab Central Command Application Showcase -->
+            <div id="central-app" class="mb-24 animate-on-scroll">
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <div class="text-emerald-400 font-mono text-xs uppercase tracking-widest mb-3 flex items-center justify-center gap-2">
+                        <span class="w-8 h-[1px] bg-emerald-500"></span> Central Control Plane • Bespoke Full-Stack Gateway <span class="w-8 h-[1px] bg-emerald-500"></span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-heading mb-4">
+                        Homelab Central: <span class="text-gradient">The Unified Command App</span>
+                    </h2>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                        While Proxmox VE governs bare-metal hypervisors and Portainer handles raw container sockets, <strong>Homelab Central</strong> was custom-engineered from the ground up as a bespoke Next.js 16 & React 19 command center. It unifies operations across all 4 compute nodes, 20+ microservices, autonomous AI agents, and custom IoT hardware into a single intuitive control interface.
+                    </p>
+                </div>
+
+                <!-- Central App Live Interface Mockup / Feature Showcase -->
+                <div class="spotlight-card p-6 sm:p-10 rounded-3xl border border-emerald-500/20 bg-[#08080f]/90 relative overflow-hidden mb-12 shadow-[0_0_50px_rgba(16,185,129,0.1)]">
+                    <!-- Subtle background glow -->
+                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- Console Header Bar -->
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 mb-8 border-b border-white/10 gap-4 relative z-10">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-blue-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                                <i class="fas fa-network-wired text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white font-heading flex items-center gap-2">
+                                    Homelab Central <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-mono border border-emerald-500/30">v1.0 Production</span>
+                                </h3>
+                                <span class="text-xs font-mono text-gray-400">Unified Gateway • Next.js 16 App Router • React 19</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span>ALL SYSTEMS NOMINAL • 4 NODES ONLINE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Quick Navigation Mock -->
+                    <div class="flex flex-wrap gap-2 mb-8 p-3 rounded-xl bg-white/[0.03] border border-white/5 font-mono text-xs text-gray-300 relative z-10">
+                        <span class="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5"><i class="fas fa-grip-horizontal"></i> Overview</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 flex items-center gap-1.5"><i class="fas fa-server"></i> App Catalog</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 flex items-center gap-1.5"><i class="fas fa-seedling text-emerald-400"></i> Plant Manager</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 flex items-center gap-1.5"><i class="fas fa-brain text-purple-400"></i> Hermes AI Agent</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 flex items-center gap-1.5"><i class="fas fa-key text-amber-400"></i> API Keys & Quotas</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-gray-300 flex items-center gap-1.5"><i class="fas fa-chart-line text-blue-400"></i> Telemetry Metrics</span>
+                    </div>
+
+                    <!-- 6 Integrated Modules Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+                        <!-- Module 1: App Catalog -->
+                        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-emerald-500/30 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-sm mb-4">
+                                    <i class="fas fa-boxes-stacked"></i>
+                                </div>
+                                <h4 class="text-base font-bold text-white font-heading mb-2">App Catalog & Service Directory</h4>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                                    Dynamic inventory indexing 30+ services across Docker, LXC, and VMs. Categorized by tier (Infrastructure, AI, Security, Storage, Telemetry) with real-time health pings and single-click authenticated deep-links via Traefik & Authelia.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-blue-300 pt-3 border-t border-white/5">
+                                <span class="px-2 py-0.5 rounded bg-blue-500/10">Zero-Trust SSO</span>
+                                <span class="px-2 py-0.5 rounded bg-blue-500/10">Live Health Checks</span>
+                            </div>
+                        </div>
+
+                        <!-- Module 2: Plant Manager IoT -->
+                        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-emerald-500/30 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-sm mb-4">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <h4 class="text-base font-bold text-white font-heading mb-2">Plant Manager & Hardware IoT</h4>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                                    Direct telemetry ingestion from custom-designed ESP32 microcontroller nodes. Visualizes soil moisture capacitive curves, ambient temperature, humidity, and triggers automated solenoid irrigation valves with safety shut-off limits.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-emerald-300 pt-3 border-t border-white/5">
+                                <span class="px-2 py-0.5 rounded bg-emerald-500/10">ESP32 Telemetry</span>
+                                <span class="px-2 py-0.5 rounded bg-emerald-500/10">MQTT Automated Valves</span>
+                            </div>
+                        </div>
+
+                        <!-- Module 3: Hermes AI Agent -->
+                        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-purple-500/30 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="w-9 h-9 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-sm mb-4">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <h4 class="text-base font-bold text-white font-heading mb-2">Project Hermes AI Operations</h4>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                                    Mission control for the autonomous Hermes agent VM. Tracks active web intelligence scraping jobs, recurring agent tasks, LLM execution pipelines, and displays real-time execution logs and Telegram dispatch notifications.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-purple-300 pt-3 border-t border-white/5">
+                                <span class="px-2 py-0.5 rounded bg-purple-500/10">Autonomous Agents</span>
+                                <span class="px-2 py-0.5 rounded bg-purple-500/10">Playwright Scraping</span>
+                            </div>
+                        </div>
+
+                        <!-- Module 4: API Keys & Model Quotas -->
+                        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-amber-500/30 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="w-9 h-9 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-sm mb-4">
+                                    <i class="fas fa-key"></i>
+                                </div>
+                                <h4 class="text-base font-bold text-white font-heading mb-2">AI Model & Token Consumption</h4>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                                    Real-time observability of token velocity, context saturation, and API credit ceilings. Monitors local Ollama inference clusters (Llama 3, DeepSeek) and cloud routing gateways (OpenRouter) to prevent quota starvation.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-amber-300 pt-3 border-t border-white/5">
+                                <span class="px-2 py-0.5 rounded bg-amber-500/10">Ollama Local Tokens</span>
+                                <span class="px-2 py-0.5 rounded bg-amber-500/10">OpenRouter Quota Caps</span>
+                            </div>
+                        </div>
+
+                        <!-- Module 5: Cluster Telemetry & Health -->
+                        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-cyan-500/30 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-sm mb-4">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4 class="text-base font-bold text-white font-heading mb-2">Consolidated Resource Telemetry</h4>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                                    Aggregates Prometheus time-series metrics, cAdvisor container load, and node-exporter telemetry across all 4 bare-metal hosts. Displays live CPU load, DDR4 saturation, NVMe flash IOPS, and network throughput graphs.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-cyan-300 pt-3 border-t border-white/5">
+                                <span class="px-2 py-0.5 rounded bg-cyan-500/10">Prometheus & cAdvisor</span>
+                                <span class="px-2 py-0.5 rounded bg-cyan-500/10">Uptime Kuma Probes</span>
+                            </div>
+                        </div>
+
+                        <!-- Module 6: Workflow & Incident Dispatcher -->
+                        <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-orange-500/30 transition-all flex flex-col justify-between">
+                            <div>
+                                <div class="w-9 h-9 rounded-lg bg-orange-500/10 border border-orange-500/20 flex items-center justify-center text-orange-400 text-sm mb-4">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h4 class="text-base font-bold text-white font-heading mb-2">Automations & Self-Healing Triggers</h4>
+                                <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                                    Direct execution tracking for n8n workflow queues and RabbitMQ event pipelines. Features manual dispatch triggers for Ansible self-healing playbooks, maintenance wave reboots, and storage scrubbing jobs.
+                                </p>
+                            </div>
+                            <div class="flex flex-wrap gap-1.5 text-[10px] font-mono text-orange-300 pt-3 border-t border-white/5">
+                                <span class="px-2 py-0.5 rounded bg-orange-500/10">n8n Execution Queue</span>
+                                <span class="px-2 py-0.5 rounded bg-orange-500/10">Ansible Manual Dispatch</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full-Stack Topology & Service Flow Diagram -->
+            <div id="topology" class="mb-24 animate-on-scroll">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <div class="text-purple-400 font-mono text-xs uppercase tracking-widest mb-3 flex items-center justify-center gap-2">
+                        <span class="w-8 h-[1px] bg-purple-500"></span> Architectural Blueprint & Service Topology <span class="w-8 h-[1px] bg-purple-500"></span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white font-heading mb-4">
+                        System Topology & <span class="text-gradient">Service Flow Architecture</span>
+                    </h2>
+                    <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                        An end-to-end interactive blueprint detailing how traffic flows from edge ingress, through the Homelab Central command plane, across bare-metal compute hosts, isolated Virtual Machines (VMs), lightweight LXC containers, and Docker microservices.
+                    </p>
+
+                    <!-- Interactive Layer Filter Toolbar -->
+                    <div class="flex flex-wrap justify-center gap-2 mt-8">
+                        <button class="topo-filter-btn px-3.5 py-1.5 rounded-lg bg-blue-600 text-white border border-blue-500 font-mono text-xs transition-all flex items-center gap-1.5" data-filter="all">
+                            <i class="fas fa-layer-group"></i> All Architecture
+                        </button>
+                        <button class="topo-filter-btn px-3.5 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white border border-white/10 font-mono text-xs transition-all flex items-center gap-1.5" data-filter="control">
+                            <i class="fas fa-gamepad text-emerald-400"></i> Central Control & Ingress
+                        </button>
+                        <button class="topo-filter-btn px-3.5 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white border border-white/10 font-mono text-xs transition-all flex items-center gap-1.5" data-filter="vm">
+                            <i class="fas fa-cube text-purple-400"></i> Virtual Machines (VM)
+                        </button>
+                        <button class="topo-filter-btn px-3.5 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white border border-white/10 font-mono text-xs transition-all flex items-center gap-1.5" data-filter="lxc">
+                            <i class="fas fa-bolt text-emerald-400"></i> LXC Containers
+                        </button>
+                        <button class="topo-filter-btn px-3.5 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white border border-white/10 font-mono text-xs transition-all flex items-center gap-1.5" data-filter="docker">
+                            <i class="fab fa-docker text-sky-400"></i> Docker Microservices
+                        </button>
+                        <button class="topo-filter-btn px-3.5 py-1.5 rounded-lg bg-white/5 text-gray-400 hover:text-white border border-white/10 font-mono text-xs transition-all flex items-center gap-1.5" data-filter="flow">
+                            <i class="fas fa-arrows-split-up-and-left text-amber-400"></i> Data & Telemetry Flows
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Diagram Canvas Container -->
+                <div id="topology-diagram-container" class="spotlight-card rounded-3xl p-6 sm:p-10 border border-white/10 bg-[#06060c] topology-grid-bg relative overflow-hidden">
+                    
+                    <!-- Top Section: Ingress Perimeter & Central Control Plane -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+                        <!-- Ingress Perimeter Card -->
+                        <div class="topo-item p-6 rounded-2xl bg-black/60 border border-sky-500/30 shadow-[0_0_20px_rgba(56,189,248,0.1)]" data-layer="control ingress">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 text-sm">
+                                        <i class="fas fa-shield-halved"></i>
+                                    </span>
+                                    <div>
+                                        <h4 class="text-base font-bold text-white font-heading">Zero-Trust Perimeter Ingress</h4>
+                                        <span class="text-[11px] font-mono text-sky-400">Edge Gateway & TLS 1.3 Termination</span>
+                                    </div>
+                                </div>
+                                <span class="badge-service px-2 py-0.5 rounded text-[10px] font-mono">INGRESS TIER</span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+                                <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                                    <div class="text-sky-300 font-bold mb-1 flex items-center gap-1.5"><i class="fas fa-globe text-[10px]"></i> Traefik v3</div>
+                                    <div class="text-[10px] text-gray-400 leading-tight">Reverse proxy with automated Let's Encrypt wildcard SSL</div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                                    <div class="text-purple-300 font-bold mb-1 flex items-center gap-1.5"><i class="fas fa-lock text-[10px]"></i> Authelia SSO</div>
+                                    <div class="text-[10px] text-gray-400 leading-tight">Forward-Auth multi-factor single sign-on boundary</div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                                    <div class="text-emerald-300 font-bold mb-1 flex items-center gap-1.5"><i class="fas fa-network-wired text-[10px]"></i> Tailscale Mesh</div>
+                                    <div class="text-[10px] text-gray-400 leading-tight">End-to-end WireGuard zero-trust private subnet mesh</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Central Control Plane Card -->
+                        <div class="topo-item p-6 rounded-2xl bg-black/60 border border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.1)]" data-layer="control">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-2.5">
+                                    <span class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 text-sm">
+                                        <i class="fas fa-sliders"></i>
+                                    </span>
+                                    <div>
+                                        <h4 class="text-base font-bold text-white font-heading">Homelab Central Control Plane</h4>
+                                        <span class="text-[11px] font-mono text-emerald-400">Next.js 16 • React 19 • Telemetry Gateway</span>
+                                    </div>
+                                </div>
+                                <span class="badge-service px-2 py-0.5 rounded text-[10px] font-mono">CONTROL TIER</span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-xs">
+                                <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                                    <div class="text-emerald-300 font-bold mb-1 flex items-center gap-1.5"><i class="fas fa-desktop text-[10px]"></i> Central App</div>
+                                    <div class="text-[10px] text-gray-400 leading-tight">Bespoke full-stack command deck on Port 3010</div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                                    <div class="text-blue-300 font-bold mb-1 flex items-center gap-1.5"><i class="fas fa-diagram-project text-[10px]"></i> n8n Core</div>
+                                    <div class="text-[10px] text-gray-400 leading-tight">Automated workflow engine & incident triage orchestrator</div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                                    <div class="text-amber-300 font-bold mb-1 flex items-center gap-1.5"><i class="fas fa-message text-[10px]"></i> RabbitMQ</div>
+                                    <div class="text-[10px] text-gray-400 leading-tight">Asynchronous message broker & worker event distribution</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Middle Section: The 4 Physical Hardware Nodes & Their Virtualized Stacks -->
+                    <div class="mb-10">
+                        <div class="flex items-center justify-between mb-6 pb-2 border-b border-white/10 font-mono text-xs text-gray-400">
+                            <span class="uppercase tracking-wider flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-blue-400"></span> Distributed Compute & Storage Matrix (4 Bare-Metal Nodes)
+                            </span>
+                            <div class="flex items-center gap-3 text-[11px]">
+                                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-400"></span> VM</span>
+                                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> LXC</span>
+                                <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-sky-400"></span> Docker</span>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- NODE 1: Skullsaints Mini PC -->
+                            <div class="topo-item p-6 rounded-2xl bg-black/70 border border-blue-500/25 relative" data-layer="metal vm lxc docker">
+                                <div class="flex items-start justify-between mb-4 pb-3 border-b border-white/10">
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="badge-metal px-2 py-0.5 rounded text-[10px] font-mono font-bold">NODE 01</span>
+                                            <h4 class="text-lg font-bold text-white font-heading">Skullsaints Mini PC</h4>
+                                        </div>
+                                        <span class="text-xs font-mono text-blue-400">Proxmox VE 8.x • AMD Ryzen 6C/12T • 24GB DDR4 • NVMe + 6TB SATA</span>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Core Manager</span>
+                                </div>
+
+                                <!-- Node 1 Sub-layers: VMs and LXCs -->
+                                <div class="space-y-4">
+                                    <!-- VMs in Node 1 -->
+                                    <div>
+                                        <span class="text-[11px] font-mono text-purple-400 font-bold uppercase tracking-wider block mb-2">
+                                            <i class="fas fa-cube mr-1"></i> Virtual Machines (VM)
+                                        </span>
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <!-- main-server VM -->
+                                            <div class="topo-item p-3.5 rounded-xl bg-purple-950/20 border border-purple-500/25" data-layer="vm docker">
+                                                <div class="flex items-center justify-between mb-1.5">
+                                                    <span class="text-xs font-bold text-white font-mono">main-server</span>
+                                                    <span class="badge-vm text-[9px] px-1.5 py-0.2 rounded font-mono">VM • 6GB</span>
+                                                </div>
+                                                <p class="text-[10px] text-gray-400 mb-2">Core Automation & Local AI Docker Host</p>
+                                                <div class="flex flex-wrap gap-1 text-[10px] font-mono text-sky-300">
+                                                    <span class="badge-docker px-1.5 py-0.5 rounded">n8n core</span>
+                                                    <span class="badge-docker px-1.5 py-0.5 rounded">n8n worker</span>
+                                                    <span class="badge-docker px-1.5 py-0.5 rounded">ollama</span>
+                                                    <span class="badge-docker px-1.5 py-0.5 rounded">cadvisor</span>
+                                                    <span class="badge-docker px-1.5 py-0.5 rounded">promtail</span>
+                                                    <span class="badge-docker px-1.5 py-0.5 rounded">docksentry</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- hermes-agent-vm -->
+                                            <div class="topo-item p-3.5 rounded-xl bg-purple-950/20 border border-purple-500/25" data-layer="vm">
+                                                <div class="flex items-center justify-between mb-1.5">
+                                                    <span class="text-xs font-bold text-white font-mono">hermes-agent-vm</span>
+                                                    <span class="badge-vm text-[9px] px-1.5 py-0.2 rounded font-mono">VM • 4GB</span>
+                                                </div>
+                                                <p class="text-[10px] text-gray-400 mb-2">Hermes Autonomous AI Agent Platform</p>
+                                                <div class="flex flex-wrap gap-1 text-[10px] font-mono text-purple-300">
+                                                    <span class="px-1.5 py-0.5 rounded bg-purple-500/15 border border-purple-500/25">hermes-gateway</span>
+                                                    <span class="px-1.5 py-0.5 rounded bg-purple-500/15 border border-purple-500/25">task-scheduler</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- home-assistant VM -->
+                                            <div class="topo-item p-3.5 rounded-xl bg-purple-950/20 border border-purple-500/25" data-layer="vm">
+                                                <div class="flex items-center justify-between mb-1.5">
+                                                    <span class="text-xs font-bold text-white font-mono">home-assistant</span>
+                                                    <span class="badge-vm text-[9px] px-1.5 py-0.2 rounded font-mono">VM • 2GB</span>
+                                                </div>
+                                                <p class="text-[10px] text-gray-400 mb-2">Home Assistant Supervised OS Core</p>
+                                                <div class="flex flex-wrap gap-1 text-[10px] font-mono text-purple-300">
+                                                    <span class="px-1.5 py-0.5 rounded bg-purple-500/15 border border-purple-500/25">zigbee / z-wave</span>
+                                                    <span class="px-1.5 py-0.5 rounded bg-purple-500/15 border border-purple-500/25">mqtt broker</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- omv-node1 VM -->
+                                            <div class="topo-item p-3.5 rounded-xl bg-purple-950/20 border border-purple-500/25" data-layer="vm">
+                                                <div class="flex items-center justify-between mb-1.5">
+                                                    <span class="text-xs font-bold text-white font-mono">omv-node1 (NAS)</span>
+                                                    <span class="badge-vm text-[9px] px-1.5 py-0.2 rounded font-mono">VM • 4GB</span>
+                                                </div>
+                                                <p class="text-[10px] text-gray-400 mb-2">5.4TB Unified MergerFS Storage Pool</p>
+                                                <div class="flex flex-wrap gap-1 text-[10px] font-mono text-purple-300">
+                                                    <span class="px-1.5 py-0.5 rounded bg-purple-500/15 border border-purple-500/25">mergerfs pool</span>
+                                                    <span class="px-1.5 py-0.5 rounded bg-purple-500/15 border border-purple-500/25">snapraid</span>
+                                                    <span class="px-1.5 py-0.5 rounded bg-purple-500/15 border border-purple-500/25">samba</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- LXCs in Node 1 -->
+                                    <div>
+                                        <span class="text-[11px] font-mono text-emerald-400 font-bold uppercase tracking-wider block mb-2">
+                                            <i class="fas fa-bolt mr-1"></i> LXC Lightweight Containers
+                                        </span>
+                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                            <!-- edge-router-lxc -->
+                                            <div class="topo-item p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/25" data-layer="lxc">
+                                                <div class="text-xs font-bold text-white font-mono mb-1">edge-router-lxc</div>
+                                                <div class="text-[10px] text-gray-400 mb-1.5">Traefik v3 & Authelia SSO</div>
+                                                <span class="badge-lxc text-[9px] px-1.5 py-0.5 rounded font-mono">1GB RAM</span>
+                                            </div>
+
+                                            <!-- database-lxc -->
+                                            <div class="topo-item p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/25" data-layer="lxc">
+                                                <div class="text-xs font-bold text-white font-mono mb-1">database-lxc</div>
+                                                <div class="text-[10px] text-gray-400 mb-1.5">PostgreSQL 17 & Redis 7</div>
+                                                <span class="badge-lxc text-[9px] px-1.5 py-0.5 rounded font-mono">1GB RAM</span>
+                                            </div>
+
+                                            <!-- monitoring-lxc -->
+                                            <div class="topo-item p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/25" data-layer="lxc">
+                                                <div class="text-xs font-bold text-white font-mono mb-1">monitoring-lxc</div>
+                                                <div class="text-[10px] text-gray-400 mb-1.5">Prometheus, Grafana, Loki</div>
+                                                <span class="badge-lxc text-[9px] px-1.5 py-0.5 rounded font-mono">1.5GB RAM</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- NODE 2: Dell PC Compute -->
+                            <div class="topo-item p-6 rounded-2xl bg-black/70 border border-purple-500/25 relative" data-layer="metal vm lxc docker">
+                                <div class="flex items-start justify-between mb-4 pb-3 border-b border-white/10">
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="badge-metal px-2 py-0.5 rounded text-[10px] font-mono font-bold">NODE 02</span>
+                                            <h4 class="text-lg font-bold text-white font-heading">Dell OptiPlex Compute</h4>
+                                        </div>
+                                        <span class="text-xs font-mono text-purple-400">Proxmox VE 8.x • Intel Core 8C/8T • 16GB DDR4 • 512GB NVMe</span>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">AI & Sandboxes</span>
+                                </div>
+
+                                <!-- Node 2 Sub-layers -->
+                                <div class="space-y-4">
+                                    <!-- VMs in Node 2 -->
+                                    <div>
+                                        <span class="text-[11px] font-mono text-purple-400 font-bold uppercase tracking-wider block mb-2">
+                                            <i class="fas fa-cube mr-1"></i> Virtual Machines (VM)
+                                        </span>
+                                        <div class="topo-item p-3.5 rounded-xl bg-purple-950/20 border border-purple-500/25" data-layer="vm docker">
+                                            <div class="flex items-center justify-between mb-1.5">
+                                                <span class="text-xs font-bold text-white font-mono">utility-vm</span>
+                                                <span class="badge-vm text-[9px] px-1.5 py-0.2 rounded font-mono">VM • 5GB RAM • 3 vCPU</span>
+                                            </div>
+                                            <p class="text-[10px] text-gray-400 mb-2">Compute & Interface Docker Workloads</p>
+                                            <div class="flex flex-wrap gap-1 text-[10px] font-mono text-sky-300">
+                                                <span class="badge-docker px-1.5 py-0.5 rounded">open-webui</span>
+                                                <span class="badge-docker px-1.5 py-0.5 rounded">portainer-server</span>
+                                                <span class="badge-docker px-1.5 py-0.5 rounded">meshcentral</span>
+                                                <span class="badge-docker px-1.5 py-0.5 rounded">flowise ai</span>
+                                                <span class="badge-docker px-1.5 py-0.5 rounded">cadvisor</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- LXCs in Node 2 -->
+                                    <div>
+                                        <span class="text-[11px] font-mono text-emerald-400 font-bold uppercase tracking-wider block mb-2">
+                                            <i class="fas fa-bolt mr-1"></i> Isolated Execution LXCs
+                                        </span>
+                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <!-- n8n-sandbox-lxc -->
+                                            <div class="topo-item p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/25" data-layer="lxc">
+                                                <div class="text-xs font-bold text-white font-mono mb-1">n8n-sandbox-lxc</div>
+                                                <div class="text-[10px] text-gray-400 mb-2">Privileged AI Code Execution Sandbox (Python / Shell)</div>
+                                                <div class="flex items-center justify-between">
+                                                    <span class="badge-lxc text-[9px] px-1.5 py-0.5 rounded font-mono">4GB RAM • 4 vCPU</span>
+                                                    <span class="text-[9px] font-mono text-emerald-300">Zero Host Access</span>
+                                                </div>
+                                            </div>
+
+                                            <!-- dsh-lxc -->
+                                            <div class="topo-item p-3 rounded-xl bg-emerald-950/20 border border-emerald-500/25" data-layer="lxc">
+                                                <div class="text-xs font-bold text-white font-mono mb-1">dsh-lxc (DeepSeek)</div>
+                                                <div class="text-[10px] text-gray-400 mb-2">Dedicated DeepSeek Harness Agent Runtime</div>
+                                                <div class="flex items-center justify-between">
+                                                    <span class="badge-lxc text-[9px] px-1.5 py-0.5 rounded font-mono">2GB RAM • 2 vCPU</span>
+                                                    <span class="text-[9px] font-mono text-purple-300">dsh-webui</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- NODE 3: Raspberry Pi 1 (Diagnostics & Utility) -->
+                            <div class="topo-item p-6 rounded-2xl bg-black/70 border border-emerald-500/25 relative" data-layer="metal docker">
+                                <div class="flex items-start justify-between mb-4 pb-3 border-b border-white/10">
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="badge-metal px-2 py-0.5 rounded text-[10px] font-mono font-bold">NODE 03</span>
+                                            <h4 class="text-lg font-bold text-white font-heading">Raspberry Pi 4B #1</h4>
+                                        </div>
+                                        <span class="text-xs font-mono text-emerald-400">Debian Bookworm • 4C ARM64 • 4GB LPDDR4 • SSD Boot • log2ram</span>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">Edge Diagnostics</span>
+                                </div>
+
+                                <p class="text-xs text-gray-400 mb-3">Dedicated, low-power edge guardian running 24/7 network inspection, primary recursive DNS, and health probing.</p>
+                                
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
+                                    <div class="p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+                                        <div class="text-emerald-300 font-bold text-[11px] mb-0.5">AdGuard Home</div>
+                                        <div class="text-[9px] text-gray-400">Primary HA recursive DNS & adblocking</div>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+                                        <div class="text-blue-300 font-bold text-[11px] mb-0.5">Uptime Kuma</div>
+                                        <div class="text-[9px] text-gray-400">24/7 edge health probes & heartbeats</div>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+                                        <div class="text-purple-300 font-bold text-[11px] mb-0.5">WatchYourLAN</div>
+                                        <div class="text-[9px] text-gray-400">ARP scan & rogue device discovery</div>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+                                        <div class="text-amber-300 font-bold text-[11px] mb-0.5">UpSnap</div>
+                                        <div class="text-[9px] text-gray-400">Wake-on-LAN cluster management</div>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+                                        <div class="text-sky-300 font-bold text-[11px] mb-0.5">MySpeed</div>
+                                        <div class="text-[9px] text-gray-400">Automated ISP bandwidth telemetry</div>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+                                        <div class="text-orange-300 font-bold text-[11px] mb-0.5">OliveTin</div>
+                                        <div class="text-[9px] text-gray-400">Shell execution webhook dispatcher</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- NODE 4: Raspberry Pi 2 (UX Portal & Mesh VPN) -->
+                            <div class="topo-item p-6 rounded-2xl bg-black/70 border border-orange-500/25 relative" data-layer="metal control docker">
+                                <div class="flex items-start justify-between mb-4 pb-3 border-b border-white/10">
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="badge-metal px-2 py-0.5 rounded text-[10px] font-mono font-bold">NODE 04</span>
+                                            <h4 class="text-lg font-bold text-white font-heading">Raspberry Pi 4B #2</h4>
+                                        </div>
+                                        <span class="text-xs font-mono text-orange-400">Debian Bookworm • 4C ARM64 • 4GB LPDDR4 • SSD Boot • log2ram</span>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-orange-400 bg-orange-500/10 px-2 py-0.5 rounded">UX & Mesh Node</span>
+                                </div>
+
+                                <p class="text-xs text-gray-400 mb-3">Host for the primary <strong>Homelab Central</strong> control plane application, WireGuard mesh routing, and telemetry dashboards.</p>
+                                
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
+                                    <div class="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/25">
+                                        <div class="text-emerald-300 font-bold text-[11px] mb-0.5">Homelab Central</div>
+                                        <div class="text-[9px] text-gray-300">Next.js 16 fleet control dashboard</div>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+                                        <div class="text-blue-300 font-bold text-[11px] mb-0.5">Tailscale Mesh</div>
+                                        <div class="text-[9px] text-gray-400">Subnet router & WireGuard mesh exit</div>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+                                        <div class="text-purple-300 font-bold text-[11px] mb-0.5">Homepage & Homer</div>
+                                        <div class="text-[9px] text-gray-400">Static fallback service portals</div>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+                                        <div class="text-sky-300 font-bold text-[11px] mb-0.5">Portainer Agent</div>
+                                        <div class="text-[9px] text-gray-400">Node telemetry socket forwarder</div>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+                                        <div class="text-amber-300 font-bold text-[11px] mb-0.5">Node Exporter</div>
+                                        <div class="text-[9px] text-gray-400">ARM64 CPU/RAM Prometheus metrics</div>
+                                    </div>
+                                    <div class="p-2.5 rounded-lg bg-white/[0.03] border border-white/5">
+                                        <div class="text-orange-300 font-bold text-[11px] mb-0.5">Autoheal</div>
+                                        <div class="text-[9px] text-gray-400">Local unhealthy container recycling</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Section: Core System Flows (Interactive Flow Tracks) -->
+                    <div class="topo-item p-6 sm:p-8 rounded-2xl bg-black/80 border border-white/10" data-layer="flow">
+                        <div class="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-8 h-8 rounded-lg bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 text-sm">
+                                    <i class="fas fa-route"></i>
+                                </span>
+                                <div>
+                                    <h4 class="text-base font-bold text-white font-heading">Inter-Service Data, Control & Telemetry Flows</h4>
+                                    <span class="text-[11px] font-mono text-gray-400">Event Loops • Authentication Paths • AI Pipelines</span>
+                                </div>
+                            </div>
+                            <span class="text-xs font-mono text-emerald-400 flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> 4 Active Pipelines
+                            </span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-mono text-xs">
+                            <!-- Flow 1: Ingress & Security -->
+                            <div class="p-4 rounded-xl bg-white/[0.02] border border-sky-500/20">
+                                <div class="flex items-center gap-2 text-sky-400 font-bold mb-2">
+                                    <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                                    <span>FLOW 01: Secure Ingress & Zero-Trust Authentication</span>
+                                </div>
+                                <p class="text-gray-400 text-[11px] leading-relaxed mb-3">
+                                    Client requests hit <strong>Traefik v3</strong> over TLS 1.3. Traefik triggers a Forward-Auth query to <strong>Authelia</strong> in <code>edge-router-lxc</code>. Once 2FA is validated, requests proxy to target services across Node 1, 2, or 4 over internal isolated virtual bridge networks.
+                                </p>
+                                <div class="p-2 rounded bg-black/50 border border-white/5 text-[10px] text-sky-300">
+                                    User → Traefik v3 → Authelia SSO (Verify) → Target VM/LXC Service
+                                </div>
+                            </div>
+
+                            <!-- Flow 2: Central Fleet Control -->
+                            <div class="p-4 rounded-xl bg-white/[0.02] border border-emerald-500/20">
+                                <div class="flex items-center gap-2 text-emerald-400 font-bold mb-2">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                                    <span>FLOW 02: Central Control & Fleeting Fleet Telemetry</span>
+                                </div>
+                                <p class="text-gray-400 text-[11px] leading-relaxed mb-3">
+                                    <strong>Homelab Central</strong> (hosted on Node 4) queries the Proxmox VE cluster API, Prometheus TSDB, and Docker sockets via Portainer agents. Aggregates live system health, manages IoT plant sensor queues, and controls AI agent task schedules.
+                                </p>
+                                <div class="p-2 rounded bg-black/50 border border-white/5 text-[10px] text-emerald-300">
+                                    Homelab Central → Proxmox API + Docker Sockets + Prometheus → Real-Time Telemetry
+                                </div>
+                            </div>
+
+                            <!-- Flow 3: AI Agent & Sandbox -->
+                            <div class="p-4 rounded-xl bg-white/[0.02] border border-purple-500/20">
+                                <div class="flex items-center gap-2 text-purple-400 font-bold mb-2">
+                                    <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
+                                    <span>FLOW 03: Autonomous AI Agent Execution & Sandbox</span>
+                                </div>
+                                <p class="text-gray-400 text-[11px] leading-relaxed mb-3">
+                                    Hermes agent or n8n dispatches tasks to <strong>RabbitMQ</strong>. Code execution workloads run in the privileged <code>n8n-sandbox-lxc</code> container, while inference requests stream to local <strong>Ollama</strong> (Llama 3/DeepSeek) on hot NVMe storage.
+                                </p>
+                                <div class="p-2 rounded bg-black/50 border border-white/5 text-[10px] text-purple-300">
+                                    Hermes / n8n → RabbitMQ Bus → Isolated LXC Sandbox ↔ Local Ollama LLM
+                                </div>
+                            </div>
+
+                            <!-- Flow 4: Closed-Loop Self-Healing -->
+                            <div class="p-4 rounded-xl bg-white/[0.02] border border-amber-500/20">
+                                <div class="flex items-center gap-2 text-amber-400 font-bold mb-2">
+                                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                                    <span>FLOW 04: Closed-Loop Telemetry & Autonomous Remediation</span>
+                                </div>
+                                <p class="text-gray-400 text-[11px] leading-relaxed mb-3">
+                                    <strong>Uptime Kuma</strong> or Alertmanager flags non-200 responses. Webhook dispatches to <strong>n8n Lab Medic</strong>, which pulls Loki logs, runs LLM root-cause triage, and triggers target <strong>Ansible playbooks</strong> to recycle containers with MTTR &lt; 45s.
+                                </p>
+                                <div class="p-2 rounded bg-black/50 border border-white/5 text-[10px] text-amber-300">
+                                    Edge Probe Alert → n8n Lab Medic → Loki Log Extraction → Ansible Self-Healing
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -747,6 +1372,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Lenis Smooth Scroll -->
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-    <script src="script.js?v=2026.13"></script>
+    <script src="script.js?v=2026.14"></script>
 </body>
 </html>
